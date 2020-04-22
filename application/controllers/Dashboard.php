@@ -12,11 +12,19 @@ class Dashboard extends CI_Controller
 	}
 	public function viewDashbaord()
 	{
-// 		
-        
-		 $this->load->view('Layout/header');
-		 $this->load->view('Pages/index');
-		 $this->load->view('Layout/footer');
+		 $this->load->view('admin/Layout/header');
+		 $this->load->view('admin/Pages/index');
+		 $this->load->view('admin/Layout/footer');
+	}
+	public function addJobSeekerView(){
+		$this->load->view('admin/Layout/header');
+		$this->load->view('admin/Pages/add_JobSeeker');
+		$this->load->view('admin/Layout/footer');
+	}
+	public function viewJobSeeker(){
+		$this->load->view('admin/Layout/header');
+		$this->load->view('admin/Pages/view_JobSeeker');
+		$this->load->view('admin/Layout/footer');	
 	}
 
 

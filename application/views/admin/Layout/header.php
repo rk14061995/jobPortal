@@ -100,8 +100,8 @@
           	<i class="ft-layout"></i><span class="menu-title" data-i18n="">Job Seekers</span>
             </a>
             <ul>
-            	<li><a class="dropdown-item" href="<?=base_url('')?>"><i class="fa fa-plus" aria-hidden="true"></i> <strong>View</strong></a></li>
-            	<li> <a class="dropdown-item" href="<?=base_url('')?>"><i class="fa fa-eye" aria-hidden="true"></i> <strong>Add</strong></a></li>
+            	<li><a class="dropdown-item" href="<?=base_url('Dashboard/viewJobSeeker')?>"><i class="fa fa-plus" aria-hidden="true"></i> <strong>View</strong></a></li>
+            	<li> <a class="dropdown-item" href="<?=base_url('Dashboard/addJobSeekerView')?>"><i class="fa fa-eye" aria-hidden="true"></i> <strong>Add</strong></a></li>
             </ul>
           </li> 
           <li class=" nav-item dropdown dropdown-toggle"><a href="#" class="nav-link dropdown-toggle" >

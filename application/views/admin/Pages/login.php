@@ -76,7 +76,7 @@
                 
               }
             ?>
-            <form action="<?=base_url('Login/login_validate')?>" method="post" class="login100-form validate-form">
+            <form action="<?=base_url('Login/admin_login_validate')?>" method="post" class="login100-form validate-form">
               <div class="input-icons"> 
                 <i class="fa fa-user icon"></i> 
                  <input type="text" required name="email" placeholder="useremail" class=" w-75 p-4 form-control rounded-pill text-center  border-0 m-auto shadow">
