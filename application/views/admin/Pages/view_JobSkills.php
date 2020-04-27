@@ -3,7 +3,7 @@
         <div class="content-wrapper-before"></div>
         <div class="content-header row">
           <div class="content-header-left col-md-4 col-12 mb-2">
-            <h3 class="content-header-title">View Category</h3>
+            <h3 class="content-header-title">View Skills</h3>
           </div>
           <div class="content-header-right col-md-8 col-12">
             <div class="breadcrumbs-top float-md-right">
@@ -42,23 +42,23 @@
                   <thead>
                     <tr>
                       <th scope="col">SNo</th>
-                      <th scope="col">Category Name</th>
-                      <th scope="col">Icon</th>
+                      <th scope="col">Skills</th>
+                      <!-- <th scope="col">Icon</th> -->
                       <th scope="col">Action</th>
                     </tr>
                   </thead>
                   <tbody>
                    <?php
                    $i=1;
-                   foreach($getcategory as $category)
+                   foreach($getskills as $skills)
                     {
-                       $myImages=explode(',',$category->category_icon);
+                       // $myImages=explode(',',$category->category_icon);
                       // print_r($category);
                       ?>
                     <tr>
                       <th scope="row"><?=$i?></th>
-                      <td><?=$category->category_name?></td>
-                       <td><img style="width:4em;height:3em;"src="<?php echo base_url().'assets/category_icon/'.$myImages[0]?>"class="img-reponsive thumbnail "></td>
+                      <td><?=$skills->skill_name?></td>
+                      <!-- . -->
                       <td><a href="">Edit</a>
                         <a href="">Delete</a></td>
                     </tr>
