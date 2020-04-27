@@ -1,7 +1,7 @@
 
 <section class=" banr_ol " style="">
     <div class="container bnnTx">
-        <h1 class="ojjuj_"> <span>3,000+</span> Browse Jobs</h1>
+        <h1 class="ojjuj_"> <span><?=$total_jobs?>+</span> Browse Jobs</h1>
         <h6>Find Jobs, Employment & Career Opportunities</h6>
         <form class="sercPL">
             <div class="row p-2 ">
@@ -88,10 +88,12 @@
         <h3 class="text_up Unft_X">Top companies hiring now</h3>
     </div>
     <div class="row">
+      <?php foreach($companies as $comp):?>
         <div class="col-md-2">
-            <img src="assets/images/people.png" class="img-fluid">
+            <img src="<?=base_url('assets/companyImages/logo/').$comp->company_logo?>" class="img-fluid" width="100%">
         </div>
-        <div class="col-md-2">
+      <?php endforeach; ?>
+        <!-- <div class="col-md-2">
             <img src="assets/images/genpact.png" class="img-fluid">
         </div>
         <div class="col-md-2">
@@ -105,9 +107,9 @@
         </div>
         <div class="col-md-2">
             <img src="assets/images/icici.png" class="img-fluid">
-        </div>
+        </div> -->
     </div>
-     <div class="row mt-3">
+    <!--  <div class="row mt-3">
         <div class="col-md-2">
             <img src="assets/images/max.png" class="img-fluid">
         </div>
@@ -126,7 +128,7 @@
         <div class="col-md-2">
             <img src="assets/images/tech.png" class="img-fluid">
         </div>
-    </div>
+    </div> -->
 </section>
 
 <section class="container my-4">
@@ -216,110 +218,11 @@
             </nav>
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active p-3" id="Featured" role="tabpanel" aria-labelledby="nav-home-tab">
-                   <div class="row pjikK">
-                       <div class="col-md-2">
-                            <img src="assets/images/sbi.png" class="img-fluid">
-                       </div>
-                       <div class="col-md-5">
-                          <h6 class="m-0">Web Designer / Developer</h6>
-                          <span>SBI Bank</span>
-                       </div>
-                       <div class="col-md-3">
-                          <span>SBI Bank</span>
-                       </div>
-                       <div class="col-md-2">
-                            <button class="btn btn-default border">Apply</button>
-                       </div>
-                   </div>
-                  <div class="row pjikK">
-                       <div class="col-md-2">
-                            <img src="assets/images/sbi.png" class="img-fluid">
-                       </div>
-                       <div class="col-md-5">
-                          <h6 class="m-0">Web Designer / Developer</h6>
-                          <span>SBI Bank</span>
-                       </div>
-                       <div class="col-md-3">
-                          <span>SBI Bank</span>
-                       </div>
-                       <div class="col-md-2">
-                            <button class="btn btn-default border">Apply</button>
-                       </div>
-                   </div>
-                   <div class="row pjikK">
-                       <div class="col-md-2">
-                            <img src="assets/images/sbi.png" class="img-fluid">
-                       </div>
-                       <div class="col-md-5">
-                          <h6 class="m-0">Web Designer / Developer</h6>
-                          <span>SBI Bank</span>
-                       </div>
-                       <div class="col-md-3">
-                          <span>SBI Bank</span>
-                       </div>
-                       <div class="col-md-2">
-                            <button class="btn btn-default border">Apply</button>
-                       </div>
-                   </div>
-                </div>
-                <div class="tab-pane fade p-3" id="part_time" role="tabpanel" aria-labelledby="nav-profile-tab">
-                  <?php 
-                    // print_r($partTimeJobs);
-                  ?>
-                  <div class="row pjikK">
-                       <div class="col-md-2">
-                            <img src="assets/images/sbi.png" class="img-fluid">
-                       </div>
-                       <div class="col-md-5">
-                          <h6 class="m-0">Web Designer / Developer</h6>
-                          <span>SBI Bank</span>
-                       </div>
-                       <div class="col-md-3">
-                          <span>SBI Bank</span>
-                       </div>
-                       <div class="col-md-2">
-                            <button class="btn btn-default border">Apply</button>
-                       </div>
-                   </div>
-                  <div class="row pjikK">
-                       <div class="col-md-2">
-                            <img src="assets/images/sbi.png" class="img-fluid">
-                       </div>
-                       <div class="col-md-5">
-                          <h6 class="m-0">Web Designer / Developer</h6>
-                          <span>SBI Bank</span>
-                       </div>
-                       <div class="col-md-3">
-                          <span>SBI Bank</span>
-                       </div>
-                       <div class="col-md-2">
-                            <button class="btn btn-default border">Apply</button>
-                       </div>
-                   </div>
-                   <div class="row pjikK">
-                       <div class="col-md-2">
-                            <img src="assets/images/sbi.png" class="img-fluid">
-                       </div>
-                       <div class="col-md-5">
-                          <h6 class="m-0">Web Designer / Developer</h6>
-                          <span>SBI Bank</span>
-                       </div>
-                       <div class="col-md-3">
-                          <span>SBI Bank</span>
-                       </div>
-                       <div class="col-md-2">
-                            <button class="btn btn-default border">Apply</button>
-                       </div>
-                   </div>
-                </div>
-                <div class="tab-pane fade p-3" id="full_time" role="tabpanel" aria-labelledby="nav-contact-tab">
-                  <?php 
-                    // print_r($fullTimeJobs);
-                  ?>
+                   
                   <?php foreach($fullTimeJobs as $f_job): ?>
                    <div class="row pjikK">
                        <div class="col-md-2">
-                            <img src="assets/images/sbi.png" class="img-fluid">
+                            <img src="<?=base_url('assets/companyImages/logo/').$f_job->company_logo?>" class="img-fluid" width="100%">
                        </div>
                        <div class="col-md-5">
                           <h6 class="m-0"><?=$f_job->job_title?></h6>
@@ -332,7 +235,51 @@
                             <button class="btn btn-default border">Apply</button>
                        </div>
                    </div>
-                 <?php endforeach;?>
+                  <?php endforeach;?>
+                </div>
+                <div class="tab-pane fade p-3" id="part_time" role="tabpanel" aria-labelledby="nav-profile-tab">
+                  <?php 
+                    // print_r($partTimeJobs);
+                  ?>
+                  <?php foreach($partTimeJobs as $f_job): ?>
+                   <div class="row pjikK">
+                       <div class="col-md-2">
+                            <img src="<?=base_url('assets/companyImages/logo/').$f_job->company_logo?>" class="img-fluid" width="100%">
+                       </div>
+                       <div class="col-md-5">
+                          <h6 class="m-0"><?=$f_job->job_title?></h6>
+                          <span><?=$f_job->company_name?></span>
+                       </div>
+                       <div class="col-md-3">
+                          <span><?=$f_job->company_name?></span>
+                       </div>
+                       <div class="col-md-2">
+                            <button class="btn btn-default border">Apply</button>
+                       </div>
+                   </div>
+                  <?php endforeach;?>
+                </div>
+                <div class="tab-pane fade p-3" id="full_time" role="tabpanel" aria-labelledby="nav-contact-tab">
+                  <?php 
+                    // print_r($fullTimeJobs);
+                  ?>
+                  <?php foreach($fullTimeJobs as $f_job): ?>
+                   <div class="row pjikK">
+                       <div class="col-md-2">
+                            <img src="<?=base_url('assets/companyImages/logo/').$f_job->company_logo?>" class="img-fluid" width="100%">
+                       </div>
+                       <div class="col-md-5">
+                          <h6 class="m-0"><?=$f_job->job_title?></h6>
+                          <span><?=$f_job->company_name?></span>
+                       </div>
+                       <div class="col-md-3">
+                          <span><?=$f_job->company_name?></span>
+                       </div>
+                       <div class="col-md-2">
+                            <button class="btn btn-default border">Apply</button>
+                       </div>
+                   </div>
+                  <?php endforeach;?>
                    <!-- <div class="row pjikK">
                        <div class="col-md-2">
                             <img src="assets/images/sbi.png" class="img-fluid">
