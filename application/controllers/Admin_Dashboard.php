@@ -8,7 +8,7 @@ class Admin_Dashboard extends CI_Controller
 		redirect('Login-Page');
 	}
 		    
-		
+	$this->load->model('Admin_Category_model','Admin_C');	
 	}
 	public function viewDashbaord()
 	{ 		
@@ -40,9 +40,9 @@ class Admin_Dashboard extends CI_Controller
 	}
 	public function view_JobCategory()
 	{ 		
-        
+        $data['getcategory']=$this->Admin_C->getCategory();
 		 $this->load->view('admin/Layout/header');
-		 $this->load->view('admin/Pages/view_JobCategory');
+		 $this->load->view('admin/Pages/view_JobCategory',$data);
 		 $this->load->view('admin/Layout/footer');
 	}
 

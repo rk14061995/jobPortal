@@ -14,8 +14,7 @@ class Admin_Category_model extends CI_Model
 		}
 		else
 		{
-			$this->db->where($data);
-			$success=$this->db->get('job_category')->result();
+			$success=$this->db->insert('job_category',$data);
 			if($success)
 	    	{  
 			
@@ -29,5 +28,9 @@ class Admin_Category_model extends CI_Model
 
 		}
 		
+	}
+	public function getCategory()
+	{
+		return $this->db->get('job_category')->result();
 	}
 } ?>

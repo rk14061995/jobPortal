@@ -9,25 +9,27 @@
                           <div class="card-header">
                               <h4 class="card-title">Add Job Category</h4>
                           </div>
-                          <form id="insertcategory">
+
                           <div class="card-block">
                               <div class="card-body">
+                                <form id="insertcategory">
                                   <h5 class="mt-2">Category Name</h5>
                                   <fieldset class="form-group">
                                       <!-- <p class="text-muted">Textarea description text.</p> -->
-                                      <input type="text" class="form-control" name="category" id="basicInput" >
+                                      <input type="text" class="form-control" required  name="category"  >
                                   </fieldset>
                                    <h5 class="mt-2">Category Icon</h5>
                                   <fieldset class="form-group">
                                       <!-- <p class="text-muted">Textarea description text.</p> -->
-                                      <input type="file" name="file" id="basicInput" >
+                                      <input type="file" name="file" required >
                                   </fieldset>
                                   <fieldset class="form-group">
-                                      <button type="button" class="btn btn-success btn-min-width mr-1 mb-1">Add</button>
+                                      <button type="submit" class="btn btn-success btn-min-width mr-1 mb-1">Add</button>
                                   </fieldset>
                               </div>
+                               </form>
                           </div>
-                        </form>
+                       
 
                           <!-- <div class="card-block">
                               <div class="card-body">
@@ -77,11 +79,40 @@
         </div>
       </div>
     </div>
-    <script type="text/javascript">
-      $(document).on('submit','#insertcategory',function(e){
-              e.preventDefault();
-        var formData= new FormData($(this)[0]);
+   <script type="text/javascript"> 
+$(document).on('submit','#insertcategory',function(e){
+     e.preventDefault();
+         var formData= new FormData($(this)[0]);
+         // alert('cas');
+         $.ajax({
+            url:"<?=base_url('Admin_Category/addCategory')?>",
+             type:"post",
+             catche:false,
+             contentType:false,
+             processData:false,
+             data:formData,
+             success:function(response)
+            {
+                 var obj=JSON.parse(response);
+                //  console.log(obj.status);
+                 if(obj.status==0)
+                 {
+                    swal("Category!", "Already Exist", "error")
+                 }
+                 if(obj.status==1)
+                 {
+                  swal("Category!", "Added", "success")
+                 }
+                 if(obj.status==2)
+                 {
+                 swal("Category!", "", "error")
+                 }
+                $("#insertcategory").load(location.href + " #insertcategory");
+            }
+        
+             });    
+    
 
-
-      });
-    </script>
+    
+});
+</script>

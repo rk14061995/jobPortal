@@ -48,12 +48,23 @@
                     </tr>
                   </thead>
                   <tbody>
+                   <?php
+                   $i=1;
+                   foreach($getcategory as $category)
+                    {
+                       $myImages=explode(',',$category->category_icon);
+                      // print_r($category);
+                      ?>
                     <tr>
-                      <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
+                      <th scope="row"><?=$i?></th>
+                      <td><?=$category->category_name?></td>
+                       <td><img style="width:4em;height:3em;"src="<?php echo base_url().'assets/category_icon/'.$myImages[0]?>"class="img-reponsive thumbnail "></td>
+                      <td><a href="">Edit</a>
+                        <a href="">Delete</a></td>
                     </tr>
+                    <?php
+
+                    }?>
                     
                   </tbody>
                 </table>
@@ -66,4 +77,3 @@
         </div>
       </div>
     </div>
-    <!-- ////////////////////////////////////////////////////////////////////////////-->

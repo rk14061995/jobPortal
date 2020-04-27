@@ -10,7 +10,7 @@ class Admin_Category extends CI_Controller
 	}
 		    
 		
-	}
+	
 	public function addCategory()
 	{
 		 if(!empty($_FILES['file']['name']))
@@ -44,16 +44,16 @@ class Admin_Category extends CI_Controller
 					$results=$this->Admin_C->addcategory($category,$data);
 					if($results==1)
 					{
-						die(json_decode(array('status'=>1,'data'=>$results)));
+						die(json_encode(array('status'=>1,'data'=>$results)));
 					}
 					else
 					{
-						die(json_decode(array('status'=>0,'data'=>'Already Exist')));
+						die(json_encode(array('status'=>0,'data'=>'Already Exist')));
 					}
 				}
 				else
 				{
-					die(json_decode(array('status'=>0,'data'=>'Servor Error')));
+					die(json_decode(array('status'=>2,'data'=>'Servor Error')));
 				}
 	}
 	
