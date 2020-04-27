@@ -34,11 +34,12 @@
     <div class="container">
         <div class="row">
           <?php foreach($cateogires as $cat):?>
+           
             <div class="col-md-2 PloomPk " >
                 <div class="">
                     <h4><i class="fas fa-shuttle-van"></i></h4>
-                    <span><?=$cat->category_name?></span>
-                    <p>(22 Jobs)</p>
+                    <span><?=$cat['category_details']->category_name?></span>
+                    <p>(<?=count($cat['jobs'])?> Jobs)</p>
                 </div>
             </div>
           <?php endforeach;?>
@@ -142,8 +143,8 @@
                 <div class="">
                     <div class="">
                     <h2><i class="fas fa-shuttle-van"></i></h2>
-                    <span><?=$cat->category_name?></span>
-                    <p>(22 Jobs)</p>
+                    <span><?=$cat['category_details']->category_name?></span>
+                    <p>(<?=count($cat['jobs'])?> Jobs)</p>
                 </div>
                 </div>
             </a>
@@ -396,3 +397,29 @@
             </div>
         </div>
 </section>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#registerForm').submit(function(e){
+      var formData=new FormData($(this)[0]);
+      e.preventDefault();
+      $.ajax({
+        url:"<?=base_url('User/addUser')?>",
+        type:"post",
+        cache:false,
+        contentType:false,
+        processData:false,
+        data:formData,
+        success:function(response){
+          // console.log(response);
+          response=JSON.parse(response);
+          if(response.code==1){
+            swal("Great..","Registered Successfully.","success");
+          }else{
+            swal("Ooops..","Something went wrong","warning");
+          }
+        }
+      });
+    });    
+  });
+</script>

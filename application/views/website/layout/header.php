@@ -13,6 +13,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="<?=base_url('assets/web_assets/')?>css/style.css">
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 <style>
@@ -272,19 +273,19 @@ nav.fill ul li a:hover:after {
        </div>
 
        <div class="" id="regFrm">
-          <form class="">
+          <form class="" id="registerForm">
             <div class="">
               <label class="form-group w-100">Email or Mobile Number
-                <input type="text" placeholder="Email or Mobile Number" class="form-control">
+                <input type="text" placeholder="Email or Mobile Number" name="email" class="form-control">
               </label>
 
-              <label class="form-group w-100">OTP Verification
+              <label class="form-group w-100">OTP Verificationdd
                 <input type="text" placeholder="Enter Received OTP" class="form-control">
               </label>
               
 
               <label class="form-group w-100">Password
-                <input type="password" placeholder="Password" class="form-control">
+                <input type="password" placeholder="Password" name="pass" class="form-control">
               </label>
             </div>
 
