@@ -50,7 +50,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 // $route['default_controller'] = 'PropertTrack';
+<<<<<<< HEAD
  $route['default_controller'] = 'Admin_Login/index';
+=======
+ $route['default_controller'] = 'web';
+>>>>>>> 2c7233ad97a9eaf585bea5c7a0d9d0a6e4a98a9d
 
 $route['admin'] = 'Admin_Login/index';
 $route['Login-Page'] = 'Admin_Login/index';
