@@ -50,18 +50,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 // $route['default_controller'] = 'PropertTrack';
- $route['default_controller'] = 'login';
+ $route['default_controller'] = 'Admin_Login/index';
 
-$route['admin'] = 'login';
-$route['Login-Page'] = 'login';
+$route['admin'] = 'Admin_Login/index';
+$route['Login-Page'] = 'Admin_Login/index';
 $route['404_override'] = 'PropertTrack/error404';
 $route['translate_uri_dashes'] = FALSE;
 
 
 
-// API FOR WEBSITE
-
-$route['owner/sale-property']='Building/ViewBuildingSection';
+//
 
 
 
