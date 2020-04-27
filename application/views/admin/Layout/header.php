@@ -8,7 +8,7 @@
     <meta name="keywords">
     <meta name="author" content="ThemeSelect">
     <title>Job Portal</title>
-    <link rel="apple-touch-icon" href="theme-assets/images/ico/apple-icon-120.png">
+    <link rel="apple-touch-icon" href="<?=base_url()?>theme-assets/images/ico/apple-icon-120.png">
     <link rel="shortcut icon" type="image/x-icon" href="<?=base_url()?>theme-assets/images/ico/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
     <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
@@ -26,6 +26,9 @@
     <!-- END Page Level CSS-->
     <!-- BEGIN Custom CSS-->
     <!-- END Custom CSS-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+   <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
   </head>
   <body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-chartbg" data-col="2-columns">
 
@@ -92,16 +95,25 @@
       </div>
       <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-          <li class="active"><a href="index.html"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
+          <li class="active"><a href="<?=base_url('Admin_Dashboard/index')?>"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
           </li>
-         
+         <li class=" nav-item dropdown dropdown-toggle"><a href="#" class="nav-link dropdown-toggle" >
+            <i class="ft-layout"></i><span class="menu-title" data-i18n="">Job Category</span>
+            </a>
+            <ul>
+              
+              <li> <a class="dropdown-item" href="<?=base_url('Admin_Dashboard/addJobCategory')?>"><i class="fa fa-eye" aria-hidden="true"></i> <strong>Add</strong></a></li>
+              <li><a class="dropdown-item" href="<?=base_url('Admin_Dashboard/view_JobCategory')?>"><i class="fa fa-plus" aria-hidden="true"></i> <strong>View</strong></a></li>
+            </ul>
+          </li> 
           
           <li class=" nav-item dropdown dropdown-toggle"><a href="#" class="nav-link dropdown-toggle" >
           	<i class="ft-layout"></i><span class="menu-title" data-i18n="">Job Seekers</span>
             </a>
             <ul>
-            	<li><a class="dropdown-item" href="<?=base_url('Dashboard/viewJobSeeker')?>"><i class="fa fa-plus" aria-hidden="true"></i> <strong>View</strong></a></li>
-            	<li> <a class="dropdown-item" href="<?=base_url('Dashboard/addJobSeekerView')?>"><i class="fa fa-eye" aria-hidden="true"></i> <strong>Add</strong></a></li>
+            	
+            	<li> <a class="dropdown-item" href="<?=base_url('Admin_Dashboard/addJobSeekerView')?>"><i class="fa fa-eye" aria-hidden="true"></i> <strong>Add</strong></a></li>
+              <li><a class="dropdown-item" href="<?=base_url('Admin_Dashboard/viewJobSeeker')?>"><i class="fa fa-plus" aria-hidden="true"></i> <strong>View</strong></a></li>
             </ul>
           </li> 
           <li class=" nav-item dropdown dropdown-toggle"><a href="#" class="nav-link dropdown-toggle" >

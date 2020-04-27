@@ -1,6 +1,6 @@
 <?php
 
-class Login_model extends CI_Model{
+class Admin_Login_model extends CI_Model{
 
 	public function admin_Login($data)
 	{
@@ -11,8 +11,8 @@ class Login_model extends CI_Model{
 		if(count($success)>0)
 	    {
             // print_r($success);
-			$this->session->set_userdata('login',$success);
-			return true;
+			
+			return $success;
 		}
 		 else
 	    {
