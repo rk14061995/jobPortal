@@ -48,13 +48,28 @@ class Admin_Category extends CI_Controller
 					}
 					else
 					{
-						die(json_encode(array('status'=>0,'data'=>'Already Exist')));
+						die(json_encode(array('status'=>2,'data'=>$results)));
 					}
 				}
 				else
 				{
-					die(json_decode(array('status'=>2,'data'=>'Servor Error')));
+					die(json_decode(array('status'=>0,'data'=>'Servor Error')));
 				}
+	}
+	public function addSkills()
+	{
+		$skill=$this->input->post('skill');
+		$data=array('skill_name'=>$skill);
+		$results=$this->Admin_C->addSkills($skill,$data);
+		if($results==1)
+		{
+			die(json_encode(array('status'=>1,'data'=>$results)));
+		}
+		else
+		{
+			die(json_encode(array('status'=>2,'data'=>$results)));
+		}
+
 	}
 	
 }

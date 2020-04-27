@@ -45,6 +45,20 @@ class Admin_Dashboard extends CI_Controller
 		 $this->load->view('admin/Pages/view_JobCategory',$data);
 		 $this->load->view('admin/Layout/footer');
 	}
+	public function addJobSkills()
+	{ 		
+      
+		 $this->load->view('admin/Layout/header');
+		 $this->load->view('admin/Pages/add_JobSkill');
+		 $this->load->view('admin/Layout/footer');
+	}
+	public function view_JobSkills()
+	{ 		
+        $data['getskills']=$this->Admin_C->getSkills();
+		 $this->load->view('admin/Layout/header');
+		 $this->load->view('admin/Pages/view_JobSkills',$data);
+		 $this->load->view('admin/Layout/footer');
+	}
 
 
 
