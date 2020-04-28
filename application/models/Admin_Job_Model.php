@@ -14,6 +14,7 @@ class Admin_Job_Model extends CI_Model
 	{
 		return $this->db->get('job_type')->result();
 	}
+	
 	public function addJob($data)
 	{
 		// $dat=array("category_name"=>$category);
@@ -45,5 +46,28 @@ class Admin_Job_Model extends CI_Model
 		$this->db->join('job_category','job_category.category_id=jobs_added.job_category');
 		$this->db->join('job_type','job_type.type_id=jobs_added.job_type');
 		return $this->db->get()->result();
+	}
+	public function addJobType($data)
+	{
+		 $dat=array("type_name"=>$data);
+        $this->db->where($data);
+	   if(count($this->db->get('job_type')->result())==0)
+	   {   		
+			$results=$this->db->insert('job_type',$data);
+			if($results)
+			{
+				return 1;
+			}
+			else
+			{
+				return 0;
+			}
+	 	}
+		else
+		{
+			return 2;
+	    }
+		
+		
 	}
 }

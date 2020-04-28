@@ -1,12 +1,12 @@
 <?php
 
-class Admin_Job extends CI_Controller
+class Admin_Category extends CI_Controller
 {
 	function __construct(){
 
 		parent::__construct();
 		
-		$this->load->model('Admin_Category_model','Admin_C')
+		$this->load->model('Admin_Category_model','Admin_C');
 	}
 		    
 		
@@ -71,5 +71,34 @@ class Admin_Job extends CI_Controller
 		}
 
 	}
+	public function DeleteJobCategory()
+	{
+		$data=array('category_id'=>$this->input->post('category_id'));
+			$this->db->where($data);
+		 $results=$this->db->delete('job_category');
+		 if( $results)
+		 {
+		 	die(json_encode(array('status'=>1,'data'=>$results)));
+		 }
+		 else
+		 {
+		 	die(json_encode(array('status'=>0,'data'=>$results)));
+		 }
+	}
+	public function DeleteJobSkills()
+	{
+		$data=array('skill_id'=>$this->input->post('skill_id'));
+			$this->db->where($data);
+		 $results=$this->db->delete('skills_');
+		 if( $results)
+		 {
+		 	die(json_encode(array('status'=>1,'data'=>$results)));
+		 }
+		 else
+		 {
+		 	die(json_encode(array('status'=>0,'data'=>$results)));
+		 }
+	}
+
 	
 }

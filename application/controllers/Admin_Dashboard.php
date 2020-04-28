@@ -77,6 +77,19 @@ class Admin_Dashboard extends CI_Controller
 		 $this->load->view('admin/Pages/view_Job',$data);
 		 $this->load->view('admin/Layout/footer');
 	}
+	public function addJobType()
+	{ 		 
+		 $this->load->view('admin/Layout/header');
+		 $this->load->view('admin/Pages/add_Jobtype');
+		 $this->load->view('admin/Layout/footer');
+	}
+	public function view_JobType()
+	{ 		
+      	$data['getJobtype']=$this->Admin_J->getJobtype();
+		 $this->load->view('admin/Layout/header');
+		 $this->load->view('admin/Pages/view_Jobtype',$data);
+		 $this->load->view('admin/Layout/footer');
+	}
 
 
 

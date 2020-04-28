@@ -60,7 +60,7 @@
                       <td><?=$category->category_name?></td>
                        <td><img style="width:4em;height:3em;"src="<?php echo base_url().'assets/category_icon/'.$myImages[0]?>"class="img-reponsive thumbnail "></td>
                       <td><a href="">Edit</a>
-                        <a href="">Delete</a></td>
+                        <a href="javascript:void(0)" category_id="<?=$category->category_id?>" class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Delete</a></td>
                     </tr>
                     <?php
                     $i++;
@@ -77,3 +77,39 @@
         </div>
       </div>
     </div>
+<script type="text/javascript">
+        $(document).ready(function(){
+          $('.delete').on('click',function(){ 
+             var category_id=$(this).attr("category_id");
+
+             // alert(owner_id);
+           if(confirm("Are you Sure want to delete?") ==true)
+            {       
+            // alert(owner_id);         
+                $.ajax({
+                  url:"<?=base_url('Admin_Category/DeleteJobCategory')?>",
+                  type:"post",
+                  data:{category_id:category_id},
+                  success:function(response)
+                  {   
+                  response=JSON.parse(response);             
+                     if (response.status==1)
+                      {
+                        swal('Category!','Deleted','error');
+                   
+                          location.reload();
+                    
+                       }
+                  }
+                 })                           
+             // userPreference = "Data Delete successfully!";
+
+             }
+             else 
+             {
+              userPreference = "Save Canceled!";
+              }
+              
+          })
+        })  
+      </script>

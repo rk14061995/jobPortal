@@ -95,8 +95,17 @@
       </div>
       <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-          <li class="active"><a href="<?=base_url('Admin_Dashboard/index')?>"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
+          <li class="active"><a href="<?=base_url('Admin_Dashboard/viewDashbaord')?>"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
           </li>
+           <li class=" nav-item "><a href="#" class="nav-link dropdown-toggle" >
+            <i class="ft-layout"></i><span class="menu-title" data-i18n="">Job Type</span>
+            </a>
+            <ul>
+              
+              <li> <a class="dropdown-item" href="<?=base_url('Admin_Dashboard/addJobType')?>"><i class="fa fa-eye" aria-hidden="true"></i> <strong>Add</strong></a></li>
+              <li><a class="dropdown-item" href="<?=base_url('Admin_Dashboard/view_JobType')?>"><i class="fa fa-plus" aria-hidden="true"></i> <strong>View</strong></a></li>
+            </ul>
+          </li> 
          <li class=" nav-item "><a href="#" class="nav-link dropdown-toggle" >
             <i class="ft-layout"></i><span class="menu-title" data-i18n="">Job Category</span>
             </a>

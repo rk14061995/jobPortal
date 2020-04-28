@@ -60,7 +60,7 @@
                       <td><?=$skills->skill_name?></td>
                       <!-- . -->
                       <td><a href="">Edit</a>
-                        <a href="">Delete</a></td>
+                       <a href="javascript:void(0)" skill_id="<?=$skills->skill_id?>" class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Delete</a></td>
                     </tr>
                     <?php
                     $i++;
@@ -77,3 +77,39 @@
         </div>
       </div>
     </div>
+<script type="text/javascript">
+        $(document).ready(function(){
+          $('.delete').on('click',function(){ 
+             var skill_id=$(this).attr("skill_id");
+
+             // alert(owner_id);
+           if(confirm("Are you Sure want to delete?") ==true)
+            {       
+            // alert(owner_id);         
+                $.ajax({
+                  url:"<?=base_url('Admin_Category/DeleteJobSkills')?>",
+                  type:"post",
+                  data:{skill_id:skill_id},
+                  success:function(response)
+                  {   
+                  response=JSON.parse(response);             
+                     if (response.status==1)
+                      {
+                        swal('Skills!','Deleted','error');
+                   
+                          location.reload();
+                    
+                       }
+                  }
+                 })                           
+             // userPreference = "Data Delete successfully!";
+
+             }
+             else 
+             {
+              userPreference = "Save Canceled!";
+              }
+              
+          })
+        })  
+      </script>

@@ -28,5 +28,46 @@ class Admin_Job extends CI_Controller
 			die(json_encode(array('status'=>2,'data'=>$results)));
 			}
 	}
+	public function addJobType()
+	{
+		$data=array('type_name'=>$this->input->post('jtype'));
+			$results=$this->Admin_J->addJobType($data);
+			if($results==1)
+			{
+			die(json_encode(array('status'=>1,'data'=>$results)));
+			}
+			else
+			{
+			die(json_encode(array('status'=>2,'data'=>$results)));
+			}
+	}
+	public function DeleteJobType()
+	{
+		$data=array('type_id'=>$this->input->post('type_id'));
+			$this->db->where($data);
+		 $results=$this->db->delete('job_type');
+		 if( $results)
+		 {
+		 	die(json_encode(array('status'=>1,'data'=>$results)));
+		 }
+		 else
+		 {
+		 	die(json_encode(array('status'=>0,'data'=>$results)));
+		 }
+	}
+	public function DeleteJob()
+	{
+		$data=array('job_id'=>$this->input->post('job_id'));
+			$this->db->where($data);
+		 $results=$this->db->delete('jobs_added');
+		 if( $results)
+		 {
+		 	die(json_encode(array('status'=>1,'data'=>$results)));
+		 }
+		 else
+		 {
+		 	die(json_encode(array('status'=>0,'data'=>$results)));
+		 }
+	}
 
 }
