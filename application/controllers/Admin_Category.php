@@ -1,12 +1,12 @@
 <?php
 
-class Admin_Category extends CI_Controller
+class Admin_Job extends CI_Controller
 {
 	function __construct(){
 
 		parent::__construct();
 		
-		$this->load->model('Admin_Category_model','Admin_C');
+		$this->load->model('Admin_Category_model','Admin_C')
 	}
 		    
 		
