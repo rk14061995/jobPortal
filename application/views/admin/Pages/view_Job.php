@@ -3,7 +3,7 @@
         <div class="content-wrapper-before"></div>
         <div class="content-header row">
           <div class="content-header-left col-md-4 col-12 mb-2">
-            <h3 class="content-header-title">View Skills</h3>
+            <h3 class="content-header-title">View Jobs</h3>
           </div>
           <div class="content-header-right col-md-8 col-12">
             <div class="breadcrumbs-top float-md-right">
@@ -42,24 +42,35 @@
                   <thead>
                     <tr>
                       <th scope="col">SNo</th>
-                      <th scope="col">Job</th>
-                      <!-- <th scope="col">Icon</th> -->
+                      <th scope="col">Category</th>
+                      <th scope="col">Type</th> 
+                      <th scope="col">Company</th> 
+                      <th scope="col">Title</th> 
+                      <th scope="col">Decription</th> 
+                      <th scope="col">Vacancies</th> 
+                      <th scope="col">Last Date</th> 
                       <th scope="col">Action</th>
                     </tr>
                   </thead>
                   <tbody>
                    <?php
                    $i=1;
-                   foreach($getskills as $skills)
+                   foreach($getJobDetails as $JobDetails)
                     {
                        // $myImages=explode(',',$category->category_icon);
-                      // print_r($category);
+                       // print_r($JobDetails);
+                       // die;
                       ?>
                     <tr>
                       <th scope="row"><?=$i?></th>
-                      <td><?=$skills->skill_name?></td>
-                      <!-- . -->
-                      <td><a href="">Edit</a>
+                        <td><?=$JobDetails->type_name?></td>
+                        <td><?=$JobDetails->category_name?></td>
+                        <td><?=$JobDetails->company_name?></td>
+                        <td><?=$JobDetails->job_title?></td>
+                        <td><?=$JobDetails->job_desc?></td>
+                        <td><?=$JobDetails->vacancies_?></td>
+                        <td><?=$JobDetails->last_date?></td>
+                        <td><a href="">Edit</a>
                         <a href="">Delete</a></td>
                     </tr>
                     <?php

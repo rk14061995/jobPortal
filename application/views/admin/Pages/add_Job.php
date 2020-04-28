@@ -1,4 +1,4 @@
-<div class="app-content content">
+<div class="app-content content" id="refresh">
       <div class="content-wrapper">
         <div class="content-wrapper-before"></div>
         <div class="content-body">
@@ -9,19 +9,71 @@
                           <div class="card-header">
                               <h4 class="card-title">Add Job</h4>
                           </div>
-
                           <div class="card-block">
                               <div class="card-body">
-                                <form id="insertcategory">
-                                  <h5 class="mt-2">Category Name</h5>
+                                <form id="insert" >
+                                <h5 class="mt-2">Job Category</h5>
                                   <fieldset class="form-group">
                                       <!-- <p class="text-muted">Textarea description text.</p> -->
-                                      <input type="text" class="form-control" required  name="category"  >
+                                      <select class="form-control" name="jcat">
+                                        <option>Select Option</option>
+                                        <?php
+                                        foreach($getCategory as $category)
+                                          {
+                                            ?>
+                                            <option value="<?=$category->category_id?>"><?=$category->category_name?></option>
+                                        <?php
+                                        }?>
+                                      </select>
                                   </fieldset>
-                                   <h5 class="mt-2">Category Icon</h5>
+                                   <h5 class="mt-2">Job Type</h5>
                                   <fieldset class="form-group">
                                       <!-- <p class="text-muted">Textarea description text.</p> -->
-                                      <input type="file" name="file" required >
+                                      <select class="form-control" name="jtype">
+                                        <option>Select Option</option>
+                                        <?php
+                                        foreach($getJobtype as $jobtype)
+                                          {
+                                            ?>
+                                            <option value="<?=$jobtype->type_id?>"><?=$jobtype->type_name ?></option>
+                                        <?php
+                                        }?>
+                                      </select>
+                                  </fieldset>
+                                  <h5 class="mt-2">Company</h5>
+                                  <fieldset class="form-group">
+                                     
+                                      <select class="form-control" name="jcompany" id="basicSelect">
+                                        <option>Select Option</option>
+                                        <?php
+                                        foreach($getCompany as $company)
+                                        { 
+                                          // print_r($company);?>  
+                                        <option value="<?=$company->company_id?>"><?=$company->company_name?></option>
+                                         <?php
+                                       }?>
+                                       </select>
+                                  </fieldset>
+
+                                    <h5 class="mt-2">Job Title</h5>
+                                  <fieldset class="form-group">
+                                      <!-- <p class="text-muted">Textarea description text.</p> -->
+                                      <input type="text" class="form-control" required  name="jtitle">                         
+                                  </fieldset>
+                                    <h5 class="mt-2">Job Description</h5>
+                                  <fieldset class="form-group">
+                                      <!-- <p class="text-muted">Textarea description text.</p> -->
+                                      <input type="text" class="form-control" required  name="jdesc">                         
+                                  </fieldset>
+                                   <h5 class="mt-2">Vacancies</h5>
+                                  <fieldset class="form-group">
+                                      <!-- <p class="text-muted">Textarea description text.</p> -->
+                                      <input type="number" class="form-control" required  name="jvacancies">                         
+                                  </fieldset>
+                                   <h5 class="mt-2">Last Date</h5>
+                                  <fieldset class="form-group">
+                                      <!-- <p class="text-muted">Textarea description text.</p> -->
+                                      <input type="date" class="form-control" required  name="jlastdate">                         
                                   </fieldset>
                                   <fieldset class="form-group">
                                       <button type="submit" class="btn btn-success btn-min-width mr-1 mb-1">Add</button>
@@ -80,12 +132,12 @@
       </div>
     </div>
    <script type="text/javascript"> 
-$(document).on('submit','#insertcategory',function(e){
+$(document).on('submit','#insert',function(e){
      e.preventDefault();
          var formData= new FormData($(this)[0]);
          // alert('cas');
          $.ajax({
-            url:"<?=base_url('Admin_Category/addCategory')?>",
+            url:"<?=base_url('Admin_Job/addCategory')?>",
              type:"post",
              catche:false,
              contentType:false,
@@ -97,17 +149,17 @@ $(document).on('submit','#insertcategory',function(e){
                   console.log(obj.status);
                  if(obj.status==0)
                  {
-                    swal("Category!", "Try Again", "error")
+                    swal("Job!", "Try Again", "error")
                  }
                  if(obj.status==1)
                  {
-                  swal("Category!", "Added", "success")
+                  swal("Job!", "Added", "success")
                  }
                  if(obj.status==2)
                  {
-                 swal("Category!", "Already Exist", "error")
+                 swal("JOb!", "Already Exist", "error")
                  }
-                $("#insertcategory").load(location.href + " #insertcategory");
+                $("#refresh").load(location.href + " #refresh");
             }
         
              });    
