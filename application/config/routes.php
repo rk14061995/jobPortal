@@ -51,15 +51,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 // $route['default_controller'] = 'PropertTrack';
  
-<<<<<<< HEAD
+
 $route['admin'] = 'Admin_Login/index';
 $route['default_controller'] = 'web';
-=======
+
  // $route['default_controller'] = 'Admin_Login/index';
 
  $route['default_controller'] = 'web';
 
->>>>>>> 91604e6727a858ff2d653faf0848dae01c0e4ec7
 $route['admin'] = 'Admin_Login/index';
 $route['Login-Page'] = 'Admin_Login/index';
 $route['404_override'] = 'PropertTrack/error404';
