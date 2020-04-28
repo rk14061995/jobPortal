@@ -43,6 +43,98 @@ class Web extends CI_Controller{
  		$condition=array("job_type"=>1,"job_status"=>"Vacant");	
  		return $this->db->join('company_','company_.company_id=jobs_added.added_by_company_id')->where($condition)->order_by('job_id','desc')->get('jobs_added')->result();
  	}
+ 	public function About(){
+ 		$this->load->view('website/layout/header');
+ 		$this->load->view('website/pages/aboutUs');
+ 		$this->load->view('website/layout/footer');
+ 	}
+ 	public function Services(){
+ 		$this->load->view('website/layout/header');
+ 		$this->load->view('website/pages/services');
+ 		$this->load->view('website/layout/footer');
+ 	}
+ 	public function Contact(){
+ 		$this->load->view('website/layout/header');
+ 		$this->load->view('website/pages/contact');
+ 		$this->load->view('website/layout/footer');
+ 	}
+ 	public function getJobs(){
+		$job_title=$this->input->post('job_title');
+		$location=$this->input->post('location');
+		$exp=$this->input->post('exp');
+		if($location!="" && $job_title!="" && $exp!="" ){
+			$this->db->where(" `job_location_` LIKE '%".$location."%' ESCAPE '!' AND  `job_title` LIKE '%".$job_title."%' ESCAPE '!' AND `exp` <= '$exp'");
+		}elseif($job_title!="" && $location=="" &&  $exp=="" ){
+			// echo 'search on the basis of job title only';
+			$this->db->where(" `job_title` LIKE '%".$job_title."%' ESCAPE '!'");
+		}elseif($job_title=="" && $location!="" &&  $exp==""){
+			// echo 'search on the basis of job locaion only';
+			$this->db->where(" `job_location_` LIKE '%".$location."%' ESCAPE '!'");
+		}
+		else{
+			if($location!="" && $job_title!=""){
+				// echo '$location!="" && $job_title!=""';
+				$this->db->where(" `job_location_` LIKE '%".$location."%' ESCAPE '!' AND  `job_title` LIKE '%".$job_title."%' ESCAPE '!' OR `exp` <= '$exp'");
+			}elseif($job_title!="" && $exp!=""){
+				// echo '$job_title!="" && $exp!=""';
+				$this->db->where(" `job_location_` LIKE '%".$location."%' ESCAPE '!' OR  `job_title` LIKE '%".$job_title."%' ESCAPE '!' AND `exp` <= '$exp'");
+			}
+			else{
+				// echo 'Somethind Else';
+				$this->db->where(" `job_location_` LIKE '%".$location."%' ESCAPE '!' OR  `job_title` LIKE '%".$job_title."%' ESCAPE '!' OR `exp` <= '$exp'");
+			}
+			
+		}
+		$jobDetails=$this->db->join('company_','jobs_added.added_by_company_id=company_.company_id')->get('jobs_added')->result();
+		$jobs=array();
+		foreach ($jobDetails as $key => $value) {
+			// print_r($value->skills);
+			// echo ' || ';
+			$skillArr=explode(',',$value->skills);
+			$skills=array();
+			foreach ($skillArr as $skiId) {
+				$skData=$this->getSkillDetial($skiId);
+				$skills[]=$skData->skill_name;
+				// print_r($skills);
+			}
+			$jobs[]=array("job_detail"=>$value,"skills"=>$skills);
+			// print_r($skills);
+		}
+		// die(json_encode($jobs));
+
+		// $data['skills']=$skills;
+		// $data['JobsList']=$this->db->join('company_','jobs_added.added_by_company_id=company_.company_id')->get('jobs_added')->result();
+		$data['JobsList']=$jobs;
+		$this->load->view('website/layout/header');
+ 		$this->load->view('website/pages/search_results',$data);
+ 		$this->load->view('website/layout/footer');
+ 	}
+ 	public function getSkillDetial($id){
+		return $this->db->where('skill_id',$id)->get('skills_')->row();
+	}
+	public function viewJobDetail($job_id){
+		$jobDetails=$this->db->where('jobs_added.job_id',$job_id)->join('company_','jobs_added.added_by_company_id=company_.company_id')->join('job_type','job_type.type_id=jobs_added.job_type')->join('job_category','job_category.category_id=jobs_added.job_category')->get('jobs_added')->result();
+		$jobs=array();
+		foreach ($jobDetails as $key => $value) {
+			// print_r($value->skills);
+			// echo ' || ';
+			$skillArr=explode(',',$value->skills);
+			$skills=array();
+			foreach ($skillArr as $skiId) {
+				$skData=$this->getSkillDetial($skiId);
+				$skills[]=$skData->skill_name;
+				// print_r($skills);
+			}
+			$jobs[]=array("job_detail"=>$value,"skills"=>$skills);
+			// print_r($skills);
+		}
+		$data['JobsDetail']=$jobs;
+		// print_r($jobs);
+		// die;
+		$this->load->view('website/layout/header');
+ 		$this->load->view('website/pages/job_details',$data);
+ 		$this->load->view('website/layout/footer');	
+	}
 
 
 }

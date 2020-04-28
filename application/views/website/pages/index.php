@@ -3,19 +3,19 @@
     <div class="container bnnTx">
         <h1 class="ojjuj_"> <span><?=$total_jobs?>+</span> Browse Jobs</h1>
         <h6>Find Jobs, Employment & Career Opportunities</h6>
-        <form class="sercPL">
+        <form class="sercPL" action="<?=base_url('Web/getJobs')?>" method="post">
             <div class="row p-2 ">
                 <div class="col-md-4">
-                    <input type="text" value="" class="form-control" placeholder="Keyword e.g. (Job Title)">
+                    <input type="text" value="" name="job_title" class="form-control" placeholder="Keyword e.g. (Job Title)">
                 </div>
                 <div class="col-md-3">
-                    <input type="text" value="" class="form-control" placeholder="Location e.g. ( City, Country ) ">
+                    <input type="text" value="" name="location" class="form-control" placeholder="Location e.g. ( City, Country ) ">
                 </div>
                 <div class="col-md-3">
-                    <input type="number" value="" class="form-control" placeholder="Experience ">
+                    <input type="number" value="" name="exp" class="form-control" placeholder="Experience ">
                 </div>
                 <div class="col-md-2">
-                    <button class="btn btn-success w-100">
+                    <button type="submit" class="btn btn-success w-100">
                         <span><i class="fas fa-search"></i></span>Search
                     </button>
                 </div>
@@ -397,29 +397,29 @@
             </div>
         </div>
 </section>
-
 <script type="text/javascript">
   $(document).ready(function(){
-    $('#registerForm').submit(function(e){
-      var formData=new FormData($(this)[0]);
+    $('.sercPssL').on('submit',function(e){
       e.preventDefault();
+      var formData=new FormData($(this)[0]);
+      console.log("Working Fine");
       $.ajax({
-        url:"<?=base_url('User/addUser')?>",
+        url:"<?=base_url('Web/getJobs')?>",
         type:"post",
         cache:false,
         contentType:false,
         processData:false,
         data:formData,
         success:function(response){
-          // console.log(response);
-          response=JSON.parse(response);
-          if(response.code==1){
-            swal("Great..","Registered Successfully.","success");
-          }else{
-            swal("Ooops..","Something went wrong","warning");
-          }
+          console.log(response);
+          // response=JSON.parse(response);
+          // if(response.code==1){
+          //   swal("Great..","Registered Successfully.","success");
+          // }else{
+          //   swal("Ooops..","Something went wrong","warning");
+          // }
         }
       });
-    });    
+    });
   });
 </script>

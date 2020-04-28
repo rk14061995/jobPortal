@@ -1,6 +1,4 @@
-<?php
-include"header.php";
-?>
+
 <section class="container-fluid banr_ol">
 	<div class="container py-5">
 		<div class="abu_ct mt-5">
@@ -115,6 +113,3 @@ PREMIUM embodies our aim to exceed expectations, to take advantage of new opport
 		<ul class="list">
 	</div>
 </section>
-<?php
-include"footer.php";
-?>

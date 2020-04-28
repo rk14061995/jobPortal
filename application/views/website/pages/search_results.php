@@ -1,6 +1,3 @@
-<?php 
-include"header.php";
-?>
 
 <section class="container-fluid banr_ol py-5">
 	<div class="container pt-4">
@@ -37,63 +34,39 @@ include"header.php";
 	<div class="border p-3">
 		<h4 class="mb-3"><span class="txt_X">1,598</span> Web Developer Jobs in Noida</h4>
 		<hr>
-
-	<a href="job_details.php" class="border p-3 JJH_j">
-		<div class="m-0 row">
-			<div class="col-md-8">
-				<h5 class="m-0 txt_X">Web Developer</h5>
-				<span>SYNERGY WEB DESIGNERS</span><br>
-				
-				<ul class="d-flex m-0 ml-2 px-3">
-					<li><small> 2 to 5 Yrs</small></li>
-					<li class="ml-5"><small>Delhi</small></li>
-				</ul>
-			</div>
-			<div class="col-md-4 text-right">
-				<small>date</small>
-			</div>
-		</div>
-		<div class="px-3"><small>Required Web Developer Key Skills required - Excellent Knowledge of PHP , Ajax , MySQL , MySQLI , Jquery , XML , HTML5 , CSS3</small>
-		</div>
-		<hr>
-		<div class="row m-0">
-			<div class="col-md-8">
-				<small><strong>Skills : </strong>web designing, css, html, javascript, jquery</small>
-			</div>
-			<div class="col-md-4 text-right">
-				<div class="btn btn-default border">Apply</div>
-			</div>
-		</div>
-	</a>
-	<a href="job_details.php" class="border p-3 JJH_j">
-		<div class="m-0 row">
-			<div class="col-md-8">
-				<h5 class="m-0 txt_X">Web Developer</h5>
-				<span>SYNERGY WEB DESIGNERS</span><br>
-				
-				<ul class="d-flex m-0 ml-2 px-3">
-					<li><small> 2 to 5 Yrs</small></li>
-					<li class="ml-5"><small>Delhi</small></li>
-				</ul>
-			</div>
-			<div class="col-md-4 text-right">
-				<small>date</small>
-			</div>
-		</div>
-		<div class="px-3"><small>Required Web Developer Key Skills required - Excellent Knowledge of PHP , Ajax , MySQL , MySQLI , Jquery , XML , HTML5 , CSS3</small>
-		</div>
-		<hr>
-		<div class="row m-0">
-			<div class="col-md-8">
-				<small><strong>Skills : </strong>web designing, css, html, javascript, jquery</small>
-			</div>
-			<div class="col-md-4 text-right">
-				<div class="btn btn-default border">Apply</div>
-			</div>
-		</div>
-	</a>
+		
+		<?php foreach($JobsList as $job): ?> 
+			<?php $skills=implode(',', $job['skills']);?>
+			<a href="<?=base_url('Web/viewJobDetail/').$job['job_detail']->job_id?>" class="border p-3 JJH_j">
+				<div class="m-0 row">
+					<div class="col-md-8">
+						<h5 class="m-0 txt_X"><?=$job['job_detail']->job_title?></h5>
+						<span><?=$job['job_detail']->company_name?></span><br>
+						
+						<ul class="d-flex m-0 ml-2 px-3">
+							<li><small> Min. <?=$job['job_detail']->exp?> Yrs</small></li>
+							<li class="ml-5"><small><?=ucwords($job['job_detail']->job_location_)?></small></li>
+						</ul>
+					</div>
+					<div class="col-md-4 text-right">
+						<small>Posted on: <?=date('d-m-Y',strtotime($job['job_detail']->adde_on))?></small>
+					</div>
+				</div>
+				<div class="px-3"><small>Required <?=$job['job_detail']->job_title?> Key Skills required - Excellent Knowledge of <?=$skills?></small>
+				</div>
+				<hr>
+				<div class="row m-0">
+					<div class="col-md-8">
+						<small><strong>Skills : </strong><?=$skills?></small>
+					</div>
+					<div class="col-md-4 text-right">
+						
+						<div class="btn btn-default border">View</div>
+						
+					</div>
+				</div>
+			</a>
+		<?php endforeach;?>
+		
+	</div>
 </div>
-</div>
-<?php 
-include"footer.php";
-?>

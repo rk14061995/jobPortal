@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Travel Planner</title>
+    <title>Job Portal</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -168,7 +168,7 @@ nav.fill ul li a:hover:after {
 
   <section class="onuNJ">
     <nav class="navbar navbar-expand-lg ">
-  <a class="navbar-brand w-25" href="index.php"><img src="<?=base_url('assets/web_assets/')?>images/logo.png" class="img-fluid w-25" ></a>
+  <a class="navbar-brand w-25" href="<?=base_url('Web')?>"><img src="<?=base_url('assets/web_assets/')?>images/logo.png" class="img-fluid w-25" ></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -177,26 +177,38 @@ nav.fill ul li a:hover:after {
     <nav class="stroke">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item home">
-        <a class="nav-link" href="index.php">Home </a>
+        <a class="nav-link" href="<?=base_url('Web')?>">Home </a>
       </li>
       <li class="nav-item about">
-        <a class="nav-link" href="aboutUs.php">About-Us</a>
+        <a class="nav-link" href="<?=base_url('About')?>">About-Us</a>
       </li>
       <li class="nav-item services">
-        <a class="nav-link" href="services.php">Our Services</a>
+        <a class="nav-link" href="<?=base_url('Services')?>">Our Services</a>
       </li>
       <li class="nav-item contact">
-        <a class="nav-link" href="contact.php">Contact-Us</a>
+        <a class="nav-link" href="<?=base_url('Contact')?>">Contact-Us</a>
       </li>
+      <?php  
+        // print_r($this->session->userdata('logged_user_emp'));
+      ?>
+      <?php if($userDetail=$this->session->userdata('logged_user_emp')): ?>
        <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          User Name
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="myprofile.php">My Profile</a>
-          <a class="dropdown-item" href="saved_jobs.php">My Favorite </a>
-          <a class="dropdown-item" href="#">Logout</a>
-      </li>
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <?php 
+            $userDetail=unserialize($userDetail);  
+              // print_r($userDetail);
+            echo $userDetail[0]->fullname; 
+           ?>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="<?=base_url('User/myProfile')?>">My Profile</a>
+            <!-- <a class="dropdown-item" href="saved_jobs.php">My Favorite </a> -->
+            <a class="dropdown-item" href="<?=base_url('User/logout')?>">Logout</a>
+            <!-- <a class="dropdown-item" href="myprofile.php">My Profile</a>
+            <a class="dropdown-item" href="saved_jobs.php">My Favorite </a>
+            <a class="dropdown-item" href="#">Logout</a> -->
+        </li>
+      <?php endif;?>
     </ul>
   </nav>
     <div class="form-inline my-2 ml-2 my-lg-0">
@@ -246,20 +258,20 @@ nav.fill ul li a:hover:after {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title chngTitle" id="exampleModalLabel1">Login</h4>
+        <h4 class="modal-title chngTitle" id="exampleModalLabel1">User Login</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <div class="" id="logFrm">
-          <form class="">
+          <form id="loginFormUser">
             <div class="">
-              <label class="form-group w-100">Email or Mobile Number
-                <input type="text" placeholder="Email or Mobile Number" class="form-control">
+              <label class="form-group w-100">Email 
+                <input type="text" placeholder="Email or Mobile Number" name="e_mail" class="form-control">
               </label>
               <label class="form-group w-100">Password
-                <input type="password" placeholder="Password" class="form-control">
+                <input type="password" placeholder="Password" class="form-control" name="p_swd">
               </label>
             </div>
 
@@ -273,17 +285,14 @@ nav.fill ul li a:hover:after {
        </div>
 
        <div class="" id="regFrm">
-          <form class="" id="registerForm">
+          <form class="" id="registerFormUser">
             <div class="">
-              <label class="form-group w-100">Email or Mobile Number
-                <input type="text" placeholder="Email or Mobile Number" name="email" class="form-control">
+              <label class="form-group w-100">Name
+                <input type="text" placeholder="Enter Your Name" name="f_name" class="form-control">
               </label>
-
-              <label class="form-group w-100">OTP Verificationdd
-                <input type="text" placeholder="Enter Received OTP" class="form-control">
+              <label class="form-group w-100">Email
+                <input type="email" placeholder="Email or Mobile Number" name="email" class="form-control">
               </label>
-              
-
               <label class="form-group w-100">Password
                 <input type="password" placeholder="Password" name="pass" class="form-control">
               </label>

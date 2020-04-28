@@ -57,5 +57,54 @@
         </div>
     </div>    
 </footer>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#registerFormUser').submit(function(e){
+      var formData=new FormData($(this)[0]);
+      e.preventDefault();
+      $.ajax({
+        url:"<?=base_url('User/addUser')?>",
+        type:"post",
+        cache:false,
+        contentType:false,
+        processData:false,
+        data:formData,
+        success:function(response){
+          // console.log(response);
+          response=JSON.parse(response);
+          if(response.code==1){
+            swal("Great..","Registered Successfully.","success");
+          }else{
+            swal("Ooops..","Something went wrong","warning");
+          }
+        }
+      });
+    });
+    $('#loginFormUser').submit(function(e){
+      var formData=new FormData($(this)[0]);
+      e.preventDefault();
+      $.ajax({
+        url:"<?=base_url('User/loginValidate')?>",
+        type:"post",
+        cache:false,
+        contentType:false,
+        processData:false,
+        data:formData,
+        success:function(response){
+          // console.log(response);
+          response=JSON.parse(response);
+          if(response.code==1){
+            swal("Great..","login Successfully.","success");
+          }else{
+            swal("Ooops..","Invalid Email/Password","warning");
+          }
+          setInterval(function(){
+            location.reload();
+          },2000)
+        }
+      });
+    });    
+  });
+</script>
 </body>
 </html>

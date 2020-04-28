@@ -1,6 +1,4 @@
-<?php
-include"header.php";
-?>
+
 <section class="container-fluid banr_ol">
 	<div class="container py-5">
 		<div class="abu_ct mt-5">
@@ -11,7 +9,7 @@ include"header.php";
 </section>
 
 <section class="container-fluid my-4">
-	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224369.0356241299!2d77.25804458931252!3d28.51668171112809!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5a43173357b%3A0x37ffce30c87cc03f!2sNoida%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1587555800084!5m2!1sen!2sin" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d230886.58071375277!2d51.37191074353611!3d25.283942964166673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e45c534ffdce87f%3A0x44d9319f78cfd4b1!2sDoha%2C%20Qatar!5e0!3m2!1sen!2sin!4v1587996605889!5m2!1sen!2sin" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
 </section>
 
 <section class="my-4 container">
@@ -125,6 +123,3 @@ include"header.php";
 		$(".contact").addClass("active");
 	})
 </script>
-<?php
-include"footer.php";
-?>

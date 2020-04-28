@@ -1,6 +1,4 @@
-<?php
-include"header.php";
-?>
+
 <section class="container-fluid banr_ol">
 	<div class="container py-5">
 		<div class="abu_ct mt-5">
@@ -58,6 +56,3 @@ include"header.php";
 		
 	</div>
 </section>
-<?php
-include"footer.php";
-?>
