@@ -10,7 +10,7 @@ class Web extends CI_Controller{
 	public function index(){
  		// print_r($this->session->userdata('login'));
  		$data['cateogires']=$this->getJobCategories();
- 		die(json_encode($data['cateogires']));
+ 		// die(json_encode($data['cateogires']));
  		$data['total_jobs']=count($this->db->get('jobs_added')->result());
  		$data['partTimeJobs']=$this->getPartTimeJobs();
  		$data['fullTimeJobs']=$this->getFullTimeJobs();
@@ -23,12 +23,13 @@ class Web extends CI_Controller{
  		$result=$this->db->order_by('rand()')->get('job_category')->result();
  		$cateogires=array();
  		foreach ($result as $key => $value) {
- 		$cateogires[]=$this->getJobForParitcularCategory($value->category_id);
+ 			array_push($cateogires,array("category_details"=>$value,"jobs"=>$this->getJobForParitcularCategory($value->category_id)));
+ 			// array("job"=>);
  		}
  		return $cateogires;
  	}
  	public function getJobForParitcularCategory($cat_id){
- 		$condition=array("job_status"=>"Vacant","job_category",$cat_id);	
+ 		$condition=array("job_status"=>"Vacant","job_category"=>$cat_id);	
  		return $this->db->join('company_','company_.company_id=jobs_added.added_by_company_id')->where($condition)->order_by('job_id','desc')->get('jobs_added')->result();
  	}
  	public function getCompanies(){
