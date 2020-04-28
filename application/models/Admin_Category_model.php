@@ -58,4 +58,5 @@ class Admin_Category_model extends CI_Model
 	{
 		return $this->db->get('skills_')->result();
 	}
+	
 } ?>

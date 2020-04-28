@@ -72,7 +72,7 @@
                 <div class="dropdown-menu dropdown-menu-right">
                   <div class="arrow_box_right"><a class="dropdown-item" href="#"><span class="avatar avatar-online"><img src="<?=base_url()?>theme-assets/images/portrait/small/avatar-s-19.png" alt="avatar"><span class="user-name text-bold-700 ml-1">John Doe</span></span></a>
                     <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a><a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a><a class="dropdown-item" href="#"><i class="ft-check-square"></i> Task</a><a class="dropdown-item" href="#"><i class="ft-message-square"></i> Chats</a>
-                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-power"></i> Logout</a>
+                    <div class="dropdown-divider"></div><a class="dropdown-item" href="<?=base_url('Admin_Login/logOut')?>"><i class="ft-power"></i> Logout</a>
                   </div>
                 </div>
               </li>
@@ -95,8 +95,17 @@
       </div>
       <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-          <li class="active"><a href="<?=base_url('Admin_Dashboard/index')?>"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
+          <li class="active"><a href="<?=base_url('Admin_Dashboard/viewDashbaord')?>"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
           </li>
+           <li class=" nav-item "><a href="#" class="nav-link dropdown-toggle" >
+            <i class="ft-layout"></i><span class="menu-title" data-i18n="">Job Type</span>
+            </a>
+            <ul>
+              
+              <li> <a class="dropdown-item" href="<?=base_url('Admin_Dashboard/addJobType')?>"><i class="fa fa-eye" aria-hidden="true"></i> <strong>Add</strong></a></li>
+              <li><a class="dropdown-item" href="<?=base_url('Admin_Dashboard/view_JobType')?>"><i class="fa fa-plus" aria-hidden="true"></i> <strong>View</strong></a></li>
+            </ul>
+          </li> 
          <li class=" nav-item "><a href="#" class="nav-link dropdown-toggle" >
             <i class="ft-layout"></i><span class="menu-title" data-i18n="">Job Category</span>
             </a>
@@ -113,6 +122,15 @@
               
               <li> <a class="dropdown-item" href="<?=base_url('Admin_Dashboard/addJobSkills')?>"><i class="fa fa-eye" aria-hidden="true"></i> <strong>Add</strong></a></li>
               <li><a class="dropdown-item" href="<?=base_url('Admin_Dashboard/view_JobSkills')?>"><i class="fa fa-plus" aria-hidden="true"></i> <strong>View</strong></a></li>
+            </ul>
+          </li> 
+           <li class=" nav-item "><a href="#" class="nav-link dropdown-toggle" >
+            <i class="ft-layout"></i><span class="menu-title" data-i18n="">Job </span>
+            </a>
+            <ul>
+              
+              <li> <a class="dropdown-item" href="<?=base_url('Admin_Dashboard/addJob')?>"><i class="fa fa-eye" aria-hidden="true"></i> <strong>Add</strong></a></li>
+              <li><a class="dropdown-item" href="<?=base_url('Admin_Dashboard/view_Job')?>"><i class="fa fa-plus" aria-hidden="true"></i> <strong>View</strong></a></li>
             </ul>
           </li> 
           

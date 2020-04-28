@@ -9,6 +9,8 @@ class Admin_Dashboard extends CI_Controller
 	}
 		    
 	$this->load->model('Admin_Category_model','Admin_C');	
+	$this->load->model('Admin_Job_Model','Admin_J');
+	
 	}
 	public function viewDashbaord()
 	{ 		
@@ -57,6 +59,35 @@ class Admin_Dashboard extends CI_Controller
         $data['getskills']=$this->Admin_C->getSkills();
 		 $this->load->view('admin/Layout/header');
 		 $this->load->view('admin/Pages/view_JobSkills',$data);
+		 $this->load->view('admin/Layout/footer');
+	}
+	public function addJob()
+	{ 		
+      	$data['getCompany']=$this->Admin_J->getJobCompany();
+      	$data['getCategory']=$this->Admin_J->getJobCategory();
+      	$data['getJobtype']=$this->Admin_J->getJobtype();
+		 $this->load->view('admin/Layout/header');
+		 $this->load->view('admin/Pages/add_Job',$data);
+		 $this->load->view('admin/Layout/footer');
+	}
+	public function view_Job()
+	{ 		
+      	$data['getJobDetails']=$this->Admin_J->getJobDetails();
+		 $this->load->view('admin/Layout/header');
+		 $this->load->view('admin/Pages/view_Job',$data);
+		 $this->load->view('admin/Layout/footer');
+	}
+	public function addJobType()
+	{ 		 
+		 $this->load->view('admin/Layout/header');
+		 $this->load->view('admin/Pages/add_Jobtype');
+		 $this->load->view('admin/Layout/footer');
+	}
+	public function view_JobType()
+	{ 		
+      	$data['getJobtype']=$this->Admin_J->getJobtype();
+		 $this->load->view('admin/Layout/header');
+		 $this->load->view('admin/Pages/view_Jobtype',$data);
 		 $this->load->view('admin/Layout/footer');
 	}
 

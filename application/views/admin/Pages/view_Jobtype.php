@@ -3,7 +3,7 @@
         <div class="content-wrapper-before"></div>
         <div class="content-header row">
           <div class="content-header-left col-md-4 col-12 mb-2">
-            <h3 class="content-header-title">View Skills</h3>
+            <h3 class="content-header-title">View Job Type</h3>
           </div>
           <div class="content-header-right col-md-8 col-12">
             <div class="breadcrumbs-top float-md-right">
@@ -42,7 +42,7 @@
                   <thead>
                     <tr>
                       <th scope="col">SNo</th>
-                      <th scope="col">Skills</th>
+                      <th scope="col">Category Name</th>
                       <!-- <th scope="col">Icon</th> -->
                       <th scope="col">Action</th>
                     </tr>
@@ -50,17 +50,16 @@
                   <tbody>
                    <?php
                    $i=1;
-                   foreach($getskills as $skills)
+                   foreach($getJobtype as $jobtype)
                     {
                        // $myImages=explode(',',$category->category_icon);
                       // print_r($category);
                       ?>
                     <tr>
                       <th scope="row"><?=$i?></th>
-                      <td><?=$skills->skill_name?></td>
-                      <!-- . -->
+                      <td><?=$jobtype->type_name?></td>
                       <td><a href="">Edit</a>
-                       <a href="javascript:void(0)" skill_id="<?=$skills->skill_id?>" class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Delete</a></td>
+                       <a href="javascript:void(0)" type_id="<?=$jobtype->type_id?>" class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Delete</a></td>
                     </tr>
                     <?php
                     $i++;
@@ -80,22 +79,22 @@
 <script type="text/javascript">
         $(document).ready(function(){
           $('.delete').on('click',function(){ 
-             var skill_id=$(this).attr("skill_id");
+             var type_id=$(this).attr("type_id");
 
              // alert(owner_id);
            if(confirm("Are you Sure want to delete?") ==true)
             {       
             // alert(owner_id);         
                 $.ajax({
-                  url:"<?=base_url('Admin_Category/DeleteJobSkills')?>",
+                  url:"<?=base_url('Admin_Job/DeleteJobType')?>",
                   type:"post",
-                  data:{skill_id:skill_id},
+                  data:{type_id:type_id},
                   success:function(response)
                   {   
                   response=JSON.parse(response);             
                      if (response.status==1)
                       {
-                        swal('Skills!','Deleted','error');
+                        swal('Job Type!','Deleted','error');
                    
                           location.reload();
                     
