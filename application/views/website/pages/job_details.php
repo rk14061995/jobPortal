@@ -66,7 +66,7 @@
 				<a href="<?=$JobsDetail[0]['job_detail']->website_url?>" class="btn btn-default border">Apply on Website</a>
 				<?php 
 					if($userDetail=$this->session->userdata('logged_user_emp')){
-						echo '<a href="javascript:void(0)" class="btn btn-success">Apply Now</a>';
+						echo '<a href="javascript:void(0)" class="btn btn-success" id="applyNow" job_id="'.$JobsDetail[0]['job_detail']->job_id.'">Apply Now</a>';
 					}else{
 						echo '<a href="javascript:void(0)" class="btn btn-success" data-toggle="modal" data-target="#LoginRegModal">Apply Now</a>';
 						
@@ -203,4 +203,29 @@ Mobile Number (required)  -->
 		</div>
 	</div>
 </div>
-	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#applyNow').click(function(){
+		      var job_id=$(this).attr('job_id');
+		      $.ajax({
+		        url:"<?=base_url('Web/applyForJob')?>",
+		        type:"post",
+		     
+		        data:{job_id:job_id},
+		        success:function(response){
+		          // console.log(response);
+		          response=JSON.parse(response);
+		          if(response.code==1){
+		            swal("Great..","Application Submitted Successfully .","success");
+		          }else{
+		            swal("Ooops..","Already Applied","warning");
+		          }
+		          setInterval(function(){
+		            location.reload();
+		          },2000)
+		        }
+		      });
+		    });
+		});
+	</script>
+	    

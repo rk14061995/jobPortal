@@ -32,7 +32,7 @@
 		</ul>
 	</div>
 	<div class="border p-3">
-		<h4 class="mb-3"><span class="txt_X">1,598</span> Web Developer Jobs in Noida</h4>
+		<h4 class="mb-3">We found <span class="txt_X"><?=count($JobsList)?></span> as per your search </h4>
 		<hr>
 		
 		<?php foreach($JobsList as $job): ?> 

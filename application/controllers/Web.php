@@ -135,6 +135,22 @@ class Web extends CI_Controller{
  		$this->load->view('website/pages/job_details',$data);
  		$this->load->view('website/layout/footer');	
 	}
+	public function applyForJob(){
+		// print_r($_POST);
+		$session=unserialize($this->session->userdata('logged_user_emp'));
+		$user_id=$session[0]->user_id;
+		// print_r();
+		$data=array("applied_by"=>$user_id,"job_post_id"=>$this->input->post('job_id'));
+		if(count($this->db->where($data)->get('job_application')->result())==0){
+			if($this->db->insert('job_application',$data)){
+				die(json_encode(array("code"=>1)));
+			}else{
+				die(json_encode(array("code"=>0)));
+			}
+		}else{
+			die(json_encode(array("code"=>2)));
+		}
+	}
 
 
 }
