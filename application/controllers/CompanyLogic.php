@@ -103,7 +103,48 @@
 			}
 		}
 		public function uploadLogo(){
-			print_r($_FILES);
+			// print_r($_FILES);
+				// $source_img = 'source.jpg';
+			$imgDe=pathinfo($_FILES['comp_logo']['name']);
+			$ext=$imgDe['extension'];
+			$name=date('dmYhis').'.'.$ext;
+			$destination_img = 'assets/companyImages/logo/'.$name;
+
+			$d = $this->compress($_FILES['comp_logo']['tmp_name'], $destination_img, 60);
+			if($d){
+				die(json_encode(array("code"=>$this->updateLogo($name))));	
+			}else{
+				die(json_encode(array("code"=>0)));
+			}
+			
 		}
+		public function compress($source, $destination, $quality) {
+
+		    $info = getimagesize($source);
+
+		    if ($info['mime'] == 'image/jpeg') 
+		        $image = imagecreatefromjpeg($source);
+
+		    elseif ($info['mime'] == 'image/gif') 
+		        $image = imagecreatefromgif($source);
+
+		    elseif ($info['mime'] == 'image/png') 
+		        $image = imagecreatefrompng($source);
+
+		    imagejpeg($image, $destination, $quality);
+
+		    return $destination;
+		}
+		public function updateLogo($name){
+			$compData=unserialize($this->session->userdata('logged_company'));
+			$company_id=$compData[0]->company_id;
+			if($this->db->where('company_id',$company_id)->update('company_',array("company_logo"=>$name))){
+				return 1;
+			}else{
+				return 0;
+			}
+		}
+
+		
 	}
 ?>

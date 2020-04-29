@@ -27,7 +27,7 @@
 		public function logOut(){
 			// $this->session->unset('logged_company');
 			$this->session->unset_userdata('logged_company');
-			redirect('Company');
+			redirect('CompanyLogic');
 			// $this->load->view('company/layout/header');
 			// $this->load->view('company/pages/company_details');
 			// $this->load->view('company/layout/footer');

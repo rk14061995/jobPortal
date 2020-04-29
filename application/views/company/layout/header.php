@@ -1,7 +1,11 @@
 <?php
   $compData=unserialize($this->session->userdata('logged_company'));
   $company_name=$compData[0]->company_name;
-  $logo=$compData[0]->company_logo;
+  $company_id=$compData[0]->company_id;
+ 
+  $logo_=$this->db->select('company_logo')->where('company_id',$company_id)->get('company_')->row();
+  $logo_=$logo_->company_logo;
+  // print_r($logo_);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +46,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           
         </div>
-        <div class="sidebar-brand-text mx-3"><img src="<?=base_url('assets/CompanyImages/logo/').$logo?>" width="100%" onerror='this.src="<?=base_url('assets/CompanyImages/logo/default.png')?>"'></sup></div>
+        <div class="sidebar-brand-text mx-3"><img src="<?=base_url('assets/CompanyImages/logo/').$logo_?>" width="100%" onerror='this.src="<?=base_url('assets/CompanyImages/logo/default.png')?>"'></sup></div>
       </a>
 
       <!-- Divider -->
