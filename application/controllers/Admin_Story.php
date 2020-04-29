@@ -65,4 +65,5 @@ class Admin_Story extends CI_Controller
 	}
 	
 	
+	
 }

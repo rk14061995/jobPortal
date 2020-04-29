@@ -155,6 +155,16 @@
               <li><a class="dropdown-item" href="<?=base_url('Admin_Dashboard/viewStory')?>"><i class="fa fa-plus" aria-hidden="true"></i> <strong>View</strong></a></li>
             </ul>
           </li> 
+           <li class=" nav-item "><a href="#" class="nav-link dropdown-toggle" >
+            <i class="ft-layout"></i><span class="menu-title" data-i18n="">Message</span>
+            </a>
+            <ul>
+              
+              <li> <a class="dropdown-item" href="<?=base_url('Admin_Dashboard/addUserMessage')?>"><i class="fa fa-eye" aria-hidden="true"></i> <strong>Add UserMsg</strong></a></li>
+               <li> <a class="dropdown-item" href="<?=base_url('Admin_Dashboard/addCompanyMessage')?>"><i class="fa fa-eye" aria-hidden="true"></i> <strong>Add CompanyMsg</strong></a></li>
+              <li><a class="dropdown-item" href="<?=base_url('Admin_Dashboard/addCompanyMessage')?>"><i class="fa fa-plus" aria-hidden="true"></i> <strong>View</strong></a></li>
+            </ul>
+          </li> 
           
          <!--  <li class=" nav-item "><a href="#" class="nav-link dropdown-toggle" >
           	<i class="ft-layout"></i><span class="menu-title" data-i18n="">Job Seekers</span>

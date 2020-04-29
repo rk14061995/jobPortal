@@ -12,6 +12,7 @@ class Admin_Dashboard extends CI_Controller
 	$this->load->model('Admin_Job_Model','Admin_J');
 	$this->load->model('Admin_Story_Model','Admin_S');
 	$this->load->model('Admin_Company_Model','Admin_Com');
+	$this->load->model('Admin_User_Model','Admin_User');
 	
 	}
 	public function viewDashbaord()
@@ -116,6 +117,22 @@ class Admin_Dashboard extends CI_Controller
       	$data['getCompanyDetails']=$this->Admin_Com->getCompanyDetails();
 		 $this->load->view('admin/Layout/header');
 		 $this->load->view('admin/Pages/view_Company',$data);
+		 $this->load->view('admin/Layout/footer');
+	}
+	public function addUserMessage()
+	{ 	
+		$data['getUserdetails']=$this->Admin_User->getUserDetails();
+		$data['getCompanyDetails']=$this->Admin_Com->getCompanyDetails();	
+		 $this->load->view('admin/Layout/header');
+		 $this->load->view('admin/Pages/add_UserMessage',$data);
+		 $this->load->view('admin/Layout/footer');
+	}
+	public function addCompanyMessage()
+	{ 	
+		$data['getUserdetails']=$this->Admin_User->getUserDetails();
+		$data['getCompanyDetails']=$this->Admin_Com->getCompanyDetails();	
+		 $this->load->view('admin/Layout/header');
+		 $this->load->view('admin/Pages/add_CompanyMessage',$data);
 		 $this->load->view('admin/Layout/footer');
 	}
 

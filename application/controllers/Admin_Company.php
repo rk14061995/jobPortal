@@ -9,20 +9,21 @@ class Admin_Company extends CI_Controller
 		redirect('Login-Page');
 	}
 	$this->load->model('Admin_Company_Model','Admin_Com');
+	$this->load->model('Admin_User_Model','Admin_User');
 	
 	}
-	public function getCompanyByid()
+	public function getCompanyDetailById()
 	{
-		$company_id=$this->input->post('company_id');
-		$results=$this->Admin_Com->getCompanyByid($company_id);
-		 if($results)
-		 {
-		 	die(json_encode(array('status'=>1,'data'=>$results)));
-		 }
-		 else
-		 {
-		 	die(json_encode(array('status'=>0,'data'=>$results)));
-		 }
+		$company_id=$this->input->post('com_id');
+		$results=$this->Admin_Com->getCompanyDetailById($company_id);
+		if($results)
+		{
+			die(json_encode(array('status'=>1,'data'=>$results)));
+		}
+		else
+		{
+			die(json_encode(array('status'=>0,'data'=>'No Data Found')));
+		}
 	}
 	public function addCompany()
 	{
@@ -90,4 +91,35 @@ class Admin_Company extends CI_Controller
 		 	die(json_encode(array('status'=>0,'data'=>$results)));
 		 }
 	}
+	public function AddUserMessage()
+	{
+		$data=array('u_msg'=>$this->input->post('editor1'),
+					'send_user'=>$this->input->post('userby'),
+					'recieve_company'=>$this->input->post('compto'));
+		$results=$this->Admin_User->AddUserMessage($data);
+		if($results==1)
+		{
+			die(json_encode(array('status'=>1,'data'=>$results)));
+		}
+		else
+		{
+			die(json_encode(array('status'=>2,'data'=>$results)));
+		}
+	}
+	public function AddCompanyMessage()
+	{
+		$data=array('c_msg'=>$this->input->post('editor1'),
+					'send_company'=>$this->input->post('compby'),
+					'recieve_user'=>$this->input->post('userto'));
+		$results=$this->Admin_User->AddCompanyMessage($data);
+		if($results==1)
+		{
+			die(json_encode(array('status'=>1,'data'=>$results)));
+		}
+		else
+		{
+			die(json_encode(array('status'=>2,'data'=>$results)));
+		}
+	}
+
 }
