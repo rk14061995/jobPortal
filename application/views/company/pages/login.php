@@ -45,7 +45,7 @@
                     }
 
                   ?>
-                  <form class="user" action="<?=base_url('Company/loginValidate')?>" method="post">
+                  <form class="user" action="<?=base_url('CompLogin/loginValidate')?>" method="post">
                     <div class="form-group">
                       <input type="email" class="form-control form-control-user" name="comp_email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
                     </div>
@@ -72,10 +72,10 @@
                   </form>
                   <hr>
                   <div class="text-center">
-                    <a class="small" href="<?=base_url('Company/forgotPassword')?>">Forgot Password?</a>
+                    <a class="small" href="<?=base_url('CompLogin/forgotPassword')?>">Forgot Password?</a>
                   </div>
                   <div class="text-center">
-                    <a class="small" href="<?=base_url('Company/register')?>">Create an Account!</a>
+                    <a class="small" href="<?=base_url('CompLogin/register')?>">Create an Account!</a>
                   </div>
                 </div>
               </div>

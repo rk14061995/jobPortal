@@ -68,10 +68,10 @@
               </form>
               <hr>
               <!-- <div class="text-center">
-                <a class="small" href="<?=base_url('Company/forgotPassword')?>">Forgot Password?</a>
+                <a class="small" href="<?=base_url('CompLogin/forgotPassword')?>">Forgot Password?</a>
               </div> -->
               <div class="text-center">
-                <a class="small" href="<?=base_url('Company/')?>">Already have an account? Login!</a>
+                <a class="small" href="<?=base_url('CompLogin/')?>">Already have an account? Login!</a>
               </div>
             </div>
           </div>
@@ -96,7 +96,7 @@
         var formData=new FormData($(this)[0]);
         e.preventDefault();
         $.ajax({
-          url:"<?=base_url('Company/registerCompany')?>",
+          url:"<?=base_url('CompLogin/registerCompany')?>",
           type:"post",
           cache:false,
           contentType:false,
