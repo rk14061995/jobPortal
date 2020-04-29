@@ -50,7 +50,7 @@
                       <td><?=$job->exp?> Years</td>
                       <td><?=$job->job_status?></td>
                       <td><?=$job->type_name?></td>
-                      <td><a href="">View More</a></td>
+                      <td><a href="<?=base_url('Company/jobDetails/').$job->job_id?>">View More</a></td>
                     </tr>
                     <?php $i++; ?>
                     <?php endforeach;?>

@@ -1,7 +1,8 @@
 
   <div class="container">
     <?php
-      $compData=unserialize($this->session->userdata('logged_company'));
+      // $compData=unserialize($this->session->userdata('logged_company'));
+    // print_r($compData);
     ?>
     <div class="card o-hidden border-0 shadow-lg my-5">
       <div class="card-body p-0">
@@ -42,7 +43,7 @@
                 <h1 class="h4 text-gray-900 mb-4">Company Details</h1>
                 <hr>
               </div>
-              <form class="user" id="compRegister">
+              <form class="user" id="compDetail">
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Company Name" name="comp_name" value="<?=$compData[0]->company_name?>">
@@ -57,20 +58,31 @@
                    <input type="email" name="comp_email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Company Email Address" value="<?=$compData[0]->company_email?>" readonly>
                   </div>
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" id="exampleInputPassword" placeholder="Company URL" name="comp_phone" value="<?=$compData[0]->website_url?>">
+                    <input type="text" class="form-control form-control-user" id="exampleInputPassword" placeholder="Company URL" name="comp_website" value="<?=$compData[0]->website_url?>">
                   </div>
                   
                 </div>
                 <div class="form-group row">
                   
                   <div class="col-sm-12">
-                    <input type="text" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Company Description" name="comp_pass" value="<?=$compData[0]->comp_desc?>">
+                    <label>Company Description</label>
+                    <textarea class="form-control form-control-user"  rows="5" name="comp_desc"><?=$compData[0]->comp_desc?></textarea>
+                    
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  
+                  <div class="col-sm-12">
+                    <label>Company Address</label>
+                    <input type="text" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Company Address" name="comp_address" value="<?=$compData[0]->comp_address?>">
                   </div>
                 </div>
                 <div class="form-group row">
                   
                   <div class="col-sm-12">
-                    <input type="text" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Company Address" name="comp_pass" value="<?=$compData[0]->comp_address?>">
+                    <label>Company Registratio Number</label>
+                    <input type="text" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Company Address" name="comp_reg" value="<?=$compData[0]->company_reg_no?>">
                   </div>
                 </div>
                 <input type="submit" name="" value="Update Account" class="btn btn-primary btn-user btn-block">
@@ -87,4 +99,31 @@
 
   </div>
   
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('#compDetail').on('submit',function(e){
+      e.preventDefault();
+      var formData=new FormData($(this)[0]);
+      console.log("Working Fine");
+      $.ajax({
+        url:"<?=base_url('CompanyLogic/updateCompDetails')?>",
+        type:"post",
+        cache:false,
+        contentType:false,
+        processData:false,
+        data:formData,
+        success:function(response){
+          // console.log(response);
+          response=JSON.parse(response);
+          if(response.code==1){
+            swal("Great..","Updated Successfully.","success");
+          }else{
+            swal("Ooops..","Something went wrong","error");
+          }
+          location.reload();
+        }
+      });
+    });
+  });
+</script>
   

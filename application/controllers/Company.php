@@ -33,8 +33,20 @@
 			// $this->load->view('company/layout/footer');
 		}
 		public function Details(){
+			$compData=unserialize($this->session->userdata('logged_company'));
+			$company_id=$compData[0]->company_id;
+			$data['compData']=$this->db->where('company_id',$company_id)->get('company_')->result();
 			$this->load->view('company/layout/header');
-			$this->load->view('company/pages/company_details');
+			$this->load->view('company/pages/company_details',$data);
+			$this->load->view('company/layout/footer');
+		}
+		public function jobDetails($id){
+			$data['Categories']=$this->db->get('job_category')->result();
+			$data['Type']=$this->db->get('job_type')->result();
+			$data['Skills']=$this->db->get('skills_')->result();
+			$data['jobDetail']=$this->db->join('jobs_added','jobs_added.job_id=job_application.job_post_id')->join('user_','user_.user_id=job_application.applied_by')->where('jobs_added.job_id',$id)->order_by('job_application.job_application_id','desc')->get('job_application')->result();
+			$this->load->view('company/layout/header');
+			$this->load->view('company/pages/viewJobDetail',$data);
 			$this->load->view('company/layout/footer');
 		}
 		public function jobApplications(){

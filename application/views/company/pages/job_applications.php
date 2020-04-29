@@ -38,10 +38,11 @@
                   <tbody>
                     <?php $i=1;?>
                     <?php foreach($jobApplications as $application) :?>
+                      
                     <tr>
                       <td><?=$i?></td>
                       <td><a href="<?=base_url('Company/jobSeekerDetail/').$application->user_id?>"><?=$application->fullname?></a></td>
-                      <td><a href=""><?=$application->job_title?></a></td>
+                      <td><a href="<?=base_url('Company/jobDetails/').$application->job_post_id?>"><?=$application->job_title?></a></td>
                       <td><?=$application->job_location_?></td>
                       <td><a href="">View More</a></td>
                       <!-- <td>$320,800</td> -->
