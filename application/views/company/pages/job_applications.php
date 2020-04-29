@@ -44,7 +44,7 @@
                       <td><a href="<?=base_url('Company/jobSeekerDetail/').$application->user_id?>"><?=$application->fullname?></a></td>
                       <td><a href="<?=base_url('Company/jobDetails/').$application->job_post_id?>"><?=$application->job_title?></a></td>
                       <td><?=$application->job_location_?></td>
-                      <td><a href="">View More</a></td>
+                      <td><a href="" class="btn btn-success ">Accept</a> <a href="" class="btn btn-danger ">Reject</a> <a href="" class="btn btn-info ">Save</a></td>
                       <!-- <td>$320,800</td> -->
                     </tr>
                     <?php $i++;?>

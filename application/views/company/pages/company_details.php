@@ -14,7 +14,7 @@
                 <h1 class="h4 text-gray-900 mb-4">Company Logo</h1>
                 <hr>
               </div>
-              <form class="user" id="compRegister">
+              <form class="user" id="compLogo">
                 <div class="form-group row">
                   <div class="col-sm-12 mb-3 mb-sm-0">
                    <img src="<?=base_url('assets/CompanyImages/logo/').$compData[0]->company_logo?>" width="100%" onerror='this.src="<?=base_url('assets/CompanyImages/logo/default.png')?>"'>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-12 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Company Name" name="comp_name" value="<?=$compData[0]->company_name?>">
+                    <input type="file" name="comp_logo" >
                   </div>
 
                 </div>
@@ -109,6 +109,30 @@
         url:"<?=base_url('CompanyLogic/updateCompDetails')?>",
         type:"post",
         cache:false,
+        contentType:false,
+        processData:false,
+        data:formData,
+        success:function(response){
+          // console.log(response);
+          response=JSON.parse(response);
+          if(response.code==1){
+            swal("Great..","Updated Successfully.","success");
+          }else{
+            swal("Ooops..","Something went wrong","error");
+          }
+          location.reload();
+        }
+      });
+    });
+    $('#compLogo').on('submit',function(e){
+      e.preventDefault();
+      var formData=new FormData($(this)[0]);
+      console.log("Working Fine");
+      $.ajax({
+        url:"<?=base_url('CompanyLogic/uploadLogo')?>",
+        type:"post",
+        cache:false,
+        enctype:'multipart/form-data',
         contentType:false,
         processData:false,
         data:formData,

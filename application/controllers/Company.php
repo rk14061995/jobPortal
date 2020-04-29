@@ -44,7 +44,8 @@
 			$data['Categories']=$this->db->get('job_category')->result();
 			$data['Type']=$this->db->get('job_type')->result();
 			$data['Skills']=$this->db->get('skills_')->result();
-			$data['jobDetail']=$this->db->join('jobs_added','jobs_added.job_id=job_application.job_post_id')->join('user_','user_.user_id=job_application.applied_by')->where('jobs_added.job_id',$id)->order_by('job_application.job_application_id','desc')->get('job_application')->result();
+			$data['jobDetail']=$this->db->where('jobs_added.job_id',$id)->get('jobs_added')->result();
+			// die(json_encode($data['jobDetail']));
 			$this->load->view('company/layout/header');
 			$this->load->view('company/pages/viewJobDetail',$data);
 			$this->load->view('company/layout/footer');

@@ -22,7 +22,7 @@
                   </div>
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <select class="form-control " name="exp">
-                      <option>Experience</option>
+                      <!-- <option>Experience</option> -->
                       <?php for($i=1; $i<=20;$i++): ?>
                         <option value="<?=$i?>"><?=$i?></option>
                       <?php endfor;?>

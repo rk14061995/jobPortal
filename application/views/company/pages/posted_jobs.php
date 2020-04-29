@@ -50,7 +50,9 @@
                       <td><?=$job->exp?> Years</td>
                       <td><?=$job->job_status?></td>
                       <td><?=$job->type_name?></td>
-                      <td><a href="<?=base_url('Company/jobDetails/').$job->job_id?>">View More</a></td>
+                      <td><a href="<?=base_url('Company/jobDetails/').$job->job_id?>" class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                        <a href="" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                       
                     </tr>
                     <?php $i++; ?>
                     <?php endforeach;?>

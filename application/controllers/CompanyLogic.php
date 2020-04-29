@@ -102,5 +102,8 @@
 				return 0;
 			}
 		}
+		public function uploadLogo(){
+			print_r($_FILES);
+		}
 	}
 ?>
