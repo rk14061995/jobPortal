@@ -1,7 +1,8 @@
 
 <?php 
 	$userDetail=$this->session->userdata('logged_user_emp');
-	$userDetail=unserialize($userDetail); 
+	$userDetail=unserialize($userDetail);
+
 ?>
 <section class="container" style="margin-top: 130px">
 	<div class="row p-3 border ">
@@ -24,8 +25,8 @@
 		</div>
 		<div class="col-md-6 text-right">
 			<label for="resume" class="btn btn-default border px-3">Upload Resume</label>
-			<input type="file" class="d-none" name="file" id="file" />
-			<!-- <input type="file" name="resume" id="resume" class="d-none"> -->
+			<!-- <input type="file" class="d-none file" name="file" id="file" > -->
+		<input type="file" name="file" id="file"> 
 		</div>
 	</div>
 
@@ -412,8 +413,9 @@ $(document).ready(function(){
     // },   
     success:function(data)
     {
-		response=JSON.parse(response);             
-		if (response.status==1)
+		 var obj=JSON.parse(data);
+          // console.log(obj.status);           
+		if (obj.status==1)
 		{
 		swal('Resume!','Upload','success');
 
@@ -492,32 +494,32 @@ $(document).ready(function(){
 		        }
 		      });
 		});
-		$('#resume').on('change',function(){
-			// e.preventDefault();
-			var data=$(this).files[0];
-			// var formData= new FormData($(this)[0]);
-			$.ajax({
-		        url:"<?=base_url('User/uploadResume')?>",
-		        type:"post",
-		        cache:false,
-		        contentType:false,
-		        enctype:'multipart/form-data',
-		        processData:false,
-		        data:data,
-		        success:function(response){
-		          // console.log(response);
-		          response=JSON.parse(response);
-		          if(response.code==1){
-		            swal("Great..","Education Added Successfully.","success");
-		          }else{
-		            swal("Ooops..","Failed To Add","warning");
-		          }
-		          setInterval(function(){
-		            location.reload();
-		          },1000)
-		        }
-		      });
-		});
+		// $('#resume').on('change',function(){
+		// 	// e.preventDefault();
+		// 	var data=$(this).files[0];
+		// 	// var formData= new FormData($(this)[0]);
+		// 	$.ajax({
+		//         url:"<?=base_url('User/uploadResume')?>",
+		//         type:"post",
+		//         cache:false,
+		//         contentType:false,
+		//         enctype:'multipart/form-data',
+		//         processData:false,
+		//         data:data,
+		//         success:function(response){
+		//           // console.log(response);
+		//           response=JSON.parse(response);
+		//           if(response.code==1){
+		//             swal("Great..","Education Added Successfully.","success");
+		//           }else{
+		//             swal("Ooops..","Failed To Add","warning");
+		//           }
+		//           setInterval(function(){
+		//             location.reload();
+		//           },1000)
+		//         }
+		//       });
+		// });
 	});
 	
 </script>

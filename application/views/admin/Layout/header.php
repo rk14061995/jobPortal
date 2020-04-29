@@ -138,6 +138,15 @@
             </ul>
           </li> 
            <li class=" nav-item "><a href="#" class="nav-link dropdown-toggle" >
+            <i class="ft-layout"></i><span class="menu-title" data-i18n="">Company </span>
+            </a>
+            <ul>
+              
+              <li> <a class="dropdown-item" href="<?=base_url('Admin_Dashboard/addCompany')?>"><i class="fa fa-eye" aria-hidden="true"></i> <strong>Add</strong></a></li>
+              <li><a class="dropdown-item" href="<?=base_url('Admin_Dashboard/viewCompany')?>"><i class="fa fa-plus" aria-hidden="true"></i> <strong>View</strong></a></li>
+            </ul>
+          </li>
+           <li class=" nav-item "><a href="#" class="nav-link dropdown-toggle" >
             <i class="ft-layout"></i><span class="menu-title" data-i18n="">Success Stories</span>
             </a>
             <ul>
