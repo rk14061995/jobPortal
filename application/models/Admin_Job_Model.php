@@ -70,4 +70,30 @@ class Admin_Job_Model extends CI_Model
 		
 		
 	}
+	public function addJobPosted($data)
+	{
+   		 $this->db->where($data);
+		$results=$this->db->insert('job_application',$data);
+		if($results)
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}	
+	}
+	public function addResumeOnSelect($data)
+	{
+   		 $this->db->where($data);
+		$results=$this->db->insert('resume_upload',$data);
+		if($results)
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}	
+	}
 }

@@ -10,6 +10,7 @@ class Admin_Dashboard extends CI_Controller
 		    
 	$this->load->model('Admin_Category_model','Admin_C');	
 	$this->load->model('Admin_Job_Model','Admin_J');
+	$this->load->model('Admin_Story_Model','Admin_S');
 	
 	}
 	public function viewDashbaord()
@@ -90,7 +91,19 @@ class Admin_Dashboard extends CI_Controller
 		 $this->load->view('admin/Pages/view_Jobtype',$data);
 		 $this->load->view('admin/Layout/footer');
 	}
-
+	public function addStory()
+	{ 		
+		 $this->load->view('admin/Layout/header');
+		 $this->load->view('admin/Pages/add_success_story');
+		 $this->load->view('admin/Layout/footer');
+	}
+	public function viewStory()
+	{ 		
+      	$data['getSuccessStory']=$this->Admin_S->getSuccessStory();
+		 $this->load->view('admin/Layout/header');
+		 $this->load->view('admin/Pages/view_story',$data);
+		 $this->load->view('admin/Layout/footer');
+	}
 
 
 

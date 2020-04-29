@@ -60,15 +60,18 @@ $route['Contact'] = 'Web/Contact';
 $route['User-Profile'] = 'User/myProfile';
 
 $route['default_controller'] = 'web';
+ // $route['default_controller'] = 'Admin_Login/index';
+$route['default_controller'] = 'web';
 // $route['default_controller'] = 'Admin_Login/index';
 // $route['default_controller'] = 'web';
 $route['admin'] = 'Admin_Login/index';
-
 $route['Login-Page'] = 'Admin_Login/index';
 $route['404_override'] = 'PropertTrack/error404';
 $route['translate_uri_dashes'] = FALSE;
 
+// ----------API-------------
 
+$route['jobPosted'] = 'Admin_Job/addJobPosted';
 
 //
 

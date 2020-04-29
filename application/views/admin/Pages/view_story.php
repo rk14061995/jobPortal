@@ -3,7 +3,7 @@
         <div class="content-wrapper-before"></div>
         <div class="content-header row">
           <div class="content-header-left col-md-4 col-12 mb-2">
-            <h3 class="content-header-title">View Category</h3>
+            <h3 class="content-header-title">View Success Stories</h3>
           </div>
           <div class="content-header-right col-md-8 col-12">
             <div class="breadcrumbs-top float-md-right">
@@ -50,17 +50,17 @@
                   <tbody>
                    <?php
                    $i=1;
-                   foreach($getcategory as $category)
+                   foreach($getSuccessStory as $Story)
                     {
-                       $myImages=explode(',',$category->category_icon);
+                       $myImages=explode(',',$Story->story_image);
                       // print_r($category);
                       ?>
                     <tr>
                       <th scope="row"><?=$i?></th>
-                      <td><?=$category->category_name?></td>
-                       <td><img style="width:4em;height:3em;"src="<?php echo base_url().'assets/category_icon/'.$myImages[0]?>"class="img-reponsive thumbnail "></td>
-                      <td> <a href="javascript:void(0)" category_id="<?=$category->category_id?>" class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Edit</a>
-                        <a href="javascript:void(0)" category_id="<?=$category->category_id?>" class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Delete</a></td>
+                      <td><?=$Story->story?></td>
+                       <td><img style="width:6em;height:6em;"src="<?php echo base_url().'assets/story_image/'.$myImages[0]?>"class="img-reponsive thumbnail "></td>
+                      <td> <a href="javascript:void(0)" story_id="<?=$Story->story_id?>"class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Edit</a>
+                        <a href="javascript:void(0)" story_id="<?=$Story->story_id?>" class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Delete</a></td>
                     </tr>
                     <?php
                     $i++;
@@ -80,7 +80,7 @@
 <script type="text/javascript">
         $(document).ready(function(){
           $('.delete').on('click',function(){ 
-             var category_id=$(this).attr("category_id");
+             var story_id=$(this).attr("story_id");
 
              // alert(owner_id);
            if(confirm("Are you Sure want to delete?") ==true)
@@ -89,13 +89,13 @@
                 $.ajax({
                   url:"<?=base_url('Admin_Category/DeleteJobCategory')?>",
                   type:"post",
-                  data:{category_id:category_id},
+                  data:{story_id:story_id},
                   success:function(response)
                   {   
                   response=JSON.parse(response);             
                      if (response.status==1)
                       {
-                        swal('Category!','Deleted','error');
+                        swal('Story!','Deleted','error');
                    
                           location.reload();
                     
