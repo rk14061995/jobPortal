@@ -50,10 +50,10 @@
                   </form>
                   <hr>
                   <div class="text-center">
-                    <a class="small" href="<?=base_url('Company/register')?>">Create an Account!</a>
+                    <a class="small" href="<?=base_url('CompLogin/register')?>">Create an Account!</a>
                   </div>
                   <div class="text-center">
-                    <a class="small" href="<?=base_url('Company')?>">Already have an account? Login!</a>
+                    <a class="small" href="<?=base_url('CompLogin')?>">Already have an account? Login!</a>
                   </div>
                 </div>
               </div>
