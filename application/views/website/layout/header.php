@@ -213,7 +213,8 @@ nav.fill ul li a:hover:after {
   </nav>
     <div class="form-inline my-2 ml-2 my-lg-0">
        <button class="border btn btn-default bhyb__u" data-toggle="modal" data-target="#LoginRegModal" >SignUp/Login for User</button>
-         <button class="border btn btn-default bhyb__u ml-3" data-toggle="modal" data-target="#ComLoginRegModal">SignUp/Login for Company</button>
+       <a href="<?=base_url('Company')?>" class="border btn btn-default bhyb__u ml-3">Company</a>
+         <!-- <button class="border btn btn-default bhyb__u ml-3" data-toggle="modal" data-target="#ComLoginRegModal">SignUp/Login for Company</button> -->
     </div>
   </div>
 </nav>

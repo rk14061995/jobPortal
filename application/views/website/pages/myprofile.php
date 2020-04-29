@@ -24,7 +24,8 @@
 		</div>
 		<div class="col-md-6 text-right">
 			<label for="resume" class="btn btn-default border px-3">Upload Resume</label>
-			<input type="file" name="resume" id="resume" class="d-none">
+			<input type="file" class="d-none" name="file" id="file" />
+			<!-- <input type="file" name="resume" id="resume" class="d-none"> -->
 		</div>
 	</div>
 
@@ -378,6 +379,53 @@
 	</div>
 
 </section>
+<script>
+$(document).ready(function(){
+ $(document).on('change', '#file', function(){
+  var name = document.getElementById("file").files[0].name;
+  var form_data = new FormData();
+  var ext = name.split('.').pop().toLowerCase();
+  if(jQuery.inArray(ext, ['gif','png','jpg','jpeg','doc','pdf']) == -1) 
+  {
+   swal("Resume","Invalid Image File","error");
+  }
+  var oFReader = new FileReader();
+  oFReader.readAsDataURL(document.getElementById("file").files[0]);
+  var f = document.getElementById("file").files[0];
+  var fsize = f.size||f.fileSize;
+  if(fsize > 2000000)
+  {
+   swal("Resume"," File Size is very big","error");
+  }
+  else
+  {
+   form_data.append("file", document.getElementById('file').files[0]);
+   $.ajax({
+    url:"<?=base_url('Admin_Job/addResumeOnSelect')?>",
+    method:"POST",
+    data: form_data,
+    contentType: false,
+    cache: false,
+    processData: false,
+    // beforeSend:function(){
+    //  $('#uploaded_image').html("<label class='text-success'>Image Uploading...</label>");
+    // },   
+    success:function(data)
+    {
+		response=JSON.parse(response);             
+		if (response.status==1)
+		{
+		swal('Resume!','Upload','success');
+
+		location.reload();
+
+		}
+    }
+   });
+  }
+ });
+});
+</script>
 
 	<script>
 	$(document).on("click","#eduASA",function(){
