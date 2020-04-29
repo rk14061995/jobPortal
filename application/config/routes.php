@@ -53,17 +53,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  
 
 $route['admin'] = 'Admin_Login/index';
-<<<<<<< HEAD
+
 $route['About'] = 'Web/About';
 $route['Services'] = 'Web/Services';
 $route['Contact'] = 'Web/Contact';
 $route['User-Profile'] = 'User/myProfile';
-=======
+
 $route['default_controller'] = 'web';
  // $route['default_controller'] = 'Admin_Login/index';
 $route['default_controller'] = 'web';
 $route['admin'] = 'Admin_Login/index';
->>>>>>> 3e9a9ddce51e8eb8b03011fc6f062f57b83f1d73
 $route['Login-Page'] = 'Admin_Login/index';
 $route['404_override'] = 'PropertTrack/error404';
 $route['translate_uri_dashes'] = FALSE;

@@ -32,7 +32,7 @@ class Admin_Category extends CI_Controller
                     {
                         $picture = '';
                     }
-                }
+            }
                 else{
                 	echo"single error";
                 }

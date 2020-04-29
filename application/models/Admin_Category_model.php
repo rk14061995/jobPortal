@@ -2,8 +2,6 @@
 
 class Admin_Category_model extends CI_Model
 {
-
-
 	public function addcategory($category,$data)
 	{
 		$dat=array("category_name"=>$category);

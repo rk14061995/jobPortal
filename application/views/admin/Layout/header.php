@@ -70,8 +70,12 @@
               </li>
               <li class="dropdown dropdown-user nav-item"><a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">             <span class="avatar avatar-online"><img src="<?=base_url()?>theme-assets/images/portrait/small/avatar-s-19.png" alt="avatar"><i></i></span></a>
                 <div class="dropdown-menu dropdown-menu-right">
-                  <div class="arrow_box_right"><a class="dropdown-item" href="#"><span class="avatar avatar-online"><img src="<?=base_url()?>theme-assets/images/portrait/small/avatar-s-19.png" alt="avatar"><span class="user-name text-bold-700 ml-1">John Doe</span></span></a>
-                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a><a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a><a class="dropdown-item" href="#"><i class="ft-check-square"></i> Task</a><a class="dropdown-item" href="#"><i class="ft-message-square"></i> Chats</a>
+                  <div class="arrow_box_right"><a class="dropdown-item" href="#"><span class="avatar avatar-online"><img src="<?=base_url()?>theme-assets/images/portrait/small/avatar-s-19.png" alt="avatar"><span class="user-name text-bold-700 ml-1">Admin</span></span></a>
+                    <div class="dropdown-divider"></div>
+                  <!--   <a class="dropdown-item" href="#"><i class="ft-user"></i> Edit Profile</a>
+                    <a class="dropdown-item" href="#"><i class="ft-mail"></i> My Inbox</a>
+                    <a class="dropdown-item" href="#"><i class="ft-check-square"></i> Task</a>
+                    <a class="dropdown-item" href="#"><i class="ft-message-square"></i> Chats</a> -->
                     <div class="dropdown-divider"></div><a class="dropdown-item" href="<?=base_url('Admin_Login/logOut')?>"><i class="ft-power"></i> Logout</a>
                   </div>
                 </div>
@@ -88,7 +92,7 @@
     <div class="main-menu menu-fixed menu-light menu-accordion    menu-shadow " data-scroll-to-active="true" data-img="theme-assets/images/backgrounds/02.jpg">
       <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">       
-          <li class="nav-item mr-auto"><a class="navbar-brand" href="index.html"><img class="brand-logo" alt="Chameleon admin logo" src="<?=base_url()?>theme-assets/images/logo/logo.png"/>
+          <li class="nav-item mr-auto"><a class="navbar-brand" href="<?=base_url('Admin_Dashboard/viewDashbaord')?>"><img class="brand-logo" alt="Chameleon admin logo" src="<?=base_url()?>theme-assets/images/logo/logo.png"/>
               <h3 class="brand-text">Job Portal</h3></a></li>
           <li class="nav-item d-md-none"><a class="nav-link close-navbar"><i class="ft-x"></i></a></li>
         </ul>
@@ -133,8 +137,17 @@
               <li><a class="dropdown-item" href="<?=base_url('Admin_Dashboard/view_Job')?>"><i class="fa fa-plus" aria-hidden="true"></i> <strong>View</strong></a></li>
             </ul>
           </li> 
+           <li class=" nav-item "><a href="#" class="nav-link dropdown-toggle" >
+            <i class="ft-layout"></i><span class="menu-title" data-i18n="">Success Stories</span>
+            </a>
+            <ul>
+              
+              <li> <a class="dropdown-item" href="<?=base_url('Admin_Dashboard/addStory')?>"><i class="fa fa-eye" aria-hidden="true"></i> <strong>Add</strong></a></li>
+              <li><a class="dropdown-item" href="<?=base_url('Admin_Dashboard/viewStory')?>"><i class="fa fa-plus" aria-hidden="true"></i> <strong>View</strong></a></li>
+            </ul>
+          </li> 
           
-          <li class=" nav-item "><a href="#" class="nav-link dropdown-toggle" >
+         <!--  <li class=" nav-item "><a href="#" class="nav-link dropdown-toggle" >
           	<i class="ft-layout"></i><span class="menu-title" data-i18n="">Job Seekers</span>
             </a>
             <ul>
@@ -142,15 +155,15 @@
             	<li> <a class="dropdown-item" href="<?=base_url('Admin_Dashboard/addJobSeekerView')?>"><i class="fa fa-eye" aria-hidden="true"></i> <strong>Add</strong></a></li>
               <li><a class="dropdown-item" href="<?=base_url('Admin_Dashboard/viewJobSeeker')?>"><i class="fa fa-plus" aria-hidden="true"></i> <strong>View</strong></a></li>
             </ul>
-          </li> 
-          <li class=" nav-item "><a href="#" class="nav-link dropdown-toggle" >
+          </li>  -->
+          <!-- <li class=" nav-item "><a href="#" class="nav-link dropdown-toggle" >
             <i class="ft-layout"></i><span class="menu-title" data-i18n="">Job Application</span>
             </a>
             <ul>
               <li><a class="dropdown-item" href="<?=base_url('')?>"><i class="fa fa-plus" aria-hidden="true"></i> <strong>View</strong></a></li>
               <li> <a class="dropdown-item" href="<?=base_url('')?>"><i class="fa fa-eye" aria-hidden="true"></i> <strong>Add</strong></a></li>
             </ul>
-          </li> 
+          </li>  -->
          
         </ul>
       </div>
