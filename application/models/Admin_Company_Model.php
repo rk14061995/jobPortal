@@ -30,7 +30,7 @@ class Admin_Company_Model extends CI_Model
 		$this->db->order_by('company_id','DESC');
 		return $this->db->get('company_')->result();
 	}
-	public function getCompanyByid($company_id)
+	public function getCompanyDetailById($company_id)
 	{
 		$this->db->where('company_id',$company_id);
 		 return $this->db->get('company_')->result();
