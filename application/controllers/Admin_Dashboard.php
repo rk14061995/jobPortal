@@ -11,6 +11,7 @@ class Admin_Dashboard extends CI_Controller
 	$this->load->model('Admin_Category_model','Admin_C');	
 	$this->load->model('Admin_Job_Model','Admin_J');
 	$this->load->model('Admin_Story_Model','Admin_S');
+	$this->load->model('Admin_Company_Model','Admin_Com');
 	
 	}
 	public function viewDashbaord()
@@ -102,6 +103,19 @@ class Admin_Dashboard extends CI_Controller
       	$data['getSuccessStory']=$this->Admin_S->getSuccessStory();
 		 $this->load->view('admin/Layout/header');
 		 $this->load->view('admin/Pages/view_story',$data);
+		 $this->load->view('admin/Layout/footer');
+	}
+	public function addCompany()
+	{ 		 
+		 $this->load->view('admin/Layout/header');
+		 $this->load->view('admin/Pages/add_Company');
+		 $this->load->view('admin/Layout/footer');
+	}
+	public function viewCompany()
+	{ 		
+      	$data['getCompanyDetails']=$this->Admin_Com->getCompanyDetails();
+		 $this->load->view('admin/Layout/header');
+		 $this->load->view('admin/Pages/view_Company',$data);
 		 $this->load->view('admin/Layout/footer');
 	}
 

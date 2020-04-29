@@ -3,7 +3,7 @@
         <div class="content-wrapper-before"></div>
         <div class="content-header row">
           <div class="content-header-left col-md-4 col-12 mb-2">
-            <h3 class="content-header-title">View Success Stories</h3>
+            <h3 class="content-header-title">View Jobs</h3>
           </div>
           <div class="content-header-right col-md-8 col-12">
             <div class="breadcrumbs-top float-md-right">
@@ -42,25 +42,36 @@
                   <thead>
                     <tr>
                       <th scope="col">SNo</th>
-                      <th scope="col">Success Name</th>
-                      <th scope="col"> Icon</th>
+                      <th scope="col">Company</th>
+                      <th scope="col">Description</th> 
+                      <th scope="col">Address</th> 
+                      <th scope="col">Website Url</th> 
+                      <th scope="col">Email</th> 
+                      <th scope="col">Logo</th> 
+                      <th scope="col">Registration No.</th> 
                       <th scope="col">Action</th>
                     </tr>
                   </thead>
                   <tbody>
                    <?php
                    $i=1;
-                   foreach($getSuccessStory as $Story)
+                   foreach($getCompanyDetails as $getCompany)
                     {
-                       $myImages=explode(',',$Story->story_image);
-                      // print_r($category);
+                        $myImages=explode(',',$getCompany->company_logo);
+                       // print_r($JobDetails);
+                       // die;
                       ?>
                     <tr>
                       <th scope="row"><?=$i?></th>
-                      <td><?=$Story->story?></td>
-                       <td><img style="width:6em;height:6em;"src="<?php echo base_url().'assets/story_image/'.$myImages[0]?>"class="img-reponsive thumbnail "></td>
-                      <td> <a href="javascript:void(0)" story_id="<?=$Story->story_id?>"class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Edit</a>
-                        <a href="javascript:void(0)" story_id="<?=$Story->story_id?>" class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Delete</a></td>
+                        <td><?=$getCompany->company_name?></td>
+                        <td><?=$getCompany->comp_desc?></td>
+                        <td><?=$getCompany->comp_address?></td>
+                        <td><?=$getCompany->website_url?></td>
+                        <td><?=$getCompany->company_email?></td>
+                       <td><img style="width:4em;height:3em;"src="<?php echo base_url().'assets/companyImages/logo/'.$myImages[0]?>"class="img-reponsive thumbnail "></td>
+                        <td><?=$getCompany->company_reg_no?></td>
+                        <td><a href="">Edit</a>&nbsp;&nbsp;
+                         <a href="javascript:void(0)" company_id="<?=$getCompany->company_id?>" class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Delete</a></td>
                     </tr>
                     <?php
                     $i++;
@@ -80,22 +91,22 @@
 <script type="text/javascript">
         $(document).ready(function(){
           $('.delete').on('click',function(){ 
-             var story_id=$(this).attr("story_id");
+             var company_id=$(this).attr("company_id");
 
              // alert(owner_id);
            if(confirm("Are you Sure want to delete?") ==true)
             {       
             // alert(owner_id);         
                 $.ajax({
-                  url:"<?=base_url('Admin_Story/DeleteStory')?>",
+                  url:"<?=base_url('Admin_Company/DeleteCompany')?>",
                   type:"post",
-                  data:{story_id:story_id},
+                  data:{company_id:company_id},
                   success:function(response)
                   {   
                   response=JSON.parse(response);             
                      if (response.status==1)
                       {
-                        swal('Story!','Deleted','error');
+                        swal('Company!','Deleted','error');
                    
                           location.reload();
                     

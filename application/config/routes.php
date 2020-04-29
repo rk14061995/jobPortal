@@ -72,6 +72,7 @@ $route['translate_uri_dashes'] = FALSE;
 // ----------API-------------
 
 $route['jobPosted'] = 'Admin_Job/addJobPosted';
+$route['getCompany'] = 'Admin_Company/getCompanyByid';
 
 //
 

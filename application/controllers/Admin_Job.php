@@ -85,6 +85,9 @@ class Admin_Job extends CI_Controller
 	}
 	public function addResumeOnSelect()
 	{
+		$userDetail=$this->session->userdata('logged_user_emp');
+		$userDetails=unserialize($userDetail);
+		$user_id=$userDetails[0]->user_id;
 	 if(!empty($_FILES['file']['name']))
 	    	{   
                 $config['upload_path'] = 'assets/user_resume/';
@@ -108,8 +111,8 @@ class Admin_Job extends CI_Controller
                 }
                  if(!empty($uploadData))
 		         {
-					
-					$data=array('user_id'=>$this->input->post('user_id'),
+				// 	
+					$data=array('user_id'=>$user_id,
 								'resume_path'=>$picture);
 					$results=$this->Admin_J->addResumeOnSelect($data);
 					if($results==1)
