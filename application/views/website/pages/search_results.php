@@ -28,11 +28,11 @@
 			<li><a href="">Jobs</a><span> / </span></li>
 			<li><a href="">Job Search </a><span> / </span></li>
 			<li><a href="">Jobs in Noida</a><span> / </span></li>
-			<li>Web Developer Jobs in Noida</li>
+			<li>We found <span class="txt_X"><?=count($JobsList)?></span> Jobs as per your search</li>
 		</ul>
 	</div>
 	<div class="border p-3">
-		<h4 class="mb-3">We found <span class="txt_X"><?=count($JobsList)?></span> as per your search </h4>
+		<h4 class="mb-3">We found <span class="txt_X"><?=count($JobsList)?></span> Jobs as per your search </h4>
 		<hr>
 		
 		<?php foreach($JobsList as $job): ?> 

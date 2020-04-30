@@ -13,6 +13,9 @@
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Applications</h6>
             </div>
+
+
+            
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -38,13 +41,13 @@
                   <tbody>
                     <?php $i=1;?>
                     <?php foreach($jobApplications as $application) :?>
-                      
+                     
                     <tr>
                       <td><?=$i?></td>
                       <td><a href="<?=base_url('Company/jobSeekerDetail/').$application->user_id?>"><?=$application->fullname?></a></td>
                       <td><a href="<?=base_url('Company/jobDetails/').$application->job_post_id?>"><?=$application->job_title?></a></td>
                       <td><?=$application->job_location_?></td>
-                      <td><a href="" class="btn btn-success ">Accept</a> <a href="" class="btn btn-danger ">Reject</a> <a href="" class="btn btn-info ">Save</a></td>
+                      <td><a href="<?=base_url('Company/jobApplicationDetails/').$application->job_application_id?>" class="btn btn-success ">View</a></td>
                       <!-- <td>$320,800</td> -->
                     </tr>
                     <?php $i++;?>

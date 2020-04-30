@@ -54,7 +54,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="<?=base_url('Company/dashboard')?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -66,11 +66,11 @@
       <div class="sidebar-heading">
         Interface
       </div>
-       <li class="nav-item">
+      <!--  <li class="nav-item">
         <a class="nav-link" href="<?=base_url('Company/Details')?>">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Company Details</span></a>
-      </li>
+      </li> -->
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
@@ -90,7 +90,7 @@
       </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseApplication" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
+          <i class="fa fa-envelope-open-o" aria-hidden="true"></i>
           <span>Job Application</span>
         </a>
         <div id="collapseApplication" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
