@@ -14,6 +14,19 @@ class Admin_Job_Model extends CI_Model
 	{
 		return $this->db->get('job_type')->result();
 	}
+	public function getjobseekr()
+	{
+		return $this->db->get('user_')->result();
+	}
+	public function getSeekrApps()
+	{
+		$this->db->select('*');
+		$this->db->from('job_application');
+		$this->db->join('jobs_added','jobs_added.job_id=job_application.job_post_id');
+		$this->db->join('user_','user_.user_id=job_application.applied_by');
+		$this->db->join('company_','company_.company_id=jobs_added.added_by_company_id');
+		return $this->db->get()->result();
+	}
 	
 	public function addJob($data)
 	{
@@ -96,4 +109,5 @@ class Admin_Job_Model extends CI_Model
 			return 0;
 		}	
 	}
+
 }

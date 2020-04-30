@@ -3,7 +3,7 @@
         <div class="content-wrapper-before"></div>
         <div class="content-header row">
           <div class="content-header-left col-md-4 col-12 mb-2">
-            <h3 class="content-header-title">View Jobs</h3>
+            <h3 class="content-header-title">View Company</h3>
           </div>
           <div class="content-header-right col-md-8 col-12">
             <div class="breadcrumbs-top float-md-right">
@@ -43,12 +43,14 @@
                     <tr>
                       <th scope="col">SNo</th>
                       <th scope="col">Company</th>
-                      <th scope="col">Description</th> 
+                    
                       <th scope="col">Address</th> 
                       <th scope="col">Website Url</th> 
                       <th scope="col">Email</th> 
                       <th scope="col">Logo</th> 
                       <th scope="col">Registration No.</th> 
+                        <th scope="col">Status</th> 
+                       <th scope="col">ChangeStatus</th>
                       <th scope="col">Action</th>
                     </tr>
                   </thead>
@@ -64,12 +66,34 @@
                     <tr>
                       <th scope="row"><?=$i?></th>
                         <td><?=$getCompany->company_name?></td>
-                        <td><?=$getCompany->comp_desc?></td>
                         <td><?=$getCompany->comp_address?></td>
                         <td><?=$getCompany->website_url?></td>
                         <td><?=$getCompany->company_email?></td>
                        <td><img style="width:4em;height:3em;"src="<?php echo base_url().'assets/companyImages/logo/'.$myImages[0]?>"class="img-reponsive thumbnail "></td>
                         <td><?=$getCompany->company_reg_no?></td>
+                       <?php
+                       if($getCompany->company_status=="active")
+                        {?>
+                          <td ><span class="btn-success" style="width:1%;height:100%;">Active</span></td>
+                        <?php
+                      }
+                      else
+                        {?>
+                          <td ><span class="btn-danger" style="width:1%;height:100%;">Deactive</span></td>
+                        <?php
+                        }
+                        if($getCompany->company_status=="active")
+                        {?>
+                        <td><a href="javascript:void(0)" deactivate_id="<?=$getCompany->company_id?>" class=" deactivate" d-aplId=""></i>Deactivate</a></td>
+
+                        <?php
+                        }
+                        else
+                        {?>
+                        <td><a href="javascript:void(0)"  activate_id="<?=$getCompany->company_id?>"class="  activate" d-aplId="">Activate</a></td>
+                        <?php  
+                        }?>
+
                         <td><a href="">Edit</a>&nbsp;&nbsp;
                          <a href="javascript:void(0)" company_id="<?=$getCompany->company_id?>" class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Delete</a></td>
                     </tr>
@@ -88,6 +112,58 @@
         </div>
       </div>
     </div>
+     <script type="text/javascript">
+     $(document).ready(function(){
+          $('.deactivate').on('click',function(){ 
+               var deactivate_id=$(this).attr("deactivate_id");
+               // alert(deactivate_id);
+              $.ajax({
+                url:'<?=base_url('Admin_Company/DeactivateCompany')?>',
+                type:"post",
+                data:{deactivate_id:deactivate_id},
+                 success:function(response)
+                    {
+                        response=JSON.parse(response);
+                        // console.log(response.data);
+                        if(response.status==1)
+                        {
+                        
+                    swal("Users", "Status Change", "success");
+
+                         }
+                             location.reload();// $(".refreshlocation").load(location.href + " .refreshlocation");
+
+                    }
+              });
+           });
+      });
+    </script>
+    <script type="text/javascript">
+     $(document).ready(function(){
+          $('.activate').on('click',function(){ 
+               var activate_id=$(this).attr("activate_id");
+               // alert(activate_id);
+              $.ajax({
+                url:'<?=base_url('Admin_Company/ActivateCompany')?>',
+                type:"post",
+                data:{activate_id:activate_id},
+                 success:function(response)
+                    {
+                        response=JSON.parse(response);
+                        // console.log(response.data);
+                        if(response.status==1)
+                        {
+                        
+                    swal("User", "Status Change", "success");
+
+                         }
+                             location.reload();// $(".refreshlocation").load(location.href + " .refreshlocation");
+
+                    }
+              });
+           });
+      });
+    </script>
 <script type="text/javascript">
         $(document).ready(function(){
           $('.delete').on('click',function(){ 

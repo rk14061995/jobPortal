@@ -129,5 +129,70 @@ class Admin_Job extends CI_Controller
 					die(json_decode(array('status'=>0,'data'=>'Servor Error')));
 				}
 	}
+	public function ActivateJobseeker()
+	{
+		$user_id=$this->input->post('activate_id');
+
+		$data=array('user_status'=>1);
+			$this->db->where('user_id',$user_id);
+		 $results=$this->db->update('user_',$data);
+		 if( $results)
+		 {
+		 	die(json_encode(array('status'=>1,'data'=>$results)));
+		 }
+		 else
+		 {
+		 	die(json_encode(array('status'=>0,'data'=>$results)));
+		 }
+	}
+	public function DeactivateJobseeker()
+	{
+		$user_id=$this->input->post('deactivate_id');
+
+		$data=array('user_status'=>2);
+			$this->db->where('user_id',$user_id);
+		 $results=$this->db->update('user_',$data);
+		 if( $results)
+		 {
+		 	die(json_encode(array('status'=>1,'data'=>$results)));
+		 }
+		 else
+		 {
+		 	die(json_encode(array('status'=>0,'data'=>$results)));
+		 }
+	}
+	public function ActivateSeekerApps()
+	{
+		$job_id=$this->input->post('activate_id');
+
+		$data=array('job_apps_status'=>1);
+			$this->db->where('job_id',$job_id);
+		 $results=$this->db->update('jobs_added',$data);
+		 if( $results)
+		 {
+		 	die(json_encode(array('status'=>1,'data'=>$results)));
+		 }
+		 else
+		 {
+		 	die(json_encode(array('status'=>0,'data'=>$results)));
+		 }
+	}
+	public function DeactivateSeekerApps()
+	{
+		$job_id=$this->input->post('deactivate_id');
+
+		$data=array('job_apps_status'=>2);
+			$this->db->where('job_id',$job_id);
+		 $results=$this->db->update('jobs_added',$data);
+		 if( $results)
+		 {
+		 	die(json_encode(array('status'=>1,'data'=>$results)));
+		 }
+		 else
+		 {
+		 	die(json_encode(array('status'=>0,'data'=>$results)));
+		 }
+	}
+
 
 }

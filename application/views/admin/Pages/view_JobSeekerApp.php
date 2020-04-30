@@ -3,7 +3,7 @@
         <div class="content-wrapper-before"></div>
         <div class="content-header row">
           <div class="content-header-left col-md-4 col-12 mb-2">
-            <h3 class="content-header-title">View Jobs</h3>
+            <h3 class="content-header-title">View Seeker Application</h3>
           </div>
           <div class="content-header-right col-md-8 col-12">
             <div class="breadcrumbs-top float-md-right">
@@ -37,66 +37,40 @@
             </div>
             <div class="card-content collapse show">
               
-              <div class="table-responsive">
+              <div class="table-responsive refreshlocation">
                 <table class="table table-striped">
                   <thead>
                     <tr>
                       <th scope="col">SNo</th>
-                      <th scope="col">Category</th>
-                      <th scope="col">Type</th> 
-                      <th scope="col">Company</th> 
-                      <th scope="col">Title</th> 
-                      <th scope="col">Decription</th> 
-                      <th scope="col">Vacancies</th> 
-                      <th scope="col">Last Date</th> 
-                       <th scope="col">Status</th>
-                       <th scope="col">ChangeStatus</th> 
-
+                      <th scope="col">Apply By</th>
+                      <th scope="col">Company</th>
+                        <th scope="col">Apply For</th>  
+                      <th scope="col">Location</th> 
+                      <th scope="col">Gender</th> 
+                       <!-- <th scope="col">Change Status</th>  -->
+                     <!--  <th scope="col">Logo</th> 
+                      <th scope="col">Registration No.</th>  -->
                       <th scope="col">Action</th>
                     </tr>
                   </thead>
                   <tbody>
                    <?php
                    $i=1;
-                   foreach($getJobDetails as $JobDetails)
+                   foreach($getSeekrApps as $SeekrApps)
                     {
-                       // $myImages=explode(',',$category->category_icon);
-                       // print_r($JobDetails);
+                        // $myImages=explode(',',$SeekrApps->profile_pic);
+                        // print_r($SeekrApps);
                        // die;
                       ?>
                     <tr>
                       <th scope="row"><?=$i?></th>
-                        <td><?=$JobDetails->type_name?></td>
-                        <td><?=$JobDetails->category_name?></td>
-                        <td><?=$JobDetails->company_name?></td>
-                        <td><?=$JobDetails->job_title?></td>
-                        <td><?=$JobDetails->job_desc?></td>
-                        <td><?=$JobDetails->vacancies_?></td>
-                        <td><?=$JobDetails->last_date?></td>
-                        <?php
-                         if($JobDetails->job_apps_status=="active")
-                        {?>
-                          <td ><span class="btn-success" style="width:1%;height:100%;">Active</span></td>
-                        <?php
-                        }
-                        else
-                        {?>
-                          <td ><span class="btn-danger" style="width:1%;height:100%;">Deactive</span></td>
-                        <?php
-                        }
-                        if($JobDetails->job_apps_status=="active")
-                        {?>
-                           <td><a href="javascript:void(0)" deactivate_id="<?=$JobDetails->job_id?>" class=" deactivate" d-aplId=""></i>Deactivate</a></td>
-                           
-                        <?php
-                        }
-                        else
-                        {?>
-                           <td><a href="javascript:void(0)"  activate_id="<?=$JobDetails->job_id?>"class="  activate" d-aplId="">Activate</a></td>
-                        <?php  
-                        }?>
+                        <td><?=$SeekrApps->fullname?></td>
+                        <td><?=$SeekrApps->company_name?></td>
+                        <td><?=$SeekrApps->job_title?></td>
+                        <td><?=$SeekrApps->job_location_?></td>
+                        <td><?=$SeekrApps->gender_?></td>	
                         <td><a href="">Edit</a>&nbsp;&nbsp;
-                         <a href="javascript:void(0)" job_id="<?=$JobDetails->job_id?>" class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Delete</a></td>
+                         <a href="javascript:void(0)" job_application_id="<?=$SeekrApps->job_application_id?>" class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Delete</a></td>
                     </tr>
                     <?php
                     $i++;
@@ -113,13 +87,13 @@
         </div>
       </div>
     </div>
-     <script type="text/javascript">
+    <script type="text/javascript">
      $(document).ready(function(){
           $('.deactivate').on('click',function(){ 
                var deactivate_id=$(this).attr("deactivate_id");
                // alert(deactivate_id);
               $.ajax({
-                url:'<?=base_url('Admin_Job/DeactivateSeekerApps')?>',
+                url:'<?=base_url('Admin_Job/DeactivateJobseeker')?>',
                 type:"post",
                 data:{deactivate_id:deactivate_id},
                  success:function(response)
@@ -145,7 +119,7 @@
                var activate_id=$(this).attr("activate_id");
                // alert(activate_id);
               $.ajax({
-                url:'<?=base_url('Admin_Job/ActivateSeekerApps')?>',
+                url:'<?=base_url('Admin_Job/ActivateJobseeker')?>',
                 type:"post",
                 data:{activate_id:activate_id},
                  success:function(response)
@@ -168,22 +142,21 @@
 <script type="text/javascript">
         $(document).ready(function(){
           $('.delete').on('click',function(){ 
-             var job_id=$(this).attr("job_id");
-
-             // alert(owner_id);
+             var job_application_id=$(this).attr("job_application_id");
+              // alert(job_application_id);
            if(confirm("Are you Sure want to delete?") ==true)
             {       
             // alert(owner_id);         
                 $.ajax({
-                  url:"<?=base_url('Admin_Job/DeleteJob')?>",
+                  url:"<?=base_url('Admin_Dashboard/DeleteJobApp')?>",
                   type:"post",
-                  data:{job_id:job_id},
+                  data:{job_application_id:job_application_id},
                   success:function(response)
                   {   
                   response=JSON.parse(response);             
                      if (response.status==1)
                       {
-                        swal('Job!','Deleted','error');
+                        swal('User!','Deleted','error');
                    
                           location.reload();
                     
