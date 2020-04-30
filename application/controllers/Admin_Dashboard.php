@@ -31,10 +31,45 @@ class Admin_Dashboard extends CI_Controller
 	}
 	public function viewJobSeeker()
 	{ 		
-        
+         $data['getjobseekr']=$this->Admin_J->getjobseekr();
 		 $this->load->view('admin/Layout/header');
-		 $this->load->view('admin/Pages/view_JobSeeker');
+		 $this->load->view('admin/Pages/view_JobSeeker',$data);
 		 $this->load->view('admin/Layout/footer');
+	}
+	public function viewSeekerApps()
+	{ 		
+         $data['getSeekrApps']=$this->Admin_J->getSeekrApps();
+		 $this->load->view('admin/Layout/header');
+		 $this->load->view('admin/Pages/view_JobSeekerApp',$data);
+		 $this->load->view('admin/Layout/footer');
+	}
+	public function DeleteJobSeeker()
+	{
+		$data=array('user_id'=>$this->input->post('user_id'));
+			$this->db->where($data);
+		 $results=$this->db->delete('user_');
+		 if( $results)
+		 {
+		 	die(json_encode(array('status'=>1,'data'=>$results)));
+		 }
+		 else
+		 {
+		 	die(json_encode(array('status'=>0,'data'=>$results)));
+		 }
+	}
+	public function DeleteJobApp()
+	{
+		$data=array('job_application_id'=>$this->input->post('job_application_id'));
+			$this->db->where($data);
+		 $results=$this->db->delete('job_application');
+		 if( $results)
+		 {
+		 	die(json_encode(array('status'=>1,'data'=>$results)));
+		 }
+		 else
+		 {
+		 	die(json_encode(array('status'=>0,'data'=>$results)));
+		 }
 	}
 	public function addJobCategory()
 	{ 		
@@ -93,6 +128,7 @@ class Admin_Dashboard extends CI_Controller
 		 $this->load->view('admin/Pages/view_Jobtype',$data);
 		 $this->load->view('admin/Layout/footer');
 	}
+
 	public function addStory()
 	{ 		
 		 $this->load->view('admin/Layout/header');

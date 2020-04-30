@@ -121,5 +121,37 @@ class Admin_Company extends CI_Controller
 			die(json_encode(array('status'=>2,'data'=>$results)));
 		}
 	}
+	public function ActivateCompany()
+	{
+		$company_id=$this->input->post('activate_id');
+
+		$data=array('company_status'=>1);
+			$this->db->where('company_id',$company_id);
+		 $results=$this->db->update('company_',$data);
+		 if( $results)
+		 {
+		 	die(json_encode(array('status'=>1,'data'=>$results)));
+		 }
+		 else
+		 {
+		 	die(json_encode(array('status'=>0,'data'=>$results)));
+		 }
+	}
+	public function DeactivateCompany()
+	{
+		$company_id=$this->input->post('deactivate_id');
+
+		$data=array('company_status'=>2);
+			$this->db->where('company_id',$company_id);
+		 $results=$this->db->update('company_',$data);
+		 if( $results)
+		 {
+		 	die(json_encode(array('status'=>1,'data'=>$results)));
+		 }
+		 else
+		 {
+		 	die(json_encode(array('status'=>0,'data'=>$results)));
+		 }
+	}
 
 }
