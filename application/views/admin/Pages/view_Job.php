@@ -95,8 +95,8 @@
                            <td><a href="javascript:void(0)"  activate_id="<?=$JobDetails->job_id?>"class="  activate" d-aplId="">Activate</a></td>
                         <?php  
                         }?>
-                        <td><a href="">Edit</a>&nbsp;&nbsp;
-                         <a href="javascript:void(0)" job_id="<?=$JobDetails->job_id?>" class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Delete</a></td>
+                        <td><a href="<?=base_url('Admin_Job/EditJob/').$JobDetails->job_id?>" job_id="<?=$JobDetails->job_id?>" class=" ">Edit</a>
+                         <a href="javascript:void(0)" job_id="<?=$JobDetails->job_id?>" class=" delete">Delete</a></td>
                     </tr>
                     <?php
                     $i++;

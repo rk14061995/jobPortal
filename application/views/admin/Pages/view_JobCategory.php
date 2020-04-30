@@ -59,7 +59,8 @@
                       <th scope="row"><?=$i?></th>
                       <td><?=$category->category_name?></td>
                        <td><img style="width:4em;height:3em;"src="<?php echo base_url().'assets/category_icon/'.$myImages[0]?>"class="img-reponsive thumbnail "></td>
-                      <td> <a href="javascript:void(0)" category_id="<?=$category->category_id?>" class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Edit</a>
+                      <td> 
+                       <!--  <a href="javascript:void(0)" category_id="<?=$category->category_id?>" class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Edit</a> -->
                         <a href="javascript:void(0)" category_id="<?=$category->category_id?>" class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Delete</a></td>
                     </tr>
                     <?php

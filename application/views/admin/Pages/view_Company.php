@@ -94,8 +94,9 @@
                         <?php  
                         }?>
 
-                        <td><a href="">Edit</a>&nbsp;&nbsp;
-                         <a href="javascript:void(0)" company_id="<?=$getCompany->company_id?>" class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Delete</a></td>
+                        <td>
+                          <a href="<?=base_url('Admin_Company/EditCompany/').$getCompany->company_id?>" company_id="<?=$getCompany->company_id?>" class=" ">Edit</a>
+                         <a href="javascript:void(0)" company_id="<?=$getCompany->company_id?>" class=" delete">Delete</a></td>
                     </tr>
                     <?php
                     $i++;

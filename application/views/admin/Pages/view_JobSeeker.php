@@ -94,7 +94,7 @@
 						}?>
 
 	                    		
-                        <td><a href="">Edit</a>&nbsp;&nbsp;
+                        <td><a href="<?=base_url('Admin_Job/EditJobSeeker/').$jobseekr->user_id?>" user_id="<?=$jobseekr->user_id?>" class=" ">Edit</a>
                          <a href="javascript:void(0)" user_id="<?=$jobseekr->user_id?>" class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Delete</a></td>
                     </tr>
                     <?php
