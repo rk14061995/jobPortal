@@ -88,9 +88,10 @@
                     <a href="#" class="btn btn-success btn-user btn-block text-white" >Schdule Interview</a>
                    
                   </div>
-                  <!-- <div class="col">
-                    <input type="submit" name="" value="Update Job" class="btn btn-primary btn-user btn-block">
-                  </div> -->
+                  <div class="col">
+                    <a href="#" class="btn btn-warning btn-user btn-block text-white" >Download Resume</a>
+                   
+                  </div>
                 </div>
                 
        
