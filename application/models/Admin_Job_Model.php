@@ -102,8 +102,23 @@ class Admin_Job_Model extends CI_Model
 		$results=$this->db->insert('resume_upload',$data);
 		if($results)
 		{
-			print_r($data);
-			return 1;
+			// print_r($data);
+			$userDetail=$this->session->userdata('logged_user_emp');
+			$userDetails=unserialize($userDetail);
+			$user_id=$userDetails[0]->user_id;
+			$res=$this->db->order_by('resume_id','desc')->limit(1)->get('resume_upload')->row();
+			// print_r($res->resume_id);
+			$this->db->where('user_id',$user_id);
+			$results=$this->db->update('user_',array('resume_id'=>$res->resume_id));
+			if($results)
+			{
+				return 1;
+			}
+			else
+			{
+				return 0;
+			}
+			// return 1;
 		}
 		else
 		{

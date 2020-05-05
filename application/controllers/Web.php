@@ -151,6 +151,13 @@ class Web extends CI_Controller{
 			die(json_encode(array("code"=>2)));
 		}
 	}
+	public function download($img2)
+	{
+	    $this->load->helper('download');
+	    /*make sure here $img2 contains full path of image file*/
+	    	
+	    force_download(base_url('assets/user_resume/').$img2, NULL);
+	}
 
 
 }

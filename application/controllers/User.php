@@ -69,6 +69,7 @@
 				$skills[]=$this->getSkillDetial($skiId);
 			}
 			$data['skills']=$skills;
+			$data['myResume']=$this->db->join('user_','user_.resume_id=resume_upload.resume_id')->where('user_.user_id',$userDetail[0]->user_id)->get('resume_upload')->row();
 			// $this->db->get()->result();
 			$this->load->view('website/layout/header');
 	 		$this->load->view('website/pages/myprofile',$data);

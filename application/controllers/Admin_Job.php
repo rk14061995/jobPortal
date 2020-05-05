@@ -88,46 +88,51 @@ class Admin_Job extends CI_Controller
 		$userDetail=$this->session->userdata('logged_user_emp');
 		$userDetails=unserialize($userDetail);
 		$user_id=$userDetails[0]->user_id;
+		// print_r($_FILES);
 	 if(!empty($_FILES['file']['name']))
 	    	{   
+
                 $config['upload_path'] = 'assets/user_resume/';
-                 $config['allowed_types'] = 'jpg|jpeg|png|gif|doc|pdf';
-                $config['file_name'] = $_FILES['file']['name'];
+                 $config['allowed_types'] = 'jpg|jpeg|png|gif|docx|pdf|doc|';
+                $config['file_name'] = date('dmyhis').$_FILES['file']['name'];
                 $this->load->library('upload',$config);
                 $this->upload->initialize($config);
                 
                     if($this->upload->do_upload('file'))
                     {
+
                         $uploadData = $this->upload->data();
                         $picture =$uploadData['file_name'];
                     }
                     else
                     {
                         $picture = '';
+                        die(json_encode(array('status'=>0,'data'=>$this->upload->display_errors())));
                     }
+                    if($picture!="")
+			         {
+					// 	
+						$data=array('user_id'=>$user_id,
+									'resume_path'=>$picture);
+						$results=$this->Admin_J->addResumeOnSelect($data);
+						if($results==1)
+						{
+							die(json_encode(array('status'=>1,'data'=>$results)));
+						}
+						else
+						{
+							die(json_encode(array('status'=>2,'data'=>$results)));
+						}
+					}
+					else
+					{
+						die(json_encode(array('status'=>0,'data'=>'Servor Error')));
+					}
             }
                 else{
                 	die(json_decode(array('status'=>0,'data'=>'Image Error')));
                 }
-                 if(!empty($uploadData))
-		         {
-				// 	
-					$data=array('user_id'=>$user_id,
-								'resume_path'=>$picture);
-					$results=$this->Admin_J->addResumeOnSelect($data);
-					if($results==1)
-					{
-						die(json_encode(array('status'=>1,'data'=>$results)));
-					}
-					else
-					{
-						die(json_encode(array('status'=>2,'data'=>$results)));
-					}
-				}
-				else
-				{
-					die(json_decode(array('status'=>0,'data'=>'Servor Error')));
-				}
+                 
 	}
 	public function ActivateJobseeker()
 	{
