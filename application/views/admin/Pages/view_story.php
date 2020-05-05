@@ -59,7 +59,8 @@
                       <th scope="row"><?=$i?></th>
                       <td><?=$Story->story?></td>
                        <td><img style="width:6em;height:6em;"src="<?php echo base_url().'assets/story_image/'.$myImages[0]?>"class="img-reponsive thumbnail "></td>
-                      <td> <a href="javascript:void(0)" story_id="<?=$Story->story_id?>"class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Edit</a>
+                      <td> 
+                       <!--  <a href="javascript:void(0)" story_id="<?=$Story->story_id?>"class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Edit</a> -->
                         <a href="javascript:void(0)" story_id="<?=$Story->story_id?>" class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Delete</a></td>
                     </tr>
                     <?php

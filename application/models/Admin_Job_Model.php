@@ -110,5 +110,49 @@ class Admin_Job_Model extends CI_Model
 			return 0;
 		}	
 	}
+	public function getSeekerdetailsbyid($user_id)
+	{
+		$this->db->where('user_id',$user_id);
+		 return $this->db->get('user_')->result();
 
+	}
+	public function updateJobSeekers($data,$user_id)
+	{
+		
+       		 $this->db->where('user_id',$user_id);
+			$results=$this->db->update('user_',$data);
+			if($results)
+			{
+				return 1;
+			}
+			else
+			{
+				return 0;
+			}
+	 
+		
+	}
+	public function getJobdetailsbyid($job_id)
+	{
+		$this->db->where('job_id',$job_id);
+		 return $this->db->get('jobs_added')->result();
+
+	}
+
+public function updateJob($data, $job_id)
+	{
+		
+       		 $this->db->where('job_id',$job_id);
+			$results=$this->db->update('jobs_added',$data);
+			if($results)
+			{
+				return 1;
+			}
+			else
+			{
+				return 0;
+			}
+	 
+		
+	}
 }

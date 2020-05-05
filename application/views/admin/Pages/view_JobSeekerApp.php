@@ -69,7 +69,7 @@
                         <td><?=$SeekrApps->job_title?></td>
                         <td><?=$SeekrApps->job_location_?></td>
                         <td><?=$SeekrApps->gender_?></td>	
-                        <td><a href="">Edit</a>&nbsp;&nbsp;
+                        <td>
                          <a href="javascript:void(0)" job_application_id="<?=$SeekrApps->job_application_id?>" class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Delete</a></td>
                     </tr>
                     <?php

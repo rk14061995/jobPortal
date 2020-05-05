@@ -193,6 +193,122 @@ class Admin_Job extends CI_Controller
 		 	die(json_encode(array('status'=>0,'data'=>$results)));
 		 }
 	}
+	public function EditJobSeeker($user_id)
+	{ 
+
+		$data['Skills']=$this->db->get('skills_')->result();
+		$data['getSeekerdetails']=$this->Admin_J->getSeekerdetailsbyid($user_id);		 
+		 $this->load->view('admin/Layout/header');
+		 $this->load->view('admin/Pages/edit_Jobseeker',$data);
+		 $this->load->view('admin/Layout/footer');
+	}
+	public function deleteImageSeekers()
+	 {
+	 	
+	 	$imgIndex=$this->input->post('imgIndex');
+	 	$imgString=$this->input->post('imgString');
+	 	$imgArray=explode(',',$imgString);
+	 	unset($imgArray[$imgIndex]);
+	 	$newImageString=implode(",",$imgArray);
+	 	die(json_encode(array("code"=>1,"newString"=>$newImageString)));
+	 	
+	 }
+	 public function updateJobSeeekers()
+	 {
+			
+	 		$skill=implode(",",$this->input->post('skills'));
+	 	 $user_id=$this->input->post('user_id');
+	       $bydefaultimage=$this->input->post('image_string');
+	    if(!empty($_FILES['file']['name']))
+	    	{   
+                $config['upload_path'] = 'assets/UserImages/profile_picture/';
+                $config['allowed_types'] = 'jpg|jpeg|png|gif';
+                $config['file_name'] = $_FILES['file']['name'];
+                
+                //Load upload library and initialize configuration
+                $this->load->library('upload',$config);
+                $this->upload->initialize($config);
+                
+                    if($this->upload->do_upload('file'))
+                    {
+                        $uploadData = $this->upload->data();
+                        $picture =$uploadData['file_name'];
+                    }
+                    else
+                    {
+                        $picture = '';
+                    }
+            }
+                else    
+                {
+                 $picture = $bydefaultimage;
+				}
+		        if(empty($uploadData)||!empty($uploadData))
+		         {
+		         	// $company=$this->input->post('company');
+					$data=array('fullname'=>$this->input->post('fullname'),
+					'basic_introduction'=>$this->input->post('basic_introduction'),
+					'phone_'=>$this->input->post('phone_'),
+					'email'=>$this->input->post('email'),
+					'password'=>$this->input->post('password'),
+					'skill_ids'=>$skill,
+					'dob_'=>$this->input->post('dob_'),
+					'gender_'=>$this->input->post('gender_'),
+					'address_'=>$this->input->post('address_'),
+					'profile_pic'=>$picture);
+					
+					$results=$this->Admin_J->updateJobSeekers($data,$user_id);
+					if($results==1)
+					{
+					die(json_encode(array('status'=>1,'data'=>$results)));
+					}
+					else
+					{
+					die(json_encode(array('status'=>2,'data'=>$results)));
+					}
+				}
+				else
+				{
+					die(json_encode(array('status'=>0,'data'=>'Server error')));
+				}	
+	 }
+	 public function EditJob($job_id)
+	{ 
+
+		$data['Skills']=$this->db->get('skills_')->result();
+		$data['getCompany']=$this->Admin_J->getJobCompany();
+      	$data['getCategory']=$this->Admin_J->getJobCategory();
+      	$data['getJobtype']=$this->Admin_J->getJobtype();
+		$data['getJobdetails']=$this->Admin_J->getJobdetailsbyid($job_id);		 
+		 $this->load->view('admin/Layout/header');
+		 $this->load->view('admin/Pages/edit_Job',$data);
+		 $this->load->view('admin/Layout/footer');
+	}
+	public function updateJobs()
+	{
+		$skill=implode(",",$this->input->post('skills'));
+	 	 $job_id=$this->input->post('job_id');
+	 	 $data=array('job_category'=>$this->input->post('job_category'),
+					'job_type'=>$this->input->post('job_type'),
+					'added_by_company_id'=>$this->input->post('added_by_company_id'),
+					'job_title'=>$this->input->post('job_title'),
+					'job_desc'=>$this->input->post('job_desc'),
+					'vacancies_'=>$this->input->post('vacancies_'),
+					'last_date'=>$this->input->post('last_date'),
+					'skills'=>$skill,
+					'job_status'=>$this->input->post('job_status'));
+			$results=$this->Admin_J->updateJob($data, $job_id);
+			if($results==1)
+			{
+			die(json_encode(array('status'=>1,'data'=>$results)));
+			}
+			else
+			{
+			die(json_encode(array('status'=>2,'data'=>$results)));
+			}
+	}
+
+	 
 
 
 }

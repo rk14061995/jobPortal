@@ -43,7 +43,7 @@
                     <tr>
                       <th scope="col">SNo</th>
                       <th scope="col">Skills</th>
-                      <!-- <th scope="col">Icon</th> -->
+                     
                       <th scope="col">Action</th>
                     </tr>
                   </thead>
@@ -58,8 +58,7 @@
                     <tr>
                       <th scope="row"><?=$i?></th>
                       <td><?=$skills->skill_name?></td>
-                      <!-- . -->
-                      <td><a href="">Edit</a>
+                      <td>
                        <a href="javascript:void(0)" skill_id="<?=$skills->skill_id?>" class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Delete</a></td>
                     </tr>
                     <?php

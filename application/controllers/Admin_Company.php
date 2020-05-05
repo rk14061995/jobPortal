@@ -153,5 +153,79 @@ class Admin_Company extends CI_Controller
 		 	die(json_encode(array('status'=>0,'data'=>$results)));
 		 }
 	}
+	public function EditCompany($company_id)
+	{ 
+		$data['getCompanytdetails']=$this->Admin_Com->getCompanytdetailsById($company_id);		 
+		 $this->load->view('admin/Layout/header');
+		 $this->load->view('admin/Pages/edit_company',$data);
+		 $this->load->view('admin/Layout/footer');
+	}
+		public function deleteImageFromcompany()
+	 {
+	 	
+	 	$imgIndex=$this->input->post('imgIndex');
+	 	$imgString=$this->input->post('imgString');
+	 	$imgArray=explode(',',$imgString);
+	 	unset($imgArray[$imgIndex]);
+	 	$newImageString=implode(",",$imgArray);
+	 	die(json_encode(array("code"=>1,"newString"=>$newImageString)));
+	 	
+	 }
+	 public function updateCompany()
+	 {
+	 	 $company_id=$this->input->post('company_id');
+	       $bydefaultimage=$this->input->post('image_string');
+	    if(!empty($_FILES['file']['name']))
+	    	{   
+                $config['upload_path'] = 'assets/companyImages/logo/';
+                $config['allowed_types'] = 'jpg|jpeg|png|gif';
+                $config['file_name'] = $_FILES['file']['name'];
+                
+                //Load upload library and initialize configuration
+                $this->load->library('upload',$config);
+                $this->upload->initialize($config);
+                
+                    if($this->upload->do_upload('file'))
+                    {
+                        $uploadData = $this->upload->data();
+                        $picture =$uploadData['file_name'];
+                    }
+                    else
+                    {
+                        $picture = '';
+                    }
+            }
+                else    
+                {
+                 $picture = $bydefaultimage;
+				}
+		        if(empty($uploadData)||!empty($uploadData))
+		         {
+		         	// $company=$this->input->post('company');
+					$data=array('company_name'=>$this->input->post('company'),
+					'comp_desc'=>$this->input->post('desc'),
+					'comp_address'=>$this->input->post('address'),
+					'website_url'=>$this->input->post('url'),
+					'company_email'=>$this->input->post('email'),
+					'company_reg_no'=>$this->input->post('regist'),
+					'company_pwd'=>$this->input->post('pass'),
+					'company_logo'=>$picture);
+					
+					$results=$this->Admin_Com->updateCompany($data,$company_id);
+					if($results==1)
+					{
+					die(json_encode(array('status'=>1,'data'=>$results)));
+					}
+					else
+					{
+					die(json_encode(array('status'=>2,'data'=>$results)));
+					}
+				}
+				else
+				{
+					die(json_encode(array('status'=>0,'data'=>'Server error')));
+				}	
+	 }
+	
 
 }

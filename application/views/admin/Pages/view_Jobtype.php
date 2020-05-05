@@ -58,7 +58,7 @@
                     <tr>
                       <th scope="row"><?=$i?></th>
                       <td><?=$jobtype->type_name?></td>
-                      <td><a href="">Edit</a>
+                      <td>
                        <a href="javascript:void(0)" type_id="<?=$jobtype->type_id?>" class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Delete</a></td>
                     </tr>
                     <?php
