@@ -46,7 +46,41 @@
                                   <h5 class="mt-2">Registration No</h5>
                                   <fieldset class="form-group">
                                       <!-- <p class="text-muted">Textarea description text.</p> -->
-                                      <input type="text" class="form-control" required  name="regist">                         
+                                      <input type="text" class="form-control" required  name="regist">                 
+                                  </fieldset>
+                                   <h5 class="mt-2">Certificate of Incorporation</h5>
+                                  <fieldset class="form-group">
+                                      <p class="text-danger">Certificate of Incorporation **</p> 
+                                      <input type="file"  required  name="Incorpfile">
+                                  </fieldset>
+                                  <h5 class="mt-2">Articles of Association(AOA)</h5>
+                                  <fieldset class="form-group">
+                                      <p class="text-danger">(AOA)**</p> 
+                                      <input type="file"  required  name="aoa">
+                                  </fieldset>
+                                   <h5 class="mt-2">Memorandum of Association(MOA)</h5>
+                                  <fieldset class="form-group">
+                                      <p class="text-danger">(MOA)**</p> 
+                                      <input type="file"  required  name="moa">
+                                  </fieldset>
+                                  <h5 class="mt-2">Certificate of GST</h5>
+                                  <fieldset class="form-group">
+                                      <p class="text-danger">(Gst)</p> 
+                                      <input type="file"    name="gst">
+                                  </fieldset>
+                                   <h5 class="mt-2">Plans</h5>
+                                  <fieldset class="form-group">
+                                      <!-- <p class="text-muted">Textarea description text.</p> -->
+                                      <select class="form-control" name="Company_plans">
+                                        <option>Select Option</option>
+                                        <?php
+                                        foreach($getCompanyType as $CompanyType)
+                                          {
+                                            ?>
+                                            <option value="<?=$CompanyType->c_type_id?>"><?=$CompanyType->c_type_name?></option>
+                                        <?php
+                                        }?>
+                                      </select>
                                   </fieldset>
                                    <h5 class="mt-2">Logo</h5>
                                   <fieldset class="form-group">

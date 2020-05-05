@@ -42,6 +42,14 @@ class Admin_Company_Model extends CI_Model
 		 return $this->db->get('company_')->result();
 
 	}
+	public function getCompanytype()
+	{
+		return $this->db->get('company_type')->result();
+	}
+	// public function getCompanyTypeDetails()
+	// {
+	// 	return $this->db->get('company_type')->result();
+	// }
 	public function updateCompany($data,$company_id)
 	{
 		
@@ -58,5 +66,26 @@ class Admin_Company_Model extends CI_Model
 	 
 		
 	}
+	public function addCompanyType($data)
+	{
+		 $dat=array("c_type_name"=>$data);
+        $this->db->where($data);
+	   if(count($this->db->get('company_type')->result())==0)
+	   {   		
+			$results=$this->db->insert('company_type',$data);
+			if($results)
+			{
+				return 1;
+			}
+			else
+			{
+				return 0;
+			}
+	 	}
+		else
+		{
+			return 2;
+	    }
+	 }
 
 } ?>

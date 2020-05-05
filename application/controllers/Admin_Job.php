@@ -307,8 +307,85 @@ class Admin_Job extends CI_Controller
 			die(json_encode(array('status'=>2,'data'=>$results)));
 			}
 	}
+    public function shareMultipleMails()
+	{
+		$this->load->library('email');
+		$config['protocol'] = "smtp";
+		$config['smtp_host'] = "ssl://smtp.googlemail.com";
+		$config['smtp_port'] = "465";
+		$config['smtp_user'] = "pandeygreen5@gmail.com";
+		$config['smtp_pass'] = "qweasd@123";
+		$config['mailtype'] = "html";
+		$from_email = $this->input->post('from_email');
+		$to_email = $this->input->post('to_email');
+		$to_mail = explode(',', $to_email);
+		$mail_count= count($to_mail);
+			for($i=0;$i<$mail_count;$i++)
+			{
+				$mail_id = TRIM($to_mail[$i]);
+				$ci = & get_instance();
+				$subject_ = $this->input->post('subject');
+				$message = $this->input->post('msg');
+				$ci->load->library('email', $config);
+				$ci->email->set_newline("\r\n");
+				$ci->email->from( $from_email);
+				$ci->email->to($mail_id);
+				$ci->email->subject($subject_); 
+				$ci->email->message($message);
+				$ci->email->send();
+			}
+			if( $ci->email->send())
+			{ 
+			die(json_encode(array('status'=>1,'data'=>'send to all')));
+			}
+			else 
+			{
+			die(json_encode(array('status'=>0,'data'=>'failed')));
 
-	 
-
-
+			}
+	}
+		    
 }
+
+//      public function test()
+//  {
+// 	$this->load->library('email');
+//     $config['protocol'] = "smtp";
+//     $config['smtp_host'] = "ssl://smtp.googlemail.com";
+//     $config['smtp_port'] = "465";
+//     $config['smtp_user'] = "pandeygreen5@gmail.com";
+//     $config['smtp_pass'] = "qweasd@123";
+//     $config['mailtype'] = "html";
+    
+//     // $message = " Your Application is Approved By the Admin Now You can login To your Clinic . '<br>'
+//     // Mera Doctor";
+//      $from_email = $this->input->post('from_email');
+//          $to_email = $this->input->post('to_email');
+//          $to_mail = explode(',', $to_email);
+//     $mail_count= count($to_mail);
+//          for($i=0;$i<$mail_count;$i++)
+//          {
+//              $mail_id = TRIM($to_mail[$i]);
+//           	$ci = & get_instance();
+//            $subject_ = $this->input->post('subject');
+//           	$message = $this->input->post('msg');
+//             $ci->load->library('email', $config);
+//             $ci->email->set_newline("\r\n");
+//             $ci->email->from( $from_email);
+//             $ci->email->to($mail_id);
+//             $ci->email->subject($subject_); 
+//             $ci->email->message($message);
+//             $ci->email->send();
+//  		}
+//  		if( $ci->email->send())
+// 			{ 
+// 		       die(json_encode(array('status'=>1,'data'=>'send to all')));
+// 		   }
+// 		   else 
+// 		   {
+// 		       die(json_encode(array('status'=>0,'data'=>'failed')));
+
+// 		   }
+// 		}
+
+ 

@@ -32,7 +32,7 @@ class Admin_Login extends CI_Controller
 		{
 		   
 		   $this->session->set_flashdata('msg','Invalid Email Or Password');
-			redirect('Login');
+			redirect('Admin_Login/index');
 		}
 	}
 	public function logOut(){
