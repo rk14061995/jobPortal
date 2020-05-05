@@ -138,6 +138,15 @@
             </ul>
           </li> 
            <li class=" nav-item "><a href="#" class="nav-link dropdown-toggle" >
+            <i class="ft-layout"></i><span class="menu-title" data-i18n="">Plan Type</span>
+            </a>
+            <ul>
+              
+              <li> <a class="dropdown-item" href="<?=base_url('Admin_Dashboard/addCompanyType')?>"><i class="fa fa-eye" aria-hidden="true"></i> <strong>Add</strong></a></li>
+              <li><a class="dropdown-item" href="<?=base_url('Admin_Dashboard/view_CompanyType')?>"><i class="fa fa-plus" aria-hidden="true"></i> <strong>View</strong></a></li>
+            </ul>
+          </li>
+           <li class=" nav-item "><a href="#" class="nav-link dropdown-toggle" >
             <i class="ft-layout"></i><span class="menu-title" data-i18n="">Company </span>
             </a>
             <ul>
@@ -182,6 +191,13 @@
               <li><a class="dropdown-item" href="<?=base_url('Admin_Dashboard/viewSeekerApps')?>"><i class="fa fa-plus" aria-hidden="true"></i> <strong>View</strong></a></li>
             </ul>
           </li>  
+          <li class=" nav-item "><a href="#" class="nav-link dropdown-toggle" >
+            <i class="ft-layout"></i><span class="menu-title" data-i18n="">Multiple email</span>
+            </a>
+            <ul>
+              <li><a class="dropdown-item" href="<?=base_url('Admin_Dashboard/addMultipleMails')?>"><i class="fa fa-plus" aria-hidden="true"></i> <strong>Send</strong></a></li>
+            </ul>
+          </li>
           <!-- <li class=" nav-item "><a href="#" class="nav-link dropdown-toggle" >
             <i class="ft-layout"></i><span class="menu-title" data-i18n="">Job Application</span>
             </a>

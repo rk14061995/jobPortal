@@ -143,9 +143,10 @@ class Admin_Dashboard extends CI_Controller
 		 $this->load->view('admin/Layout/footer');
 	}
 	public function addCompany()
-	{ 		 
+	{ 	
+		$data['getCompanyType']=$this->Admin_Com->getCompanytype();		 
 		 $this->load->view('admin/Layout/header');
-		 $this->load->view('admin/Pages/add_Company');
+		 $this->load->view('admin/Pages/add_Company',$data);
 		 $this->load->view('admin/Layout/footer');
 	}
 	public function viewCompany()
@@ -171,7 +172,24 @@ class Admin_Dashboard extends CI_Controller
 		 $this->load->view('admin/Pages/add_CompanyMessage',$data);
 		 $this->load->view('admin/Layout/footer');
 	}
-
-
-
+	public function addMultipleMails()
+	{ 		 
+		 $this->load->view('admin/Layout/header');
+		 $this->load->view('admin/Pages/add_multiplemails');
+		 $this->load->view('admin/Layout/footer');
+	}
+	public function addCompanyType()
+	{ 
+		 // $data['getCompanyType']=$this->Admin_Com->getCompanyType();		 
+		 $this->load->view('admin/Layout/header');
+		 $this->load->view('admin/Pages/add_companyType');
+		 $this->load->view('admin/Layout/footer');
+	}
+	public function view_CompanyType()
+	{ 		
+      	 $data['getCompanyType']=$this->Admin_Com->getCompanytype();
+		 $this->load->view('admin/Layout/header');
+		 $this->load->view('admin/Pages/view_CompanyType',$data);
+		 $this->load->view('admin/Layout/footer');
+	}
 }
