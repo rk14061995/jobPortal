@@ -98,10 +98,11 @@ class Admin_Job_Model extends CI_Model
 	}
 	public function addResumeOnSelect($data)
 	{
-   		 $this->db->where($data);
+   		$this->db->where($data);
 		$results=$this->db->insert('resume_upload',$data);
 		if($results)
 		{
+			print_r($data);
 			return 1;
 		}
 		else

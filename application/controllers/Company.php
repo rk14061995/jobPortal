@@ -85,6 +85,43 @@
 			$this->load->view('company/pages/postJobs',$data);
 			$this->load->view('company/layout/footer');
 		}
+		public function resumeFilter(){
+
+			$this->load->view('company/layout/header');
+			$this->load->view('company/pages/filter');
+			$this->load->view('company/layout/footer');
+		}
+		public function filterLogic(){
+			// print_r($_POST);
+    		$key=$this->input->post('key');
+    		$skillName=$this->input->post('skillname');
+    		switch ($skillName) {
+    			case 1:$dd=$this->getUserGenderWise($key);break;
+    			case 2:$dd=$this->getUserNationalityWise($key);break;
+    			case 3:$dd=$this->getUserSkillWise();break;
+    			case 4:$dd=$this->getUserJobWise();break;
+    			case 5:$dd=$this->getUserAgeWise();break;
+    			default:$dd=array();break;
+    		}
+    		die(json_encode(array("code"=>1,"data"=>$dd)));
+		}
+		public function getUserGenderWise($key){
+			$result=$this->db->like('gender_', $key, 'after')->get('user_')->result();
+			return $result;
+		}
+		public function getUserNationalityWise($key){
+			$result=$this->db->like('nationality_', $key, 'after')->get('user_')->result();
+			return $result;
+		}
+		public function getUserSkillWise(){
+			return "Skill";
+		}
+		public function getUserJobWise(){
+			return "job";
+		}
+		public function getUserAgeWise(){
+			
+		}
 		public function jobSeekeers(){
 			// $data['jobSeekers']=$this->db->order_by('rand()')->get('user_')->result();
 			$rest=$this->db->order_by('rand()')->get('user_')->result();

@@ -323,7 +323,7 @@
 				<hr>
 			</div>
 			<div class="col-md-6 text-right">
-				<spann class="text-primary">Add Skill</spann>
+				<span class="text-primary pointer" id="eduASA" >Add Skill</span>
 			</div>
 		</div>
 
