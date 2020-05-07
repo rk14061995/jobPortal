@@ -24,9 +24,9 @@ class Admin_Dashboard extends CI_Controller
 	}
 	public function addJobSeekerView()
 	{ 		
-        
+       
 		 $this->load->view('admin/Layout/header');
-		 $this->load->view('admin/Pages/add_JobSeeker');
+		 $this->load->view('admin/Pages/add_JobSeeker',$data);
 		 $this->load->view('admin/Layout/footer');
 	}
 	public function viewJobSeeker()
@@ -104,6 +104,10 @@ class Admin_Dashboard extends CI_Controller
       	$data['getCompany']=$this->Admin_J->getJobCompany();
       	$data['getCategory']=$this->Admin_J->getJobCategory();
       	$data['getJobtype']=$this->Admin_J->getJobtype();
+        $data['Skills']=$this->db->get('skills_')->result();
+		$data['currency']=$this->db->get('currency_type')->result();
+		$data['min_salary']=$this->db->get('min_salary')->result();
+		$data['max_salary']=$this->db->get('max_salary')->result();
 		 $this->load->view('admin/Layout/header');
 		 $this->load->view('admin/Pages/add_Job',$data);
 		 $this->load->view('admin/Layout/footer');
@@ -182,14 +186,14 @@ class Admin_Dashboard extends CI_Controller
 	{ 
 		 // $data['getCompanyType']=$this->Admin_Com->getCompanyType();		 
 		 $this->load->view('admin/Layout/header');
-		 $this->load->view('admin/Pages/add_companyType');
+		 $this->load->view('admin/Pages/add_PlanType');
 		 $this->load->view('admin/Layout/footer');
 	}
 	public function view_CompanyType()
 	{ 		
       	 $data['getCompanyType']=$this->Admin_Com->getCompanytype();
 		 $this->load->view('admin/Layout/header');
-		 $this->load->view('admin/Pages/view_CompanyType',$data);
+		 $this->load->view('admin/Pages/view_PlanType',$data);
 		 $this->load->view('admin/Layout/footer');
 	}
 }

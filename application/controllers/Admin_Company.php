@@ -190,33 +190,123 @@ class Admin_Company extends CI_Controller
 	}
 	public function AddUserMessage()
 	{
-		$data=array('u_msg'=>$this->input->post('editor1'),
-					'send_user'=>$this->input->post('userby'),
-					'recieve_company'=>$this->input->post('compto'));
-		$results=$this->Admin_User->AddUserMessage($data);
+		$send_user_from_id=$this->input->post('from_email_id');
+		$recieve_company_to_id=$this->input->post('to_email_id');
+		$from_email=$this->userEmailDetails($send_user_from_id);
+		$to_email=$this->CompanyEmailDetails($recieve_company_to_id);
+		$messageee=$this->input->post('editor1');
+		$subject=$this->input->post('subject');
+		$data=array('u_msg'=>$messageee,
+					'subject'=>$subject,
+					'send_user'=>$send_user_from_id,
+					'send_user_email'=>$from_email,
+					'recieve_company'=>$recieve_company_to_id,
+					'receive_company_email'=>$to_email,);
+			$results=$this->Admin_User->AddUserMessage($data);
+			if($results==1)
+			{
+				$this->load->library('email');
+                $config['protocol'] = "smtp";
+                $config['smtp_host'] = "ssl://smtp.googlemail.com";
+                $config['smtp_port'] = "465";
+                $config['smtp_user'] = "pandeygreen5@gmail.com";
+                $config['smtp_pass'] = "qweasd@123";
+                
+                $message =$messageee;
+                
+                $config['mailtype'] = "html";
+                $ci = & get_instance();
+                $ci->load->library('email', $config);
+                $ci->email->set_newline("\r\n");
+                $ci->email->from($from_email);
+                $ci->email->to($to_email);
+                $ci->email->subject($subject);
+                $ci->email->message($message);
+                if ($ci->email->send()) 
+                {
+                die(json_encode(array('status'=>'1','data'=>$results)));
+                } 
+                else {
+                die(json_encode(show_error($this->email->print_debugger())));
+                }
+				
+			}
+			else
+			{
+				die(json_encode(array('status'=>2,'data'=>$results)));
+			}
+	}
+	public function userEmailDetails($send_user_from_id)
+	{
+		$this->db->where('user_id',$send_user_from_id);
+		$useremail= $this->db->get('user_')->result();
+		return $useremail[0]->email;
+	}
+	public function CompanyEmailDetails($recieve_company_to_id)
+	{
+		$this->db->where('company_id',$recieve_company_to_id);
+		$companyemail=$this->db->get('company_')->result();
+		return $companyemail[0]->company_email;
+	}
+	public function AddCompanyMessage()
+	{
+		$send_company_from_id=$this->input->post('from_email_id');
+		$recieve_user_to_id=$this->input->post('to_email_id');
+		$from_email=$this->CompanyEmailDetails2($send_company_from_id);
+		$to_email=$this->userEmailDetails22($recieve_user_to_id);
+		$messageee=$this->input->post('editor1');
+		$subject=$this->input->post('subject');
+		$data=array('c_msg'=>$messageee,
+					'send_company'=>$send_company_from_id,
+					'send_company_email'=>$from_email,
+					'recieve_user'=>$recieve_user_to_id,
+					'receive_user_email'=>$to_email,
+					'c_subject'=>$subject);
+		$results=$this->Admin_User->AddCompanyMessage($data);
 		if($results==1)
-		{
-			die(json_encode(array('status'=>1,'data'=>$results)));
+		{	
+			$this->load->library('email');
+            $config['protocol'] = "smtp";
+            $config['smtp_host'] = "ssl://smtp.googlemail.com";
+            $config['smtp_port'] = "465";
+            $config['smtp_user'] = "pandeygreen5@gmail.com";
+            $config['smtp_pass'] = "qweasd@123";
+            
+            $message =$messageee;
+            
+            $config['mailtype'] = "html";
+            $ci = & get_instance();
+            $ci->load->library('email', $config);
+            $ci->email->set_newline("\r\n");
+            $ci->email->from($from_email);
+            $ci->email->to($to_email);
+            $ci->email->subject($subject);
+            $ci->email->message($message);
+            if ($ci->email->send()) 
+            {
+            die(json_encode(array('status'=>'1','data'=>$results)));
+            } 
+            else {
+            die(json_encode(show_error($this->email->print_debugger())));
+            }
+			// die(json_encode(array('status'=>1,'data'=>$results)));
 		}
 		else
 		{
 			die(json_encode(array('status'=>2,'data'=>$results)));
 		}
 	}
-	public function AddCompanyMessage()
+	public function userEmailDetails22($recieve_user_to_id)
 	{
-		$data=array('c_msg'=>$this->input->post('editor1'),
-					'send_company'=>$this->input->post('compby'),
-					'recieve_user'=>$this->input->post('userto'));
-		$results=$this->Admin_User->AddCompanyMessage($data);
-		if($results==1)
-		{
-			die(json_encode(array('status'=>1,'data'=>$results)));
-		}
-		else
-		{
-			die(json_encode(array('status'=>2,'data'=>$results)));
-		}
+		$this->db->where('user_id',$recieve_user_to_id);
+		$useremail= $this->db->get('user_')->result();
+		return $useremail[0]->email;
+	}
+	public function CompanyEmailDetails2($send_company_from_id)
+	{
+		$this->db->where('company_id',$send_company_from_id);
+		$companyemail=$this->db->get('company_')->result();
+		return $companyemail[0]->company_email;
 	}
 	public function ActivateCompany()
 	{
@@ -485,6 +575,20 @@ class Admin_Company extends CI_Controller
 			{
 			die(json_encode(array('status'=>2,'data'=>$results)));
 			}
+	}
+	public function DeletePlanType()
+	{
+		$data=array('c_type_id'=>$this->input->post('c_type_id'));
+			$this->db->where($data);
+		 $results=$this->db->delete('plan_type');
+		 if( $results)
+		 {
+		 	die(json_encode(array('status'=>1,'data'=>$results)));
+		 }
+		 else
+		 {
+		 	die(json_encode(array('status'=>0,'data'=>$results)));
+		 }
 	}
 	
 

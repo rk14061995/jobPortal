@@ -44,7 +44,7 @@ class Admin_Company_Model extends CI_Model
 	}
 	public function getCompanytype()
 	{
-		return $this->db->get('company_type')->result();
+		return $this->db->get('plan_type')->result();
 	}
 	// public function getCompanyTypeDetails()
 	// {
@@ -70,9 +70,9 @@ class Admin_Company_Model extends CI_Model
 	{
 		 $dat=array("c_type_name"=>$data);
         $this->db->where($data);
-	   if(count($this->db->get('company_type')->result())==0)
+	   if(count($this->db->get('plan_type')->result())==0)
 	   {   		
-			$results=$this->db->insert('company_type',$data);
+			$results=$this->db->insert('plan_type',$data);
 			if($results)
 			{
 				return 1;

@@ -23,6 +23,7 @@
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>theme-assets/css/core/menu/menu-types/vertical-menu.css">
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>theme-assets/css/core/colors/palette-gradient.css">
     <link rel="stylesheet" type="text/css" href="<?=base_url()?>theme-assets/css/pages/dashboard-ecommerce.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- END Page Level CSS-->
     <!-- BEGIN Custom CSS-->
     <!-- END Custom CSS-->

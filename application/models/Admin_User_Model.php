@@ -2,6 +2,7 @@
 
 class Admin_User_Model extends CI_Model
 {
+
 	public function AddUserMessage($data)
 	{
 		  		

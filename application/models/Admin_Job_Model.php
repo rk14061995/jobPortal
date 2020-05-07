@@ -155,4 +155,73 @@ public function updateJob($data, $job_id)
 	 
 		
 	}
+	public function addCurrencyType($data)
+	{
+		 $dat=array("currency_name"=>$data);
+        $this->db->where($data);
+	   if(count($this->db->get('currency_type')->result())==0)
+	   {   		
+			$results=$this->db->insert('currency_type',$data);
+			if($results)
+			{
+				return 1;
+			}
+			else
+			{
+				return 0;
+			}
+	 	}
+		else
+		{
+			return 2;
+	    }
+		
+		
+	}
+	public function addMinSalary($data)
+	{
+		 $dat=array("min_salary"=>$data);
+        $this->db->where($data);
+	   if(count($this->db->get('min_salary')->result())==0)
+	   {   		
+			$results=$this->db->insert('min_salary',$data);
+			if($results)
+			{
+				return 1;
+			}
+			else
+			{
+				return 0;
+			}
+	 	}
+		else
+		{
+			return 2;
+	    }
+		
+		
+	}
+	public function addMaxSalary($data)
+	{
+		 $dat=array("max_sal"=>$data);
+        $this->db->where($data);
+	   if(count($this->db->get('max_salary')->result())==0)
+	   {   		
+			$results=$this->db->insert('max_salary',$data);
+			if($results)
+			{
+				return 1;
+			}
+			else
+			{
+				return 0;
+			}
+	 	}
+		else
+		{
+			return 2;
+	    }
+		
+		
+	}
 }

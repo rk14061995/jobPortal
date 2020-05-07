@@ -15,42 +15,50 @@
                           <div class="card-block">
                               <div class="card-body">
                                 <form id="insert">
-                                  <h5 class="mt-2">Message</h5>
-                                  <fieldset class="form-group">
-                                      <!-- <p class="text-muted">Textarea description text.</p> -->
-                                     <textarea class="form-group" name="editor1"></textarea>
-                                      <script>
-                                              CKEDITOR.replace( 'editor1' );
-                                      </script>
-                                  </fieldset>
-                                   <h5 class="mt-2">Company To</h5>
-                                   <fieldset class="form-group">
-                                      <!-- <p class="text-muted">Textarea description text.</p> -->
-                                      <select class="form-control" name="compto">
-                                        <option>Select Option</option>
-                                        <?php
-                                        foreach($getCompanyDetails as $CompanyDetails)
-                                          {
-                                            ?>
-                                            <option value="<?=$CompanyDetails->company_id?>"><?=$CompanyDetails->company_name?></option>
-                                        <?php
-                                        }?>
-                                      </select>
-                                  </fieldset>
                                   <h5 class="mt-2">User By</h5>
                                   <fieldset class="form-group">
                                       <!-- <p class="text-muted">Textarea description text.</p> -->
-                                      <select class="form-control" name="userby">
+                                      <select class="form-control" name="from_email_id">
                                         <option>Select Option</option>
                                         <?php
                                         foreach($getUserdetails as $Userdetails)
                                           {
                                             ?>
-                                            <option value="<?=$Userdetails->user_id?>"><?=$Userdetails->fullname?></option>
+                                            <option value="<?=$Userdetails->user_id?>"><?=$Userdetails->email?></option>
                                         <?php
                                         }?>
                                       </select>
                                   </fieldset>
+                                   <h5 class="mt-2">Company To</h5>
+                                   <fieldset class="form-group">
+                                      <!-- <p class="text-muted">Textarea description text.</p> -->
+                                      <select class="form-control" name="to_email_id">
+                                        <option>Select Option</option>
+                                        <?php
+                                        foreach($getCompanyDetails as $CompanyDetails)
+                                          {
+                                            ?>
+                                            <option value="<?=$CompanyDetails->company_id?>"><?=$CompanyDetails->company_email?></option>
+                                        <?php
+                                        }?>
+                                      </select>
+                                  </fieldset>
+                                 
+                                   <h5 class="mt-2">Subject</h5>
+                                    <fieldset class="form-group"> 
+                                      <!-- <p class="text-muted">Textarea description text.</p>  -->
+                                      <input type="text" class="form-control" name="subject" required>
+                                       </fieldset>
+                                  <h5 class="mt-2">Message</h5>
+                                  <fieldset class="form-group">
+                                      <!-- <p class="text-muted">Textarea description text.</p> -->
+                                     <textarea class="form-control" name="editor1"></textarea>
+                                      <script>
+                                              CKEDITOR.replace( 'editor1' );
+                                      </script>
+                                  </fieldset>
+                                  
+                                 
                                   <fieldset class="form-group">
                                       <button type="submit" class="btn btn-success btn-min-width mr-1 mb-1">Add</button>
                                   </fieldset>
@@ -135,7 +143,7 @@ $(document).on('submit','#insert',function(e){
                  {
                  swal("Message!", "Already Exist", "error")
                  }
-                 location.reload();
+                 // location.reload();
                 // $("#insert").load(location.href + " #insert");
             }
         

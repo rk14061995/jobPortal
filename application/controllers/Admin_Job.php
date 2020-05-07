@@ -8,13 +8,24 @@ class Admin_Job extends CI_Controller
 		$this->load->model('Admin_Job_Model','Admin_J');
 	}
 		    
-	public function addCategory()
+	public function addJobpostedddd()
 	{
+		$skill=implode(",",$this->input->post('skills'));
 		$data=array('job_category'=>$this->input->post('jcat'),
 					'job_type'=>$this->input->post('jtype'),
 					'added_by_company_id'=>$this->input->post('jcompany'),
 					'job_title'=>$this->input->post('jtitle'),
 					'job_desc'=>$this->input->post('jdesc'),
+					'skills'=>$skill,
+					'min_work_exp'=>$this->input->post('minimumwork'),
+					'max_work_exp'=>$this->input->post('maximumwork'),
+					'currency_type'=>$this->input->post('currencytype'),
+					'min_annual_sal'=>$this->input->post('minisalary'),
+					'max_annaul_sal'=>$this->input->post('maxxsalary'),
+					'job_location_'=>$this->input->post('joblocation'),
+					'ug_qualification'=>$this->input->post('ugqualification'),
+					'pg_qualification'=>$this->input->post('pgqualification'),
+					'phd_qualification'=>$this->input->post('doctorate_phd'),
 					'vacancies_'=>$this->input->post('jvacancies'),
 					'last_date'=>$this->input->post('jlastdate'),
 					'job_status'=>2);
@@ -279,7 +290,10 @@ class Admin_Job extends CI_Controller
 		$data['getCompany']=$this->Admin_J->getJobCompany();
       	$data['getCategory']=$this->Admin_J->getJobCategory();
       	$data['getJobtype']=$this->Admin_J->getJobtype();
-		$data['getJobdetails']=$this->Admin_J->getJobdetailsbyid($job_id);		 
+		$data['getJobdetails']=$this->Admin_J->getJobdetailsbyid($job_id);	
+		$data['currency']=$this->db->get('currency_type')->result();
+		$data['min_salary']=$this->db->get('min_salary')->result();
+		$data['max_salary']=$this->db->get('max_salary')->result();	 
 		 $this->load->view('admin/Layout/header');
 		 $this->load->view('admin/Pages/edit_Job',$data);
 		 $this->load->view('admin/Layout/footer');
@@ -293,6 +307,15 @@ class Admin_Job extends CI_Controller
 					'added_by_company_id'=>$this->input->post('added_by_company_id'),
 					'job_title'=>$this->input->post('job_title'),
 					'job_desc'=>$this->input->post('job_desc'),
+					'min_work_exp'=>$this->input->post('minimumwork'),
+					'max_work_exp'=>$this->input->post('maximumwork'),
+					'currency_type'=>$this->input->post('currencytype'),
+					'min_annual_sal'=>$this->input->post('minisalary'),
+					'max_annaul_sal'=>$this->input->post('maxxsalary'),
+					'job_location_'=>$this->input->post('joblocation'),
+					'ug_qualification'=>$this->input->post('ugqualification'),
+					'pg_qualification'=>$this->input->post('pgqualification'),
+					'phd_qualification'=>$this->input->post('doctorate_phd'),
 					'vacancies_'=>$this->input->post('vacancies_'),
 					'last_date'=>$this->input->post('last_date'),
 					'skills'=>$skill,
@@ -344,8 +367,51 @@ class Admin_Job extends CI_Controller
 
 			}
 	}
+	public function addNewCurrency()
+	{
+		$currency=$this->input->post('newcurrency');
+		$data=array('currency_name'=>$currency);
+			$results=$this->Admin_J->addCurrencyType($data);
+			if($results==1)
+			{
+			die(json_encode(array('status'=>1,'data'=>$results)));
+			}
+			else
+			{
+			die(json_encode(array('status'=>2,'data'=>$results)));
+			}
+	}
+	public function addMinSalary()
+	{
+		$minsalary=$this->input->post('minannualsalary');
+		$data=array('min_salary'=>$minsalary);
+			$results=$this->Admin_J->addMinSalary($data);
+			if($results==1)
+			{
+			die(json_encode(array('status'=>1,'data'=>$results)));
+			}
+			else
+			{
+			die(json_encode(array('status'=>2,'data'=>$results)));
+			}
+	}
+	public function addMaxSalalry()
+	{
+		$maxsalary=$this->input->post('maxannualsalary');
+		$data=array('max_sal'=>$maxsalary);
+			$results=$this->Admin_J->addMaxSalary($data);
+			if($results==1)
+			{
+			die(json_encode(array('status'=>1,'data'=>$results)));
+			}
+			else
+			{
+			die(json_encode(array('status'=>2,'data'=>$results)));
+			}
+	}
 		    
 }
+
 
 //      public function test()
 //  {

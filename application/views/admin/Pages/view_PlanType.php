@@ -59,7 +59,7 @@
                       <th scope="row"><?=$i?></th>
                       <td><?=$getCompanyType->c_type_name?></td>
                       <td>
-                       <a href="javascript:void(0)" type_id="<?=$getCompanyType->c_type_id?>" class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Delete</a></td>
+                       <a href="javascript:void(0)" c_type_id="<?=$getCompanyType->c_type_id?>" class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Delete</a></td>
                     </tr>
                     <?php
                     $i++;
@@ -79,16 +79,16 @@
 <script type="text/javascript">
         $(document).ready(function(){
           $('.delete').on('click',function(){ 
-             var type_id=$(this).attr("type_id");
+             var c_type_id=$(this).attr("c_type_id");
 
              // alert(owner_id);
            if(confirm("Are you Sure want to delete?") ==true)
             {       
             // alert(owner_id);         
                 $.ajax({
-                  url:"<?=base_url('Admin_Job/DeleteJobType')?>",
+                  url:"<?=base_url('Admin_Company/DeletePlanType')?>",
                   type:"post",
-                  data:{type_id:type_id},
+                  data:{c_type_id:c_type_id},
                   success:function(response)
                   {   
                   response=JSON.parse(response);             
