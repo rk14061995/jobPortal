@@ -2,6 +2,8 @@
 <?php 
 	$userDetail=$this->session->userdata('logged_user_emp');
 	$userDetail=unserialize($userDetail);
+	// print_r($myResume);
+	$resumePath=$myResume->resume_path;
 
 ?>
 <section class="container" style="margin-top: 130px">
@@ -21,12 +23,12 @@
 	<div class="row  p-3 border mt-3">
 		<div class="col-md-6">
 			<h4>Resume</h4>
-			<a href="" download>Uploaded Resume</a>
+			<a href="<?=base_url('assets/user_resume/').$resumePath?>" download>Uploaded Resume</a>
 		</div>
 		<div class="col-md-6 text-right">
-			<label for="resume" class="btn btn-default border px-3">Upload Resume</label>
-			<!-- <input type="file" class="d-none file" name="file" id="file" > -->
-		<input type="file" name="file" id="file"> 
+			<label for="resume" class="btn btn-default border px-3 upR">Upload Resume</label>
+			<input type="file" class="d-none file" name="file" id="file" >
+		<!-- <input type="file" name="file" id="file">  -->
 		</div>
 	</div>
 
@@ -382,11 +384,14 @@
 </section>
 <script>
 $(document).ready(function(){
+	$('.upR').click(function() {
+    $('#file').trigger('click');
+});
  $(document).on('change', '#file', function(){
   var name = document.getElementById("file").files[0].name;
   var form_data = new FormData();
   var ext = name.split('.').pop().toLowerCase();
-  if(jQuery.inArray(ext, ['gif','png','jpg','jpeg','doc','pdf']) == -1) 
+  if(jQuery.inArray(ext, ['gif','png','jpg','jpeg','docx','pdf','doc']) == -1) 
   {
    swal("Resume","Invalid Image File","error");
   }
@@ -408,19 +413,20 @@ $(document).ready(function(){
     contentType: false,
     cache: false,
     processData: false,
-    // beforeSend:function(){
-    //  $('#uploaded_image').html("<label class='text-success'>Image Uploading...</label>");
-    // },   
+      
     success:function(data)
     {
-		 var obj=JSON.parse(data);
+    	console.log(data);
+		var obj=JSON.parse(data);
           // console.log(obj.status);           
 		if (obj.status==1)
 		{
-		swal('Resume!','Upload','success');
+			swal('Resume!','Upload','success');
 
-		location.reload();
+			location.reload();
 
+		}else{
+			swal('Ooops..!',obj.data,'error');
 		}
     }
    });
