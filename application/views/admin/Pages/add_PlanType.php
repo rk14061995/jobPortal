@@ -92,15 +92,15 @@ $(document).on('submit','#insert',function(e){
                   console.log(obj.status);
                  if(obj.status==0)
                  {
-                    swal("Company Type!", "Try Again", "error")
+                    swal("Plan Type!", "Try Again", "error")
                  }
                  if(obj.status==1)
                  {
-                  swal("Company Type!", "Added", "success")
+                  swal("Plan Type!", "Added", "success")
                  }
                  if(obj.status==2)
                  {
-                 swal("Company Type!", "Already Exist", "error")
+                 swal("Plan Type!", "Already Exist", "error")
                  }
                 $("#insert").load(location.href + " #insert");
             }

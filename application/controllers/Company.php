@@ -52,6 +52,9 @@
 			$this->load->view('company/layout/footer');
 		}
 		public function jobDetails($id){
+			$data['currency']=$this->db->get('currency_type')->result();
+			$data['min_salary']=$this->db->get('min_salary')->result();
+			$data['max_salary']=$this->db->get('max_salary')->result();
 			$data['Categories']=$this->db->get('job_category')->result();
 			$data['Type']=$this->db->get('job_type')->result();
 			$data['Skills']=$this->db->get('skills_')->result();
@@ -81,6 +84,9 @@
 			$data['Categories']=$this->db->get('job_category')->result();
 			$data['Type']=$this->db->get('job_type')->result();
 			$data['Skills']=$this->db->get('skills_')->result();
+			$data['currency']=$this->db->order_by('curr_id','DESC')->get('currency_type')->result();
+			$data['min_salary']=$this->db->get('min_salary')->result();
+			$data['max_salary']=$this->db->get('max_salary')->result();
 			$this->load->view('company/layout/header');
 			$this->load->view('company/pages/postJobs',$data);
 			$this->load->view('company/layout/footer');

@@ -10,7 +10,7 @@
 			//  `jobs_added`(`job_id`, ``, ``, ``, ``, ``, ``, ``, ``, ``, `job_status`, ``, `adde_on`)
 			$compData=unserialize($this->session->userdata('logged_company'));
 			$company_id=$compData[0]->company_id;
-			$location="Dehradun";
+			// $location="Dehradun";
 			if(isset($_POST['skills'])){
 				$skills=implode(',', $_POST['skills']);
 			}else{
@@ -20,15 +20,25 @@
 								"added_by_company_id"=>$company_id,
 								"job_title"=>$this->input->post('job_title'),
 								"job_desc"=>$this->input->post('job_desc'),
-								"job_location_"=>$location,
+								// "job_location_"=>$location,
 								"exp"=>$this->input->post('exp'),
 								"job_type"=>$this->input->post('job_type'),
 								"job_category"=>$this->input->post('job_cat'),
 								"skills"=>$skills,
+								"min_work_exp"=>$this->input->post('minimumwork'),
+								"max_work_exp"=>$this->input->post('maximumwork'),
+								"currency_type"=>$this->input->post('currencytype'),
+								"min_annual_sal"=>$this->input->post('minisalary'),
+								"max_annaul_sal"=>$this->input->post('maxxsalary'),
+								"job_location_"=>$this->input->post('joblocation'),
+								"ug_qualification"=>$this->input->post('ugqualification'),
+								"pg_qualification"=>$this->input->post('pgqualification'),
+								"phd_qualification"=>$this->input->post('doctorate_phd'),
 								"vacancies_"=>$this->input->post('vacancy'),
 								"last_date"=>$this->input->post('last_Date'),
 							);
-			// print_r($jobDetails);
+			 // print_r($jobDetails);
+			 // die;
 			die(json_encode(array("code"=>$this->addNewJob($jobDetails))));
 		}
 		public function addNewJob($data){
@@ -82,11 +92,20 @@
 								
 								"job_title"=>$this->input->post('job_title'),
 								"job_desc"=>$this->input->post('job_desc'),
-								"job_location_"=>$location,
+								// "job_location_"=>$location,
 								"exp"=>$this->input->post('exp'),
 								"job_type"=>$this->input->post('job_type'),
 								"job_category"=>$this->input->post('job_cat'),
 								"skills"=>$skills,
+								"min_work_exp"=>$this->input->post('minimumwork'),
+								"max_work_exp"=>$this->input->post('maximumwork'),
+								"currency_type"=>$this->input->post('currencytype'),
+								"min_annual_sal"=>$this->input->post('minisalary'),
+								"max_annaul_sal"=>$this->input->post('maxxsalary'),
+								"job_location_"=>$this->input->post('joblocation'),
+								"ug_qualification"=>$this->input->post('ugqualification'),
+								"pg_qualification"=>$this->input->post('pgqualification'),
+								"phd_qualification"=>$this->input->post('doctorate_phd'),
 								"vacancies_"=>$this->input->post('vacancy'),
 								"last_date"=>$this->input->post('last_Date'),
 							);

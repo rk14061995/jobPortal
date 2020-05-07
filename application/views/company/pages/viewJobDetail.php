@@ -17,14 +17,14 @@
               </div>
               <form class="user" id="postNewJob">
                 <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">
+                  <div class="col-sm-12 mb-3 mb-sm-0">
                     <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Job Title" name="job_title" value="<?=$jobDetail[0]->job_title?>">
                     <input type="hidden" name="job_id" value="<?=$jobDetail[0]->job_id?>">
                   </div>
-                  <div class="col-sm-6 mb-3 mb-sm-0">
+                 <!--  <div class="col-sm-6 mb-3 mb-sm-0">
                     <select class="form-control " name="exp">
-                      <!-- <option>Experience</option> -->
-                      <?php for($i=1; $i<=20;$i++): ?>
+                      <option>Experience</option> -->
+                     <!--  <?php for($i=1; $i<=20;$i++): ?>
                         <option value="<?=$i?>"><?=$i?></option>
                         <?php
                           if($i==$jobDetail[0]->exp){
@@ -36,7 +36,7 @@
                         ?>
                       <?php endfor;?>
                     </select>
-                  </div>
+                  </div>  -->
                   
                 </div>
                 <div class="form-group row">
@@ -105,7 +105,7 @@
                   </div>
                   <div class="col-md-3">
                     <label>Last Date</label>
-                    <input type="date" name="last_Date" class="form-control " value="<?=date('d-m-Y',strtotime($jobDetail[0]->last_date))?>">
+                    <input type="text" name="last_Date" class="form-control " value="<?=date('d-m-Y',strtotime($jobDetail[0]->last_date))?>">
                   </div>
                 </div>
                 <div class="form-group row">
@@ -137,6 +137,134 @@
                   <?php endforeach;?>
                   
                 </div>
+                 <div class="form-group row">
+                   <div class="col-md-12"> 
+                   <label>Work Experience</label>
+                     <div class="row">
+                            <div class="col-md-3">
+                            <select class="form-control"  required name="minimumwork">
+                              <option selected>Minimum</option>
+                              <?php for($min=0; $min<=30; $min++) :?>
+                                <?php if($jobDetail[0]->min_work_exp==$min){?>
+                                  <option  value="<?=$min?>" selected><?=$min?></option>
+                                <?php } else {?>
+                                  <option  value="<?=$min?>" ><?=$min?></option>
+                                <?php }?>
+                              <?php  endfor;?>
+                            </select>
+                          </div>
+                             <h6 class="mt-2">to</h6>
+                              <div class="col-md-3">
+                                <select class="form-control" required name="maximumwork">                                                    
+                                <option selected>Maximum</option>
+                                <?php for($max=1; $max<=30; $max++) :?>
+                                <?php if($jobDetail[0]->max_work_exp==$max){?>
+                                <option  value="<?=$max?>" selected><?=$max?></option>
+                                <?php } else {?>
+                                <option  value="<?=$max?>" ><?=$max?></option>
+                                <?php }?>
+                                <?php  endfor;?>
+                               </select> 
+                            </div>   
+                      </div>    
+                  </div>
+                </div>
+                   <div class="form-group row">
+                    <label>Annual CTC</label>
+                     <div class="col-sm-12 mb-3 mb-sm-0">
+                        <div class="row">
+                           <div class="col-md-4" >
+                              <fieldset class="form-group" id="currencyrefresh">
+                                   <select class="form-control"   required name="currencytype">
+                                   <option selected>Currency</option> 
+                                    <?php
+                                      foreach($currency as $currencytype)
+                                      { 
+                                         if($jobDetail[0]->currency_type==$currencytype->curr_id)
+                                         {
+                                          echo' <option selected value="'.$currencytype->curr_id.'">'.$currencytype->currency_name.'</option>';
+                                         }
+                                         else
+                                         {
+                                         echo' <option  value="'.$currencytype->curr_id.'">'.$currencytype->currency_name.'</option>';
+                                         }
+                                     
+                                     }
+                                     ?>
+                                     </select>
+                                          
+                               </fieldset>
+                            </div>
+                               <div class="col-md-4" >
+                                  <fieldset class="form-group" id="minsalaryrefresh">         
+                                    <select class="form-control"   required name="minisalary">
+                                     <option selected>Min Annual Salary</option> 
+                                      <?php
+                                        foreach($min_salary as $min_sal)
+                                        { 
+                                          if($jobDetail[0]->min_annual_sal==$min_sal->min_sal_id)
+                                          {
+                                            echo' <option selected value="'.$min_sal->min_sal_id.'">'.$min_sal->min_salary.'</option>';
+                                          }
+                                          else
+                                          {
+                                             echo' <option  value="'.$min_sal->min_sal_id.'">'.$min_sal->min_salary.'</option>';
+                                          }
+                                       }?>
+                                       </select>
+                                      </fieldset>
+                                </div>
+                                <div class="col-md-4 ">
+                                   <fieldset class="form-group"  id="maxsalaryrefresh"> 
+                                   <select class="form-control"   required name="maxxsalary">
+                                     <option selected>Max Annual Salary</option> 
+                                      <?php
+                                        foreach($max_salary as $max_sal)
+                                        { 
+                                          if($jobDetail[0]->max_annaul_sal== $max_sal->max_sal_id)
+                                          {
+                                            echo' <option selected value="'.$max_sal->max_sal_id.'">'.$max_sal->max_sal.'</option>';
+                                          }
+                                          else
+                                          {
+                                             echo' <option  value="'.$max_sal->max_sal_id.'">'.$max_sal->max_sal.'</option>';
+                                          }
+                                       
+                                       }?>
+                                       </select>
+                                     </fieldset>
+                                   </div>
+                             
+                         </div>
+                    </div> 
+                </div>
+                   <div class="form-group col-md-12 ">
+                         <label>Job Location</label>
+                          <fieldset class="form-group row">
+                          <input type="text" class="form-control" required value="<?=$jobDetail[0]->job_location_?>" name="joblocation">  
+                           </fieldset>
+                      </div>  
+                      <div class="form-group ">
+                            <label>Specify UG Qualifications</label>
+                           <fieldset class="form-group">
+                              <p class="text-danger">(Mandatory)**</p> 
+                                <input type="text" class="form-control" required value="<?=$jobDetail[0]->ug_qualification?>" name="ugqualification">                       
+                          </fieldset>
+                      </div>
+                      <div class="form-group ">
+                        <label>Specify PG Qualifications</label>
+                         <fieldset class="form-group">
+                           <p class="text-danger">(If Not Type None)**</p> 
+                           <input type="text" class="form-control" value="<?=$jobDetail[0]->pg_qualification?>"required  name="pgqualification">                        
+                      </fieldset>
+                      </div>
+                      <div class="form-group ">
+                        <label>Specify Doctorate/Ph.D</label>
+                        <fieldset class="form-group">
+                          <p class="text-danger">(If Not Type None)**</p> 
+                        <input type="text" class="form-control" value="<?=$jobDetail[0]->phd_qualification?>"required  name="doctorate_phd"> 
+                      </fieldset>
+                      </div>
                 <input type="submit" name="" value="Update Job" class="btn btn-primary btn-user btn-block">
        
               

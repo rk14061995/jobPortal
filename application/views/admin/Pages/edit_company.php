@@ -66,7 +66,7 @@
                                       {
                                         ?>
 
-                                          <a href="<?php echo base_url().'assets/company_assets/company_Incorporation/'.$Companytdetails->comp_incorporation?>" style="margin-right:70px"class="btn-info ">View Previous</a> 
+                                          <a href="<?php echo base_url().'assets/company_assets/company_Incorporation/'.$myImages[$i]?>"  style="margin-right:70px"class="btn-info ">View Previous</a> 
                                               <a href="javascript:void(0)" incorp_id="<?=$i?>"incorporation_String="<?=$Companytdetails->comp_incorporation?>" class="btn-danger deleteincorporation ">Remove</a>
 
                                         <!--  <embed type="application/pdf/msword" type="application/msword" src="<?php echo base_url().'assets/company_assets/company_AOA/'.$Companytdetails->comp_aoa?>" width="100%" height="100"  background-color="0xFF525659" top-toolbar-height="56" full-frame="" internalinstanceid="21" title="CHROME">  -->
@@ -81,13 +81,15 @@
                                        $myImages=explode(',',$Companytdetails->comp_aoa);
                                       for($i=0; $i<count($myImages);$i++)
                                       {
+                                       
                                         ?>   
 
-                                         <a href="<?php echo base_url().'assets/company_assets/company_AOA/'.$Companytdetails->comp_aoa?>" target='_blank'style="margin-right:70px" class="btn-info ">View Previous</a>
+                                         <a href="<?php echo base_url().'assets/company_assets/company_AOA/'.$myImages[$i]?>"  style="margin-right:70px" class="btn-info ">View Previous</a>
                                           <a href="javascript:void(0)" aoa_id="<?=$i?>"
                                             aoa_String="<?=$Companytdetails->comp_aoa?>" class="btn-danger deleteaoa">Remove</a>
                                             <?php
-                                          }?>                                     
+                                         }  
+                                       ?>                                     
                                   </fieldset>
                                   <h5 class="mt-2">Memorandum of Association(MOA)</h5>
                                   <fieldset class="form-group">     
@@ -98,7 +100,7 @@
                                       for($i=0; $i<count($myImages);$i++)
                                       {
                                         ?>                              
-                                         <a href="<?php echo base_url().'assets/company_assets/company_MOA/'.$Companytdetails->comp_moa?>"style="margin-right:70px" target='_blank' class="btn-info ">View Previous</a>
+                                         <a href="<?php echo base_url().'assets/company_assets/company_MOA/'.$myImages[$i]?>"style="margin-right:70px" download  class="btn-info ">View Previous</a>
                                           <a href="javascript:void(0)" moa_id="<?=$i?>"  moa_String="<?=$Companytdetails->comp_moa?>" class="btn-danger deletemoa">Remove</a>
                                           <?php
                                         }?>                                     
@@ -111,7 +113,7 @@
                                       for($i=0; $i<count($myImages);$i++)
                                       {
                                         ?>                        
-                                         <a href="<?php echo base_url().'assets/company_assets/company_GST/'.$Companytdetails->comp_gst?>" style="margin-right:70px"target='_blank' class="btn-info ">View Previous</a>
+                                         <a href="<?php echo base_url().'assets/company_assets/company_GST/'.$myImages[$i]?>" style="margin-right:70px"download class="btn-info ">View Previous</a>
                                           <a href="javascript:void(0)" gst_id="<?=$i?>"  gst_String="<?=$Companytdetails->comp_gst?>" class="btn-danger deletegst">Remove</a>
                                           <?php
                                           }?>                                     

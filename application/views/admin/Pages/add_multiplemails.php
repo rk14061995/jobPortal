@@ -1,3 +1,46 @@
+<!-- <style>
+  .multipleInput-container {
+     border:1px #999 solid;
+     padding:1px;
+     padding-bottom:0;
+     cursor:text;
+     font-size:15px;
+     width:100%;
+  border-radius: 6px
+}
+ 
+.multipleInput-container input {
+    font-size:15px;
+    clear:both;
+    height:60px;
+    border:0;
+    margin-bottom:1px;
+}
+ 
+.multipleInput-container ul {
+    list-style-type:none;
+}
+ 
+li.multipleInput-email {
+    float:left;
+    padding:6px ;
+    color: #fff;
+  background: #FD9160;
+  margin-top: 0;
+  border-radius: 6px;
+  margin: 6px 2px 6px 6px;
+}
+ 
+.multipleInput-close {
+    width:16px;
+    height:16px;
+    display:block;
+    float:right;
+    margin: -2px 0px 0px 8px;
+  color: #fff;
+  font-size: 16px;
+}
+</style> -->
 <div class="app-content content">
       <div class="content-wrapper">
         <div class="content-wrapper-before"></div>
@@ -25,7 +68,8 @@
                                   <fieldset class="form-group">
                                       <!-- <p class="text-muted">Textarea description text.</p> -->
                                      <!-- <input id="to_email" type="text" name="to_email[]" placeholder="To Email Address"> -->
-                                     <input id="to_email" class="form-control"type="text" name="to_email" placeholder="To Email Address">
+                                   <!-- <input type="text" id="my_input"/> -->
+                                     <input id="to_email" class="form-control"type="text" name="to_email" placeholder="To Email Address"> 
 
 
                                   </fieldset>
@@ -95,6 +139,72 @@
         </div>
       </div>
     </div>
+    <script type="text/javascript">
+      (function( $ ){
+ 
+     $.fn.multipleInput = function() {
+ 
+          return this.each(function() {
+ 
+               // create html elements
+ 
+               // list of email addresses as unordered list
+               $list = $('<ul />');
+ 
+               // input
+               var $input = $('<input type="text" />').keyup(function(event) {
+ 
+                    if(event.which == 32 || event.which == 188) {
+                         // key press is space or comma
+                        var val = $(this).val().slice(0, -1); // remove space/comma from value
+ 
+                         // append to list of emails with remove button
+                         $list.append($('<li class="multipleInput-email"><span> ' + val + '</span></li>')
+                              .append($('<a href="#" class="multipleInput-close" title="Remove">x</a>')
+                                   .click(function(e) {
+                                        $(this).parent().remove();
+                                        e.preventDefault();
+                                   })
+                              )
+                         );
+                         $(this).attr('placeholder', '');
+                         // empty input
+                         $(this).val('');
+                    }
+ 
+               });
+ 
+               // container div
+               var $container = $('<div class="multipleInput-container" />').click(function() {
+                    $input.focus();
+               });
+ 
+               // insert elements into DOM
+               $container.append($list).append($input).insertAfter($(this));
+ 
+               // add onsubmit handler to parent form to copy emails into original input as csv before submitting
+               var $orig = $(this);
+               $(this).closest('form').submit(function(e) {
+ 
+                    var emails = new Array();
+                    $('.multipleInput-email span').each(function() {
+                         emails.push($(this).html());
+                    });
+                    emails.push($input.val());
+ 
+                    $orig.val(emails.join());
+ 
+               });
+ 
+               return $(this).hide();
+ 
+          });
+ 
+     };
+})( jQuery );
+
+$('#my_input').multipleInput();
+    </script>
    <script type="text/javascript"> 
 $(document).on('submit','#insert',function(e){
      e.preventDefault();

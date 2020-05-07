@@ -162,7 +162,7 @@
                                   </fieldset>
                                   <h5 class="mt-2">Annual CTC</h5>
                                    <div class="row">
-                                   <div class="col-md-4" >
+                                   <div class="col-md-2" >
                                       <fieldset class="form-group" id="currencyrefresh">
                                       
                                     <select class="form-control"   required name="currencytype">
@@ -186,7 +186,7 @@
                                                   
                                   </fieldset>
                                </div>
-                               <div class="col-md-4" >
+                               <div class="col-md-3" >
                                   <fieldset class="form-group" id="minsalaryrefresh">
                                       
                                     <select class="form-control"   required name="minisalary">
@@ -208,7 +208,7 @@
                                                  
                                   </fieldset>
                                 </div>
-                                    <div class="col-md-4 ">
+                                    <div class="col-md-3 ">
                                    <fieldset class="form-group"  id="maxsalaryrefresh"> 
                                     <select class="form-control"   required name="maxxsalary">
                                      <option selected>Max Annual Salary</option> 
@@ -221,7 +221,7 @@
                                           }
                                           else
                                           {
-                                             echo' <option selected value="'.$max_sal->max_sal_id.'">'.$max_sal->max_sal.'</option>';
+                                             echo' <option  value="'.$max_sal->max_sal_id.'">'.$max_sal->max_sal.'</option>';
                                           }
                                        
                                        }?>

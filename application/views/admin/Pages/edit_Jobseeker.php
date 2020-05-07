@@ -41,7 +41,7 @@ $skill=$getSeekerdetails[0]->skill_ids;
                                   $skillNeeded = explode(',',$getSeekerdetails[0]->skill_ids);
                                   ?>
                                   <?php foreach($Skills as $skill): ?>
-                                  <div class="col">
+                                  
                                   <?php
                                   if (in_array($skill->skill_id, $skillNeeded))
                                   {
@@ -57,7 +57,7 @@ $skill=$getSeekerdetails[0]->skill_ids;
                                   }
                                   ?>
 
-                                  </div>
+                                
                       
                                   <?php endforeach;?>                       
                                   </fieldset>

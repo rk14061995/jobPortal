@@ -47,7 +47,7 @@
                       <td><?=$job->category_name?></td>
                       
                       <td><?=$job->job_location_?></td>
-                      <td><?=$job->exp?> Years</td>
+                      <td><?=$job->min_work_exp.' to '.$job->max_work_exp?> Years</td>
                       <td><?=$job->job_status?></td>
                       <td><?=$job->type_name?></td>
                       <td><a href="<?=base_url('Company/jobDetails/').$job->job_id?>" class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i></a>

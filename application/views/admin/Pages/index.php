@@ -19,7 +19,7 @@
             <div class="card-content ecom-card2 height-180">
                 <h5 class="text-muted danger position-absolute p-1">Company</h5>
                 <div>
-                    <i class=" danger font-large-1 float-right p-1"></i>
+                    <i class=" danger font-large-1 float-right p-1">78</i>
                 </div>
                 <div class="progress-stats-container ct-golden-section height-75 position-relative pt-3  ">
                     <div id="progress-stats-bar-chart"></div>

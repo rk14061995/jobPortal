@@ -94,7 +94,7 @@
                   response=JSON.parse(response);             
                      if (response.status==1)
                       {
-                        swal('Company Type!','Deleted','error');
+                        swal('Plan Type!','Deleted','error');
                    
                           location.reload();
                     
