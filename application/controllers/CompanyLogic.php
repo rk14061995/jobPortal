@@ -163,6 +163,49 @@
 				return 0;
 			}
 		}
+		public function sendMessage(){
+			// print_r($_POST);
+			$compData=unserialize($this->session->userdata('logged_company'));
+			$company_id=$compData[0]->company_id;
+			$userData=$this->getUserDetails($this->input->post('recvid'));
+			$data=array(
+							'c_msg'=>$this->input->post('editor1'),
+							'c_subject'=>$this->input->post('sndsubject'),
+							'send_company'=>$company_id,
+							'send_company_email'=>$compData[0]->company_email,
+							'recieve_user'=>$this->input->post('recvid'),
+							'receive_user_email'=>$userData->email,
+						);
+			$status=$this->addMessage($data);
+			if($status==1){
+				die(json_encode(array("code"=>1,"msg"=>"Message Sent")));
+			}else if($status==2){
+				die(json_encode(array("code"=>2,"msg"=>"Aready Sent")));
+			}else{
+				die(json_encode(array("code"=>0,"msg"=>"Failed")));
+			}
+				
+			
+		}
+		public function scheduleInterview(){
+			print_r($_POST);
+			die();
+		}
+		public function getUserDetails($user_id){
+			return $this->db->where('user_id',$user_id)->get('user_')->row();
+		}
+		public function addMessage($data){
+			if(count($this->db->where($data)->get('company_msg')->result())==0)
+			{
+				if($this->db->insert('company_msg',$data)){
+					return 1;
+				}else{
+					return 0;
+				}
+			}else{
+				return 2;
+			}
+		}
 
 		
 	}

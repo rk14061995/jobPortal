@@ -211,7 +211,7 @@
 			// $jobseeker[]=array("jobseeker_detail"=>$value,"skills"=>$skills);
 			// print_r($skills);
 			
-			
+			$data['myResume']=$this->db->join('user_','user_.resume_id=resume_upload.resume_id')->where('user_.user_id',$jobApp[0]->applied_by)->get('resume_upload')->row();
 			$data['jobDetail']=array("data"=>$jobApp,'educ'=>$da,"user"=>$user,"skills"=>$skills);
 			// die(json_encode($dat/a['jobDetail']));
 			// $this->load->view('company/layout/header');
@@ -230,6 +230,7 @@
 			}
 			return $edu;
 		}
+		
 		
 	}
 ?>

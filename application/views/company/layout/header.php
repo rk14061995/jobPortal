@@ -31,6 +31,7 @@
   src="https://code.jquery.com/jquery-3.5.0.js"
   integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
   crossorigin="anonymous"></script>
+  <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
 </head>
 
 <body id="page-top">

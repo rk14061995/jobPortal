@@ -42,7 +42,7 @@
 		public function loginValidate(){
 		
 			$dat=array(
-							"company_email"=>$this->input->post('comp_email'),
+						"company_email"=>$this->input->post('comp_email'),
 							"company_pwd"=>$this->input->post('comp_pass'),
 						);
 			if(count($compData=$this->db->where($dat)->get('company_')->result())>0){
@@ -51,8 +51,9 @@
 				redirect('Company/dashboard');
 			}else{
 				$this->session->set_flashdata('msg','Invalid Email/Password');
-				redirect('Company');
+				redirect('CompLogin');
 			}
 		}
+		
 	}
 ?>
