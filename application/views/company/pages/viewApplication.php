@@ -179,15 +179,17 @@
         <h4 class="modal-title">Schedule interview</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-
+      <form id="sch_Interview">
       <!-- Modal body -->
       <div class="modal-body">
-        <form id="sch_Interview">
+        
           <div class="row">
             <div class="col-md-4">
               <label>Interview Date :</label>
             </div>
             <div class="col-md-8">
+              <input type="text" name="job_profile" id="job_profile"  class="form-control" >
+              <input type="text" name="appid" id="appid"  class="form-control" >
               <input type="date" name="interviewDate" id="interviewDate"  class="form-control" >
             </div>
           </div>
@@ -201,14 +203,15 @@
             </div>
           </div>
 
-        </form>
+        
       </div>
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-success btn-user btn-block text-white" data-dismiss="modal">Schedule</button>
+        <input type="submit" value="Schedule Interview" class="btn btn-success btn-user btn-block text-white">
+        
       </div>
-
+      </form>
     </div>
   </div>
 </div>
@@ -226,8 +229,10 @@
     $('.schd-int').on('click',function(){
       var recId=$(this).attr('d-id');
       var recName=$(this).attr('d-name');
-      // $('#recvid').val(recId);
-      // $('#recvname').val(recName);
+      var appid="<?=$jobDetail['data'][0]->job_application_id?>";
+      var jobprofile="<?=$jobDetail['data'][0]->job_title?>";
+      $('#appid').val(appid);
+      $('#job_profile').val(jobprofile);
       $('#scheduleInterview').modal('show');
     });
     $('#postNewJob').on('submit',function(e){
@@ -265,13 +270,14 @@
         processData:false,
         data:formData,
         success:function(response){
-          console.log(response);
-          // response=JSON.parse(response);
-          // if(response.code==1){
-          //   swal("Great..","Updated Successfully.","success");
-          // }else{
-          //   swal("Ooops..","Something went wrong","error");
-          // }
+          // console.log(response);
+          response=JSON.parse(response);
+          if(response.status==1){
+            swal("Great..",response.data,"success");
+          }else{
+            swal("Ooops..","Something went wrong","error");
+          }
+          $('#sch_Interview')[0].reset();
           // location.reload();
         }
       });

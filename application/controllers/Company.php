@@ -230,6 +230,14 @@
 			}
 			return $edu;
 		}
+		public function scheduledInterivews(){
+			$compData=unserialize($this->session->userdata('logged_company'));
+			$company_id=$compData[0]->company_id;
+			$data['interviews']=$this->db->join('job_application','job_application.job_application_id=scheduled_interiew.application_id')->join('user_','user_.user_id=job_application.applied_by')->where('scheduled_interiew.company_id',$company_id)->order_by('scheduled_interiew.sche_id','desc')->get('scheduled_interiew')->result();
+			$this->load->view('company/layout/header');
+			$this->load->view('company/pages/interviews',$data);
+			$this->load->view('company/layout/footer');
+		}
 		
 		
 	}
