@@ -212,6 +212,7 @@
 	$(document).ready(function(){
 		$('.serResume').click(function(){
 			// console.log("Button Pressed");
+			var base_url="<?=base_url('assets/user_resume/')?>";
 			var key=$('#key').val();
 			var skillname=$('#skillName').val();
 			var formData={
@@ -235,7 +236,7 @@
 		          		data_+='<td>'+response.data[i].fullname+'</td>';
 		          		data_+='<td>'+response.data[i].email+'</td>';
 		          		data_+='<td>'+response.data[i].phone_+'</td>';
-		          		data_+='<td><a href="javascript:void(0)">Download</a></td>';
+		          		data_+='<td><a href="'+base_url+response.data[i].resume_path+'" download>Download</a></td>';
 		          		data_+='</tr>';
 		          	}
 		          }

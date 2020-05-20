@@ -112,11 +112,11 @@
     		die(json_encode(array("code"=>1,"data"=>$dd)));
 		}
 		public function getUserGenderWise($key){
-			$result=$this->db->like('gender_', $key, 'after')->get('user_')->result();
+			$result=$this->db->join('resume_upload','resume_upload.resume_id=user_.resume_id')->like('gender_', $key, 'after')->get('user_')->result();
 			return $result;
 		}
 		public function getUserNationalityWise($key){
-			$result=$this->db->like('nationality_', $key, 'after')->get('user_')->result();
+			$result=$this->db->join('resume_upload','resume_upload.resume_id=user_.resume_id')->like('nationality_', $key, 'after')->get('user_')->result();
 			return $result;
 		}
 		public function getUserSkillWise(){
