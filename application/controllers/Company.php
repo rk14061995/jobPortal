@@ -238,7 +238,75 @@
 			$this->load->view('company/pages/interviews',$data);
 			$this->load->view('company/layout/footer');
 		}
-		
-		
+		public function filterResumes(){
+			// print_r($_POST);
+			// Array ( [resume_keyword] => Php [resumCre] => on [exp_year] => 2 [exp_month] => 1 [country] => India [state] => Uttarakhand [city] => Dehra Dun )
+			$resume_keyword=$this->input->post('resume_keyword');
+			$resumCre=$this->input->post('resumCre');
+			$exp_year=$this->input->post('exp_year');
+			$exp_month=$this->input->post('exp_month');
+			$country=$this->input->post('country');
+			$state=$this->input->post('state');
+			$city=$this->input->post('city');
+			if($resume_keyword!=""){
+				// echo 'Key Word is Not Null<br>';
+				if($country=="" and $state=="" and $city==""){
+					// echo 'State county state is Null<br>';
+					if($exp_year==0 && $exp_month==0){
+						// echo 'month and year is 0<br>';
+						$condition="SELECT * FROM user_ join user_work_summary on user_.user_id=user_work_summary.user_id join resume_upload on resume_upload.resume_id= user_.resume_id  WHERE user_work_summary.work_title like '%".$resume_keyword."%' GROUP BY user_.user_id";
+					}else{
+						// echo 'Non Zero --> Month and Year<br>';
+						$condition="SELECT * FROM user_ join user_work_summary on user_.user_id=user_work_summary.user_id join resume_upload on resume_upload.resume_id= user_.resume_id  WHERE user_work_summary.work_title like '%".$resume_keyword."%' and (user_work_summary.exp_year >= '$exp_year' or user_work_summary.exp_month >= '$exp_month') GROUP BY user_.user_id";
+					}
+					
+				}else{
+					// echo 'Non null state country city<br>';
+					$condition="SELECT * FROM user_ join user_work_summary on user_.user_id=user_work_summary.user_id join resume_upload on resume_upload.resume_id= user_.resume_id  WHERE user_work_summary.work_title like '%".$resume_keyword."%' or (user_work_summary.exp_year >= '$exp_year' or user_work_summary.exp_month >= '$exp_month') and (user_.address_ like '%".$country."%' or user_.address_ like '%".$state."%' or user_.address_ like '%".$city."%') GROUP BY user_.user_id";
+				}
+				
+			}else{
+				// echo 'Keyword is Null<br>';
+				$condition="SELECT * FROM user_ join user_work_summary on user_.user_id=user_work_summary.user_id join resume_upload on resume_upload.resume_id= user_.resume_id WHERE user_work_summary.work_title like '%".$resume_keyword."%' or user_work_summary.exp_year >= '$exp_year' or user_work_summary.exp_month >= '$exp_month' or user_.address_ like '%".$country."%' or user_.address_ like '%".$state."%' or user_.address_ like '%".$city."%' GROUP BY user_.user_id";
+
+			}
+			// echo $condition;
+			$resumes=$this->db->query($condition)->result();
+			// print_r($resumes);
+			$resumeArray=array();
+			foreach($resumes as $res){
+				// print_r($res);
+				$skillArr=explode(',',$res->skill_ids);
+				$skills=array();
+				foreach ($skillArr as $skiId) {
+					$skData=$this->getSkillDetial($skiId);
+					if($skData!=""){
+						$skills[]=$skData->skill_name;
+					}else{
+						$skills[]="";
+					}
+				}
+				$resumeArray[]=array("user_detail"=>$res,"user_skills"=>$skills,"user_work_detail"=>$this->getUserWorkExp($res->user_id));
+				// $this->getSkillDetial();
+			}
+			// die(json_encode($resumeArray));
+			// $data['resumes']=$resumes;
+			$data['resumes']=$resumeArray;
+			// $condition="SELECT * FROM user_ join user_work_summary on user_.user_id=user_work_summary.user_id WHERE work_title like '%php%'";
+
+			// SELECT * FROM user_ join user_work_summary on user_.user_id=user_work_summary.user_id WHERE user_work_summary.work_title like '%php%' or user_work_summary.exp_year >= 2 or user_work_summary.exp_month >= 3
+
+			// SELECT * FROM user_ join user_work_summary on user_.user_id=user_work_summary.user_id WHERE user_work_summary.work_title like '%php%' or user_work_summary.exp_year >= 2 or user_work_summary.exp_month >= 3 or user_.address_ like '%Deh'
+			//Table to used -> user_, user_work_summary, 
+			// echo $condition;
+			// die;
+			$this->load->view('company/layout/header');
+			$this->load->view('company/pages/filteredResult',$data);
+			$this->load->view('company/layout/footer');
+		}
+		public function getUserWorkExp($user_id){
+			return $this->db->where('user_id',$user_id)->get('user_work_summary')->result();
+			
+		}
 	}
 ?>

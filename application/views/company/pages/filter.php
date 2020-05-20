@@ -1,7 +1,10 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> 
+<script src="//geodata.solutions/includes/countrystatecity.js"></script>
+
  <div class="container-fluid">
  	<div class="card shadow mb-4">
 	    <div class="card-body">
-	      	<form class="">
+	      	<form class="" action="<?=base_url('Company/filterResumes')?>" method="post">
 		 		
 
 		 		<div class="form-group">
@@ -11,12 +14,12 @@
 		 		<div class="form-group row">
 
 		 			<div class="col-md-2 offset-md-2">
-		 				<label>Any of the keywords</label>	
+		 				<strong><label>Any of the keywords</label></strong>	
 		 			</div>
 		 			<div class="col-md-6">
 		 				<div class="row">
 		 					<div class="col">
-		 						<input type="text" class="form-control" name="">
+		 						<input type="text" class="form-control" name="resume_keyword">
 		 					</div>
 		 						
 		 				</div>
@@ -25,13 +28,13 @@
 				 				<strong>Search In:</strong>
 				 			</div>
 		 					<div class="col">
-				 				<input type="radio" name="resumCre"> Resume Title
+				 				<input type="radio" name="resumCre" checked> Resume Title
 				 			</div>
 				 			<div class="col">
 				 				<input type="radio" name="resumCre"> Resume Skills
 				 			</div>
 				 			<div class="col">
-				 				<input type="radio" name="resumCre"> Entire Resume
+				 				<input type="radio" name="resumCre" > Entire Resume
 				 			</div>
 		 						
 		 				</div>
@@ -58,13 +61,13 @@
 		 				 <strong>Total Experience:</strong>
 		 			</div>
 		 			<div class="col">
-		 				<input type="input" name="resumCre" class="form-control"> 
+		 				<input type="number" name="exp_year" value="0" class="form-control text-center"> 
 		 			</div>
 		 			<div class="col-md-1 text-center">
 		 				<i>to</i>
 		 			</div>
 		 			<div class="col">
-		 				<input type="input" name="resumCre" class="form-control"> 
+		 				<input type="number" name="exp_month" value="0" class="form-control text-center"> 
 		 			</div>
 		 			<div class="col">
 		 				(in years)
@@ -115,40 +118,38 @@
 		 				</div>
 		 				<div class="row">
 		 					<div class="col">
-		 						
+		 						<select name="country" class="countries form-control text-center" id="countryId">
+								    <option value="">- Select Country -</option>
+								</select>
 		 					</div>
+		 					<div class="col">
+		 						<select name="state" class="states form-control text-center" id="stateId">
+								    <option value="">- Select State -</option>
+								</select>
+		 					</div>
+		 					<div class="col">
+		 						<select name="city" class="cities form-control text-center" id="cityId">
+								    <option value="">- Select City -</option>
+								</select>
+		 					</div>
+		 					
+							
+							
 		 				</div>
-		 				<select class="form-control">
+		 				<!-- <select class="form-control">
 		 					<option>- Select Locations -</option>
-		 				</select> 
+		 				</select>  -->
 		 			</div>
 		 			
 		 		</div>
 		 		<hr>
-		 		<!-- <div class="form-group">
-		 			<label><strong>Employment Details</strong></label>
-		 			
-		 		</div> -->
+		 		
 		 		<div class="form-group row">
-		 			<div class="col-md-3">
-		 				 <strong>Employee Current Location:</strong>
-		 			</div>
-		 			<div class="col-md-5">
-		 				<select class="form-control">
-		 					<option>- Select Locations -</option>
-		 				</select> 
+		 			<div class="col-md-4 offset-md-4 text-center">
+		 				<input type="submit" name="" class="btn btn-info" value="FIND RESUME">
 		 			</div>
 		 		</div>
-		 		<!-- <div class="form-group row">
-		 			<div class="col-md-3">
-		 				 <strong>Industry Type:</strong>
-		 			</div>
-		 			<div class="col-md-5">
-		 				<select class="form-control">
-		 					<option>- Select Industry -</option>
-		 				</select> 
-		 			</div>
-		 		</div> -->
+		 		
 			</form>
 	    </div>
 	</div>
@@ -188,64 +189,7 @@
 
  <br>
 
-
-
-
-
-
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
-
-          <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Job Seekers</h1>
-          <?php
-            // print_r($jobSeekers);
-          ?>
-
-          <!-- DataTales Example -->
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Job Seekers</h6>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>S.No</th>
-                      <th>Name</th>
-                      <th>Email</th>
-                      <th>Contact No.</th>
-                      <th>Resume</th>
-                      
-                    </tr>
-                  </thead>
-                  <tfoot>
-                    <tr>
-                      <th>S.No</th>
-                      <th>Name</th>
-                      <th>Email</th>
-                      <th>Contact No.</th>
-                      <th>Resume</th>
-                    </tr>
-                  </tfoot>
-                  <tbody id="userData">
-                    
-                   
-                    
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <!-- /.container-fluid -->
-
-      </div>
-      <!-- End of Main Content -->
-
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	$(document).ready(function(){
 		$('.serResume').click(function(){
 			// console.log("Button Pressed");
@@ -290,4 +234,4 @@
 		      });
 		});
 	});
-</script>
+</script> -->
