@@ -9,15 +9,37 @@
 		 			<hr>
 		 		</div>
 		 		<div class="form-group row">
+
 		 			<div class="col-md-2 offset-md-2">
 		 				<label>Any of the keywords</label>	
 		 			</div>
-		 			<div class="col-md-4">
-		 				<input type="text" class="form-control" name="">
+		 			<div class="col-md-6">
+		 				<div class="row">
+		 					<div class="col">
+		 						<input type="text" class="form-control" name="">
+		 					</div>
+		 						
+		 				</div>
+		 				<div class="row">
+		 					<div class="col">
+				 				<strong>Search In:</strong>
+				 			</div>
+		 					<div class="col">
+				 				<input type="radio" name="resumCre"> Resume Title
+				 			</div>
+				 			<div class="col">
+				 				<input type="radio" name="resumCre"> Resume Skills
+				 			</div>
+				 			<div class="col">
+				 				<input type="radio" name="resumCre"> Entire Resume
+				 			</div>
+		 						
+		 				</div>
+		 				
 		 			</div>
 		 		</div>
 		 		<hr>
-		 		<div class="form-group row">
+		 		<!-- <div class="form-group row">
 		 			<div class="col-md-3">
 		 				 <strong>Search In:</strong>
 		 			</div>
@@ -30,7 +52,7 @@
 		 			<div class="col">
 		 				<input type="radio" name="resumCre"> Entire Resume
 		 			</div>
-		 		</div>
+		 		</div> -->
 		 		<div class="form-group row">
 		 			<div class="col-md-3">
 		 				 <strong>Total Experience:</strong>
@@ -38,8 +60,8 @@
 		 			<div class="col">
 		 				<input type="input" name="resumCre" class="form-control"> 
 		 			</div>
-		 			<div class="col-md-1">
-		 				to
+		 			<div class="col-md-1 text-center">
+		 				<i>to</i>
 		 			</div>
 		 			<div class="col">
 		 				<input type="input" name="resumCre" class="form-control"> 
@@ -48,7 +70,7 @@
 		 				(in years)
 		 			</div>
 		 		</div>
-		 		<div class="form-group row">
+		 		<!-- <div class="form-group row">
 		 			<div class="col-md-3">
 		 				 <strong>Annual Salary:</strong>
 		 			</div>
@@ -75,12 +97,27 @@
 		 					<option>- Thousands -</option>
 		 				</select> 
 		 			</div>
-		 		</div>
-		 		<div class="form-group row">
-		 			<div class="col-md-3">
+		 		</div> -->
+		 		<div class="form-group row text-center">
+		 			<!-- <div class="col-md-3">
 		 				 <strong>Candidate's Current Location:</strong>
-		 			</div>
+		 			</div> -->
 		 			<div class="col">
+		 				<div class="row">
+		 					<div class="col">
+		 						<label class="text-dark font-weight-bold" style="font-size: 2em">Where</label>
+		 					</div>
+		 				</div>
+		 				<div class="row">
+		 					<div class="col">
+		 						<label>Country, State or City</label>
+		 					</div>
+		 				</div>
+		 				<div class="row">
+		 					<div class="col">
+		 						
+		 					</div>
+		 				</div>
 		 				<select class="form-control">
 		 					<option>- Select Locations -</option>
 		 				</select> 
@@ -88,13 +125,13 @@
 		 			
 		 		</div>
 		 		<hr>
-		 		<div class="form-group">
+		 		<!-- <div class="form-group">
 		 			<label><strong>Employment Details</strong></label>
 		 			
-		 		</div>
+		 		</div> -->
 		 		<div class="form-group row">
 		 			<div class="col-md-3">
-		 				 <strong>Functional Area:</strong>
+		 				 <strong>Employee Current Location:</strong>
 		 			</div>
 		 			<div class="col-md-5">
 		 				<select class="form-control">
@@ -102,7 +139,7 @@
 		 				</select> 
 		 			</div>
 		 		</div>
-		 		<div class="form-group row">
+		 		<!-- <div class="form-group row">
 		 			<div class="col-md-3">
 		 				 <strong>Industry Type:</strong>
 		 			</div>
@@ -111,7 +148,7 @@
 		 					<option>- Select Industry -</option>
 		 				</select> 
 		 			</div>
-		 		</div>
+		 		</div> -->
 			</form>
 	    </div>
 	</div>
