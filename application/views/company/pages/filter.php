@@ -6,22 +6,57 @@
 	    <div class="card-body">
 	      	<form class="" action="<?=base_url('Company/filterResumes')?>" method="post">
 		 		
-
-		 		<div class="form-group">
+	      		<div class="form-group row text-center">
+		 			<!-- <div class="col-md-3">
+		 				 <strong>Candidate's Current Location:</strong>
+		 			</div> -->
+		 			<div class="col-md-6 offset-md-3">
+		 				<div class="row">
+		 					<div class="col">
+		 						<label class="text-dark font-weight-bold" style="font-size: 2em">Job Title</label>
+		 					</div>
+		 				</div>
+		 				
+		 				<div class="row">
+		 					<div class="col">
+		 						<input type="text" class="form-control" name="resume_keyword">
+		 					</div>	
+		 				</div>
+		 				<div class="row">
+		 					<div class="col">
+				 				<strong>Search In:</strong>
+				 			</div>
+		 					<div class="col">
+				 				<input type="radio" name="resumCre" checked> Resume Title
+				 			</div>
+				 			<div class="col">
+				 				<input type="radio" name="resumCre"> Resume Skills
+				 			</div>
+				 			<div class="col">
+				 				<input type="radio" name="resumCre" > Entire Resume
+				 			</div>
+		 						
+		 				</div>
+		 				<!-- <select class="form-control">
+		 					<option>- Select Locations -</option>
+		 				</select>  -->
+		 			</div>
+		 			
+		 		</div>
+		 		<!-- <div class="form-group">
 		 			<label><strong>Basic Details</strong></label>
 		 			<hr>
-		 		</div>
-		 		<div class="form-group row">
+		 		</div> -->
+		 		<!-- <div class="form-group row">
 
 		 			<div class="col-md-2 offset-md-2">
-		 				<strong><label>Any of the keywords</label></strong>	
+		 				<strong><label>Job Title</label></strong>	
 		 			</div>
 		 			<div class="col-md-6">
 		 				<div class="row">
 		 					<div class="col">
 		 						<input type="text" class="form-control" name="resume_keyword">
-		 					</div>
-		 						
+		 					</div>	
 		 				</div>
 		 				<div class="row">
 		 					<div class="col">
@@ -40,7 +75,7 @@
 		 				</div>
 		 				
 		 			</div>
-		 		</div>
+		 		</div> -->
 		 		<hr>
 		 		<!-- <div class="form-group row">
 		 			<div class="col-md-3">
@@ -157,7 +192,7 @@
 
 
 
- <div class="container-fluid">
+<!--  <div class="container-fluid">
  	<div class="card shadow mb-4">
 	    
 	    <div class="card-body">
@@ -184,7 +219,7 @@
 	    </div>
 	</div>
  </div>
-
+ -->
  
 
  <br>
