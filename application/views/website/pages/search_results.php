@@ -1,5 +1,5 @@
 
-<section class="container-fluid banr_ol py-5">
+<!-- <section class="container-fluid banr_ol py-5">
 	<div class="container pt-4">
 		<form class="sercPL">
             <div class="row p-2 ">
@@ -20,7 +20,7 @@
             </div>      
         </form>
     </div>
-</section>	
+</section>	 -->
 
 <div class="container">
 	<div class="p-1"> 

@@ -12,12 +12,39 @@ class Web extends CI_Controller{
  		$data['cateogires']=$this->getJobCategories();
  		// die(json_encode($data['cateogires']));
  		$data['total_jobs']=count($this->db->get('jobs_added')->result());
+ 		$data['job_seekers']=count($this->db->get('user_')->result());
+ 		$data['companies_']=count($this->db->get('company_')->result());
+ 		$data['job_application']=count($this->db->get('job_application')->result());
  		$data['partTimeJobs']=$this->getPartTimeJobs();
+ 		$resuJob=$this->getRecentJobs();
+ 		$jobArray=array();
+ 		foreach ($resuJob as $jobs) {
+ 			$skillArr=explode(',',$jobs->skills);
+			$skills=array();
+			foreach ($skillArr as $skiId) {
+				$skData=$this->getSkillDetial($skiId);
+				$skills[]=$skData->skill_name;
+				// print_r($skills);
+			}
+			$jobArray[]=array("job_detail"=>$jobs,"skills"=>$skills);
+ 		}
+ 		$data['recentJobs']=$jobArray;
+ 		// print_r($data['recentJobs']);
+ 		// die;
  		$data['fullTimeJobs']=$this->getFullTimeJobs();
  		$data['companies']=$this->getCompanies();
- 		$this->load->view('website/layout/header');
- 		$this->load->view('website/pages/index',$data);
- 		$this->load->view('website/layout/footer');
+ 		// New UI
+ 		$this->load->view('website/new_/header');
+ 		$this->load->view('website/pages/jobs',$data);
+ 		$this->load->view('website/new_/footer');
+ 		//Old UI
+ 		// $this->load->view('website/layout/header');
+ 		// $this->load->view('website/pages/index',$data);
+ 		// $this->load->view('website/layout/footer');
+ 	}
+ 	public function getRecentJobs(){
+ 		$condition=array("job_status"=>"Vacant");	
+ 		return $this->db->join('company_','company_.company_id=jobs_added.added_by_company_id')->where($condition)->order_by('job_id','desc')->limit(6)->get('jobs_added')->result();
  	}
  	public function getJobCategories(){
  		$result=$this->db->order_by('rand()')->get('job_category')->result();
@@ -105,9 +132,9 @@ class Web extends CI_Controller{
 		// $data['skills']=$skills;
 		// $data['JobsList']=$this->db->join('company_','jobs_added.added_by_company_id=company_.company_id')->get('jobs_added')->result();
 		$data['JobsList']=$jobs;
-		$this->load->view('website/layout/header');
- 		$this->load->view('website/pages/search_results',$data);
- 		$this->load->view('website/layout/footer');
+		$this->load->view('website/new_/header');
+ 		$this->load->view('website/new_pages/search_results',$data);
+ 		$this->load->view('website/new_/footer');
  	}
  	public function getSkillDetial($id){
 		return $this->db->where('skill_id',$id)->get('skills_')->row();
@@ -131,9 +158,9 @@ class Web extends CI_Controller{
 		$data['JobsDetail']=$jobs;
 		// print_r($jobs);
 		// die;
-		$this->load->view('website/layout/header');
- 		$this->load->view('website/pages/job_details',$data);
- 		$this->load->view('website/layout/footer');	
+		$this->load->view('website/new_/header');
+ 		$this->load->view('website/new_pages/job_details',$data);
+ 		$this->load->view('website/new_/footer');	
 	}
 	public function applyForJob(){
 		// print_r($_POST);
