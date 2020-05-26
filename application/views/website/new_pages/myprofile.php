@@ -66,7 +66,7 @@
 
 
 		<div class="edit_info  w-100">
-			<form class="">
+			<form class="updateMyDetails">
 				<div class="row mx-0 form-group">
 					<div class="col-md-4">
 						<label>Name<sub class="text-danger">*</sub></label>
@@ -96,7 +96,7 @@
 						<label>Date of Birth<sub class="text-danger">*</sub></label>
 					</div>
 					<div class="col-md-6">
-						<input type="date" class="form-control" name="" value="<?=$userDetail[0]->dob_;?>" >
+						<input type="date" class="form-control" name="dob_" value="<?=$userDetail[0]->dob_;?>" >
 					</div>
 				</div>
 				<div class="row mx-0 form-group ">
@@ -112,9 +112,10 @@
 						<label>Gender<sub class="text-danger">*</sub></label>
 					</div>
 					<div class="col-md-6">
-						<select class="form-control" name="" required="">
-							<option selected="" value="male">Male</option>
-							<option selected="" value="male">Female</option>
+						<select class="form-control" name="gender_" required="">
+							<option  value="1">Male</option>
+							<option  value="2">Female</option>
+							<option  value="3">Others</option>
 						</select>
 					</div>
 				</div>
@@ -294,8 +295,10 @@
 						
 						<select class="form-control" name="passing_year" required="">
 							<option value="" selected>Year of Passing</option>
-							<option  value="">2015</option>
-							<option value="203">2014</option>
+							<?php for($i=date('Y'); $i> 2000; $i--): ?>
+								<option  value="<?=$i?>"><?=$i?></option>
+							<?php endfor;?>
+							<!-- <option value="203">2014</option> -->
 						</select>
 						
 					</div>
@@ -330,20 +333,22 @@
 		</div>
 
 		<div class="w-100">
-			<!-- <?php
-				print_r($skills);
-			?> -->
-			<?php foreach($skills as $sk): ?>
-				<div class="row mx-0 border-bottom p-1">
-					<div class="col-md-8">
-						<span><?=$sk[0]->skill_name?></span>
+			<?php
+				// print_r($skills);
+			?> 
+			<?php if(count($skills[0])>0): ?>
+				<?php foreach($skills as $sk): ?>
+					<div class="row mx-0 border-bottom p-1">
+						<div class="col-md-8">
+							<span><?=$sk[0]->skill_name?></span>
+						</div>
+						<!-- <div class="col-md-4 text-right">
+							<span><i class="fas fa-pencil-alt"></i></span>
+							<span class="ml-3"><i class="fas fa-trash-alt"></i></span>
+						</div> -->
 					</div>
-					<div class="col-md-4 text-right">
-						<span><i class="fas fa-pencil-alt"></i></span>
-						<span class="ml-3"><i class="fas fa-trash-alt"></i></span>
-					</div>
-				</div>
-			<?php endforeach; ?>
+				<?php endforeach; ?>
+			<?php endif;?>
 			<!-- <hr> -->
 			<!-- <div class="row mx-0 border-bottom p-1">
 				<div class="col-md-8">
@@ -356,15 +361,22 @@
 			</div> -->
 		</div>
 		<div class="mt-3 px-2 skilShw" id="skilShw">
-			<form>
+			<!-- <form> -->
 			<div class="row">
 				<div class="col-md-4 text-center">
 					<span>Skills<sub class="text-danger">*</sub></span>
 				</div>
-				<div class="col-md-4">
-					<input type="text" class="form-control" name="" placeholder="Skill">
+				<!-- <?php print_r($allskills);?> -->
+				<div class="col-md-8">
+					<select class="js-example-basic form-control" name="states[]" id="add_skill"multiple="multiple">
+						<?php foreach($allskills as $skill): ?>
+							<option value="<?=$skill->skill_id?>"><?=$skill->skill_name?></option>
+						<?php endforeach;?>
+					  
+					</select>
+					<!-- <input type="text" class="form-control" name="" id="add_skill" placeholder="Skill"> -->
 				</div>
-				<div class="col-md-4">
+				<!-- <div class="col-md-4">
 					<select class="form-control" name="">
 						<option selected="" disabled=""> Exp. Years</option>
 						<option value="0" >0 Yrs</option>
@@ -372,20 +384,48 @@
 							<option value="<?=$i?>" ><?=$i?> Yrs</option>
 						<?php endfor;?>
 					</select>
-				</div>
+				</div> -->
 			</div>
 			<div class="text-center mt-2" >
-					<button class="btn btn-success">Save</button>
+					<button class="btn btn-success" id="addSkilles">Save</button>
 					<button class="btn btn-warning ml-3" id="cnclskil">Cancel</button>
 				</div>
-		</form>
+		<!-- </form> -->
 	</div>
 
 </section>
 <script>
+	$(document).ready(function() {
+	    $('.js-example-basic').select2();
+	});
 $(document).ready(function(){
 	$('.upR').click(function() {
     $('#file').trigger('click');
+    
+});
+$(document).on('click','#addSkilles',function(){
+	var skill=$('#add_skill').val();
+	console.log(skill);
+	$.ajax({
+		url:"<?=base_url('Web/updateUserSkill')?>",
+		type:"post",
+		data:{skill:skill},
+		success:function(response){
+			console.log(response);
+			// console.log(data);
+			var obj=JSON.parse(response);
+	          // console.log(obj.status);           
+			if (obj.status==1)
+			{
+				swal('Great!','Skill Added Successfully.','success');
+
+				location.reload();
+
+			}else{
+				swal('Ooops..!',"Something Went Wrong.",'error');
+			}
+		}
+	});
 });
  $(document).on('change', '#file', function(){
   var name = document.getElementById("file").files[0].name;
@@ -528,4 +568,29 @@ $(document).ready(function(){
 		// });
 	});
 	
+	$(document).on('submit','.updateMyDetails',function(e){
+		e.preventDefault();
+			var formData= new FormData($(this)[0]);
+		$.ajax({
+		        url:"<?=base_url('User/updateMyDetails')?>",
+		        type:"post",
+		        cache:false,
+		        contentType:false,
+		        enctype:'multipart/form-data',
+		        processData:false,
+		        data:formData,
+		        success:function(response){
+		          // console.log(response);
+		          response=JSON.parse(response);
+		          if(response.status==1){
+		            swal("Great..","Information Added Successfully.","success");
+		          }else{
+		            swal("Ooops..","Failed To Add","warning");
+		          }
+		          setInterval(function(){
+		            location.reload();
+		          },1000)
+		        }
+		      });
+	});
 </script>

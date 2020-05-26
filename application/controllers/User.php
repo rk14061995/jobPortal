@@ -63,6 +63,7 @@
 			$data['workSummary']=$this->db->where('user_id',$userDetail[0]->user_id)->order_by('summ_id','desc')->get('user_work_summary')->result();
 			$data['userEducation']=$this->db->where('user_id',$userDetail[0]->user_id)->order_by('passing_year','desc')->get('user_education')->result();
 			$sk=$this->db->select('skill_ids')->where('user_id',$userDetail[0]->user_id)->get('user_')->row();
+			$data['allskills']=$this->db->get('skills_')->result();
 			$skillArr=explode(',',$sk->skill_ids);
 			$skills=array();
 			foreach ($skillArr as $skiId) {
@@ -71,8 +72,8 @@
 			$data['skills']=$skills;
 			$data['myResume']=$this->db->join('user_','user_.resume_id=resume_upload.resume_id')->where('user_.user_id',$userDetail[0]->user_id)->get('resume_upload')->row();
 			// $this->db->get()->result();
-			$this->load->view('website/layout/header');
-	 		$this->load->view('website/pages/myprofile',$data);
+			$this->load->view('website/new_/header');
+	 		$this->load->view('website/new_pages/myprofile',$data);
 	 		$this->load->view('website/layout/footer');
 		}
 		public function getSkillDetial($id){
@@ -143,6 +144,24 @@
 
                     $this->load->view('upload_success', $data);
             }
+		}
+		public function updateMyDetails(){
+			
+			$userDetail=$this->session->userdata('logged_user_emp');
+			$userDetail=unserialize($userDetail);
+			$user_id=$userDetail[0]->user_id;
+			$toUpdate=array(
+								"phone_"=>$this->input->post('phone'),
+								"dob_"=>date('d-m-Y',strtotime($this->input->post('dob_'))),
+								"gender_"=>$this->input->post('gender_'),
+								"address_"=>$this->input->post('address')
+							);
+			if($this->db->where('user_id',$user_id)->update('user_',$toUpdate)){
+				die(json_encode(array('status'=>1)));
+			}else{
+				die(json_encode(array('status'=>0)));
+			}
+			
 		}
 		
 	}
