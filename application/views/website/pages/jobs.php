@@ -24,7 +24,7 @@
                   </div>
             </div>
           </form>
-          <div class="mt-2">
+         <!--  <div class="mt-2">
             <ul class="list-unstyled m-0 d-flex">
                 <li>
                   <span><strong class="colgrn">Popular : </strong></span>
@@ -36,7 +36,7 @@
                   <small class="border p-1">App</small>
                 </li>
             </ul>
-          </div>
+          </div> -->
           <div class=" mt-5">
             <div class="row mx-0 countSec">
               <div class="col-md-3 border-right">
@@ -367,7 +367,7 @@
     <div class="row">
       <div class="col-md-6">
         <div class="">
-          <h3>TRUSTED BY +25,000 USERS</h3>
+          <h3>TRUSTED BY +<?=$job_seekers-2?> USERS</h3>
           <span class="mt-3 colgry fnt500">
             Our client's opinions are <strong>extremely valuable</strong>
             to us which is why we communicate openly with them on a regular basis.
@@ -383,6 +383,7 @@
     <div class="w-100 carousel-inner" role="listbox">
       <div class="carousel-item active">
         <div class="carousel-caption">
+          
           <div class="border p-4 backTes mt-3">
             <div class="row">
               <div class="col-md-2">

@@ -16,6 +16,7 @@ class Web extends CI_Controller{
  		$data['companies_']=count($this->db->get('company_')->result());
  		$data['job_application']=count($this->db->get('job_application')->result());
  		$data['partTimeJobs']=$this->getPartTimeJobs();
+ 		$data['successStory']=$this->db->order_by('story_id','desc')->get('success_story')->result();
  		$resuJob=$this->getRecentJobs();
  		$jobArray=array();
  		foreach ($resuJob as $jobs) {
@@ -185,6 +186,20 @@ class Web extends CI_Controller{
 	    	
 	    force_download(base_url('assets/user_resume/').$img2, NULL);
 	}
-
+	public function getSkill(){
+		$response=$this->db->where("skill_name LIKE '%".$this->input->post('skill')."'")->get('skills_')->result();
+		die(json_encode($response));
+	}
+	public function updateUserSkill(){
+		$session=unserialize($this->session->userdata('logged_user_emp'));
+		$user_id=$session[0]->user_id;
+		$skills=implode(', ', $this->input->post('skill'));
+		if($this->db->where('user_id',$user_id)->update('user_',array('skill_ids'=>$skills))){
+			die(json_encode(array('status'=>1)));
+		}else{
+			die(json_encode(array('status'=>0)));
+		}
+		// print_r($skills);
+	}
 
 }
