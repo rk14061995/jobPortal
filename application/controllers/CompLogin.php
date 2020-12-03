@@ -6,13 +6,18 @@
 	{
 		
 		public function index(){
+		    $this->load->view('website/new_/header');
 			$this->load->view('company/pages/login');
+			$this->load->view('website/new_/footer');
 			// $this->load->view('company/layout/header');
 			// $this->load->view('company/pages/index');
 			// $this->load->view('company/layout/footer');
 		}
-		public function register(){
+		public function register()
+		{
+		    $this->load->view('website/new_/header');
 			$this->load->view('company/pages/register');
+			$this->load->view('website/new_/footer');
 		}
 		public function forgotPassword(){
 			$this->load->view('company/pages/forgot-password');

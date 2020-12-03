@@ -51,7 +51,7 @@
                       <td><?=$job->job_status?></td>
                       <td><?=$job->type_name?></td>
                       <td><a href="<?=base_url('Company/jobDetails/').$job->job_id?>" class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i></a>
-                        <a href="" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        <a href="javascript:void(0)" class="btn btn-danger delete_job" d-id="<?=$job->job_id?>"><i class="fa fa-trash" aria-hidden="true"></i></a>
                        
                     </tr>
                     <?php $i++; ?>
@@ -67,3 +67,24 @@
 
       </div>
       <!-- End of Main Content -->
+<script>
+    $(document).on('click','.delete_job',function(){
+       var job_id=$(this).attr('d-id');
+       $.ajax({
+          url:"<?=base_url('CompanyLogic/delteJob')?>" ,
+          type:"post",
+          data:{job_id:job_id},
+          success:function(response){
+             response=JSON.parse(response);
+             if(response.code==1){
+              swal("Great..","Deleted Successfully.","success");
+            }else{
+              swal("Ooops..","Something went wrong","error");
+            }
+                setInterval(function(){
+              location.reload();
+            },1500);
+          }
+       });
+    });
+</script>

@@ -9,34 +9,44 @@
                 <ul class="list-unstyled footAdd">
                   <li>
                     <span><i class="fas fa-map-marker-alt"></i></span>
-                    <span class="ml-2">Address</span>
+                    <span class="ml-2">Address: Papa John’s Pizza Al Muntazha, lbn Seena Street. Muntaza, Doha, Qatar</span>
                   </li>
                   <li>
                     <span><i class="far fa-envelope"></i></span>
-                    <span class="ml-2">abc@gmail.com</span>
+                    <span class="ml-2">info@premium-qatar.com</span>
                   </li>
                   <li class="mt-2">
-                     <span class="colgrn"><strong>(+91) 9854924852</strong></span><br>
+                     <span class="colgrn"><strong>+974 4441 6315</strong></span><br>
                   </li>
                 </ul>
                
 
                 <ul class="mt-3 list-unstyled d-flex">
                   <li class="border-right">
-                    <a href=" " class="px-2">
-                      <img src="<?=base_url('assets/newUi/')?>images/Facebook.png" class="img-fluid  htWt15" >
+                    <a href="https://www.facebook.com/Premiumhrservices/" class="px-2">
+                        <i class="fab fa-facebook-f"></i>
+                      <!--<img src="<?=base_url('assets/newUi/')?>images/Facebook.png" class="img-fluid  htWt15" >-->
                     </a>
                   </li>
                   <li class="border-right">
-                     <a href=" " class="px-2">
-                      <img src="<?=base_url('assets/newUi/')?>images/Google-Icon.png" class="img-fluid htWt15" >
+                     <a href="https://plus.google.com/" class="px-2">
+                         <i class="fab fa-google-plus-g"></i>
+                      <!--<img src="<?=base_url('assets/newUi/')?>images/Google-Icon.png" class="img-fluid htWt15" >-->
                     </a>
                   </li>
                   <li class="">
-                     <a href=" "  class="px-2">
-                      <img src="assets/images/Instagram.png" class="img-fluid htWt15" >
+                     <a href="https://twitter.com/"  class="px-2">
+                         <i class="fab fa-twitter"></i>
+                      <!--<img src="assets/images/Instagram.png" class="img-fluid htWt15" >-->
                     </a>
                   </li>
+                  <li class="">
+                     <a href="https://www.linkedin.com/showcase/premium-hr-services-/"  class="px-2">
+                          <i class="fab fa-linkedin-in"></i>
+                      <!--<img src="assets/images/Instagram.png" class="img-fluid htWt15" >-->
+                    </a>
+                  </li>
+                 
                 </ul>
             </div>
 
@@ -47,13 +57,13 @@
 
               <ul class="mt-3 list-unstyled menUFo" >
                 <li>
-                  <a href=""><span>About Us </span></a>
+                  <a href="#aboutUs"><span>About Us </span></a>
                 </li>
-                <li>
-                  <a href=""><span>Privacy Policy </span></a>
-                </li>
-                <li>
-                  <a href=""><span>Terms And Conditions</span></a>
+                <!--<li>-->
+                <!--  <a href=""><span>Privacy Policy </span></a>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--  <a href=""><span>Terms And Conditions</span></a>-->
                 </li>
               </ul>
             </div>
@@ -64,14 +74,14 @@
 
               <ul class="mt-3 list-unstyled menUFo" >
                 <li>
-                  <a href=""><span>Employer</span></a>
+                  <a href="<?=base_url('CompLogin')?>"><span>Employer</span></a>
                 </li>
-                <li>
-                  <a href=""><span>Trending Job</span></a>
-                </li>
-                <li>
-                  <a href=""><span>Blogs</span></a>
-                </li>
+                <!--<li>-->
+                <!--  <a href=""><span>Trending Job</span></a>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--  <a href=""><span>Blogs</span></a>-->
+                <!--</li>-->
               </ul>
             </div>
           </div>
@@ -93,23 +103,28 @@
           </div>
     </div>  
     <hr>
-
-    <div class="py-3 dsa_P">
-         <small class="col_gr fnt11">&copy; 2020 <span class="colgrn">PremiumHR</span>. All Rights Reserved.</small>
-         <div class="">
-           <ul class="list-unstyled m-0 d-flex">
-            <li class="px-2 border-right">
-              <a href=""><small class="colgry fnt500">Find Work</small></a>
-            </li>
-            <li class="px-2 border-right">
-              <a href=""><small class="colgry fnt500">Candidates</small></a>
-            </li>
-            <li class="px-2 ">
-              <a href=""><small class="colgry fnt500">Employers</small></a>
-            </li>
-           </ul>
-         </div>
-    </div>    
+    <div class="row ">
+        <div class="col text-center">
+            <div class="py-3 ">
+                 <small class="col_gr fnt11">&copy; 2020 <span class="colgrn">PremiumHR</span>. All Rights Reserved.</small>
+                 <!--<div class="">-->
+                 <!--  <ul class="list-unstyled m-0 d-flex">-->
+                    <!--<li class="px-2 border-right">-->
+                    <!--  <a href=""><small class="colgry fnt500">Find Work</small></a>-->
+                    <!--</li>-->
+                    <!--<li class="px-2 border-right">-->
+                    <!--  <a href=""><small class="colgry fnt500">Candidates</small></a>-->
+                    <!--</li>-->
+                    <!--<li class="px-2 ">-->
+                    <!--  <a href=""><small class="colgry fnt500">Employers</small></a>-->
+                    <!--</li>-->
+                 <!--  </ul>-->
+                 <!--</div>-->
+            </div>
+        </div>
+        
+    </div>
+        
   </section>
 
   <script type="text/javascript">

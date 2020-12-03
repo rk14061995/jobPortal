@@ -272,6 +272,17 @@
 				return 2;
 			}
 		}
+		public function delteJob(){
+		    if($this->db->where('job_id',$this->input->post('job_id'))->delete('jobs_added')){
+		       if($this->db->where('job_post_id',$this->input->post('job_id'))->delete('job_application')){
+		        die(json_encode(array("code"=>1)));   
+		       }else{
+		        die(json_encode(array("code"=>0)));   
+		       }
+		    }else{
+		        die(json_encode(array("code"=>0)));
+		    }
+		}
 
 		
 	}

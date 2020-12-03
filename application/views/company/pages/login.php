@@ -19,10 +19,15 @@
   <link href="<?=base_url('assets/comp_assets/')?>css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
+<style>
+    .grenbtn {
+    background: #34ac4a !important;
+    color: white !important;
+    }
+</style>
+<body class="bg-gradient-primary" style="background: url('http://www.newdemo.live/jobPortal/assets/newUi/images/Slider-Image.png');">
 
-<body class="bg-gradient-primary">
-
-  <div class="container">
+  <div class="container mt-5">
 
     <!-- Outer Row -->
     <div class="row justify-content-center">

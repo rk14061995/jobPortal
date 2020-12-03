@@ -99,7 +99,7 @@
               <form class="user" id="compLogo">
                 <div class="form-group row">
                   <div class="col-sm-12 mb-3 mb-sm-0">
-                   <img src="<?=base_url('assets/CompanyImages/logo/').$compData[0]->company_logo?>" width="100%" onerror='this.src="<?=base_url('assets/CompanyImages/logo/default.png')?>"'>
+                   <img src="<?=base_url('assets/companyImages/logo/').$compData[0]->company_logo?>" width="50%" onerror='this.src="<?=base_url('assets/companyImages/logo/default.png')?>"'>
                   </div>
 
                 </div>

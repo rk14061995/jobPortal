@@ -89,7 +89,7 @@
                       <small class="colgrn sadUu"> &#8377;<?=$rJobs['job_detail']->min_annual_sal ?>K - &#8377; <?=$rJobs['job_detail']->max_annaul_sal?>K </small>
                     </div>
                     <div class="">
-                      <a class="colgry dsaPb fnt500 btn btn-success" href="">Apply</a>
+                      <a class="colgry dsaPb fnt500 btn btn-success" href="<?=base_url('Web/viewJobDetail/').$rJobs['job_detail']->job_id?>">Apply</a>
                       <!-- <small class="colgry dsaPb fnt500"> 7 Open</small> -->
                     </div>
                 </div>
@@ -269,7 +269,39 @@
 
     </div>
   </section>
+   <section class="container py-5 my-5" id="aboutUs">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="<?=base_url('assets/newUi/')?>images/ct-about-home-1.jpg" class="img-fluid ">
+      </div>
+      <div class="col-md-6 p-5">
+        <div class="">
+          <h3 class="text-success">About Us</h3>
+          <hr>
+          <span class="mt-3 colgry fnt500" style=" color: black;font-size: 44px;font-weight: bold;">
+            Empowering business & the people who drive it.
 
+          </span>
+          <p>
+              PREMIUM HR SERVICES company established to be recognized as market leaders in the provision
+              of Executive Search and Training & Development. Our flexible approach to Recruitment & Trainings 
+              ensures we support clients in a highly tailored manner and reflect their specific needs.
+          </p>
+          <p>
+              Our team of experts always improve organizations by mobilizing candidates with relevant experience and skills required for the position.
+          </p>
+          
+          <div class=""></div>
+        </div>
+      </div>
+    </div>
+
+<!--     <div class="d-flex">
+        <div class="px-3 text-center">
+          <h5>WE ARE TRUSTED TRUSTED BY</h5>
+        </div>
+    </div> -->
+  </section>
   <section class="container-fluid my-5 p-0" style="background-repeat: no-repeat;background-size: cover; background: url('<?=base_url('assets/newUi/')?>images/background1.jpg');">
     
     <div class="text-center text-white bacKdl padY70" >
@@ -322,6 +354,7 @@
             </div>
           </div>
   </section>
+
   <section class="container py-5 my-5">
     <div class="row">
       <div class="col-md-6">
@@ -512,4 +545,5 @@
         </div>
     </div> -->
   </section>
+ 
 

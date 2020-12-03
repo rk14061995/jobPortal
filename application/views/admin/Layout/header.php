@@ -9,7 +9,7 @@
     <meta name="author" content="ThemeSelect">
     <title>Job Portal</title>
     <link rel="apple-touch-icon" href="<?=base_url()?>theme-assets/images/ico/apple-icon-120.png">
-    <link rel="shortcut icon" type="image/x-icon" href="<?=base_url()?>theme-assets/images/ico/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<?=base_url()?>assets/images/Xhirez-Logo.2fb87e48.png">
     <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i,600,600i,700,700i%7CComfortaa:300,400,700" rel="stylesheet">
     <link href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" rel="stylesheet">
     <!-- BEGIN VENDOR CSS-->
@@ -30,6 +30,15 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+  <style>
+  .content .content-wrapper .content-wrapper-before{
+    width:auto !important;
+    height:auto !important;
+  }
+  #gradient-line-chart1{
+    height:auto !important;
+  }
+  </style>
   </head>
   <body class="vertical-layout vertical-menu 2-columns   menu-expanded fixed-navbar" data-open="click" data-menu="vertical-menu" data-color="bg-chartbg" data-col="2-columns">
 
@@ -93,8 +102,8 @@
     <div class="main-menu menu-fixed menu-light menu-accordion    menu-shadow " data-scroll-to-active="true" data-img="theme-assets/images/backgrounds/02.jpg">
       <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">       
-          <li class="nav-item mr-auto"><a class="navbar-brand" href="<?=base_url('Admin_Dashboard/viewDashbaord')?>"><img class="brand-logo" alt="Chameleon admin logo" src="<?=base_url()?>theme-assets/images/logo/logo.png"/>
-              <h3 class="brand-text">Job Portal</h3></a></li>
+          <li class="nav-item mr-auto"><a class="navbar-brand" href="<?=base_url('Admin_Dashboard/viewDashbaord')?>"><img class="brand-logo" alt="Chameleon admin logo" style="width:105px !important"  src="<?=base_url()?>assets/images/Xhirez-Logo.2fb87e48.png"/>
+              </a></li>
           <li class="nav-item d-md-none"><a class="nav-link close-navbar"><i class="ft-x"></i></a></li>
         </ul>
       </div>
@@ -102,33 +111,23 @@
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
           <li class="active"><a href="<?=base_url('Admin_Dashboard/viewDashbaord')?>"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
           </li>
-           <li class=" nav-item "><a href="#" class="nav-link dropdown-toggle" >
-            <i class="ft-layout"></i><span class="menu-title" data-i18n="">Job Type</span>
+          <li>
+            <a href="<?=base_url('Admin_Dashboard/addJobType')?>" class="nav-link " >
+            <i class="ft-layout"></i>Job Type
             </a>
-            <ul>
-              
-              <li> <a class="dropdown-item" href="<?=base_url('Admin_Dashboard/addJobType')?>"><i class="fa fa-eye" aria-hidden="true"></i> <strong>Add</strong></a></li>
-              <li><a class="dropdown-item" href="<?=base_url('Admin_Dashboard/view_JobType')?>"><i class="fa fa-plus" aria-hidden="true"></i> <strong>View</strong></a></li>
-            </ul>
-          </li> 
-         <li class=" nav-item "><a href="#" class="nav-link dropdown-toggle" >
-            <i class="ft-layout"></i><span class="menu-title" data-i18n="">Job Category</span>
+          </li>
+          <li>
+            <a href="<?=base_url('Admin_Dashboard/addJobCategory')?>" class="nav-link " >
+            <i class="ft-layout"></i>Job Category
             </a>
-            <ul>
-              
-              <li> <a class="dropdown-item" href="<?=base_url('Admin_Dashboard/addJobCategory')?>"><i class="fa fa-eye" aria-hidden="true"></i> <strong>Add</strong></a></li>
-              <li><a class="dropdown-item" href="<?=base_url('Admin_Dashboard/view_JobCategory')?>"><i class="fa fa-plus" aria-hidden="true"></i> <strong>View</strong></a></li>
-            </ul>
-          </li> 
-          <li class=" nav-item "><a href="#" class="nav-link dropdown-toggle" >
-            <i class="ft-layout"></i><span class="menu-title" data-i18n="">Job Skills</span>
+          </li>
+          <li>
+            <a href="<?=base_url('Admin_Dashboard/addJobSkills')?>" class="nav-link " >
+            <i class="ft-layout"></i>Skills
             </a>
-            <ul>
-              
-              <li> <a class="dropdown-item" href="<?=base_url('Admin_Dashboard/addJobSkills')?>"><i class="fa fa-eye" aria-hidden="true"></i> <strong>Add</strong></a></li>
-              <li><a class="dropdown-item" href="<?=base_url('Admin_Dashboard/view_JobSkills')?>"><i class="fa fa-plus" aria-hidden="true"></i> <strong>View</strong></a></li>
-            </ul>
-          </li> 
+          </li>
+           
+         
            <li class=" nav-item "><a href="#" class="nav-link dropdown-toggle" >
             <i class="ft-layout"></i><span class="menu-title" data-i18n="">Job </span>
             </a>

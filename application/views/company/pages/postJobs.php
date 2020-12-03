@@ -44,7 +44,7 @@
                 
                 <div class="form-group row">
                   <div class="col-md-3">
-                    <label>Vaccancies</label>
+                    <label>Vacancies</label>
                     <select class="form-control " name="vacancy">
                       <!-- <option>Vacancy</option> -->
                       <?php for($i=1; $i<=20;$i++): ?>

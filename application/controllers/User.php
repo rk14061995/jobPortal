@@ -74,7 +74,7 @@
 			// $this->db->get()->result();
 			$this->load->view('website/new_/header');
 	 		$this->load->view('website/new_pages/myprofile',$data);
-	 		$this->load->view('website/layout/footer');
+	 		$this->load->view('website/new_/footer');
 		}
 		public function getSkillDetial($id){
 			return $this->db->where('skill_id',$id)->get('skills_')->result();

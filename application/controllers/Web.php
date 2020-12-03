@@ -90,30 +90,40 @@ class Web extends CI_Controller{
 		$job_title=$this->input->post('job_title');
 		$location=$this->input->post('location');
 		$exp=$this->input->post('exp');
-		if($location!="" && $job_title!="" && $exp!="" ){
-			$this->db->where(" `job_location_` LIKE '%".$location."%' ESCAPE '!' AND  `job_title` LIKE '%".$job_title."%' ESCAPE '!' AND `exp` <= '$exp'");
-		}elseif($job_title!="" && $location=="" &&  $exp=="" ){
-			// echo 'search on the basis of job title only';
-			$this->db->where(" `job_title` LIKE '%".$job_title."%' ESCAPE '!'");
-		}elseif($job_title=="" && $location!="" &&  $exp==""){
-			// echo 'search on the basis of job locaion only';
-			$this->db->where(" `job_location_` LIKE '%".$location."%' ESCAPE '!'");
+		if($location!="" && $job_title!=""){
+		  //  echo 'dd';
+		  //  echo " `job_location_` LIKE '%".$location."' ESCAPE '!' AND  `job_title` LIKE '%".$job_title."' ESCAPE '!' ";
+		    $this->db->where(" `job_location_` LIKE '%".$location."%' ESCAPE '!' AND  `job_title` LIKE '%".$job_title."%' ESCAPE '!' ");
+		}else{
+		  //  echo 'gg';
+		    $this->db->where(" `job_location_` LIKE '%".$location."%' ESCAPE '!' or  `job_title` LIKE '%".$job_title."%' ESCAPE '!' ");
 		}
-		else{
-			if($location!="" && $job_title!=""){
-				// echo '$location!="" && $job_title!=""';
-				$this->db->where(" `job_location_` LIKE '%".$location."%' ESCAPE '!' AND  `job_title` LIKE '%".$job_title."%' ESCAPE '!' OR `exp` <= '$exp'");
-			}elseif($job_title!="" && $exp!=""){
-				// echo '$job_title!="" && $exp!=""';
-				$this->db->where(" `job_location_` LIKE '%".$location."%' ESCAPE '!' OR  `job_title` LIKE '%".$job_title."%' ESCAPE '!' AND `exp` <= '$exp'");
-			}
-			else{
-				// echo 'Somethind Else';
-				$this->db->where(" `job_location_` LIKE '%".$location."%' ESCAPE '!' OR  `job_title` LIKE '%".$job_title."%' ESCAPE '!' OR `exp` <= '$exp'");
-			}
+// 		if($location!="" && $job_title!="" && $exp!="" ){
+// 			$this->db->where(" `job_location_` LIKE '%".$location."%' ESCAPE '!' AND  `job_title` LIKE '%".$job_title."%' ESCAPE '!' AND `exp` <= '$exp'");
+// 		}elseif($job_title!="" && $location=="" &&  $exp=="" ){
+// 			// echo 'search on the basis of job title only';
+// 			$this->db->where(" `job_title` LIKE '%".$job_title."%' ESCAPE '!'");
+// 		}elseif($job_title=="" && $location!="" &&  $exp==""){
+// 			// echo 'search on the basis of job locaion only';
+// 			$this->db->where(" `job_location_` LIKE '%".$location."%' ESCAPE '!'");
+// 		}
+// 		else{
+// 			if($location!="" && $job_title!=""){
+// 				// echo '$location!="" && $job_title!=""';
+// 				$this->db->where(" `job_location_` LIKE '%".$location."' ESCAPE '!' AND  `job_title` LIKE '%".$job_title."' ESCAPE '!' OR `exp` <= '$exp'");
+// 			}elseif($job_title!="" && $exp!=""){
+// 				// echo '$job_title!="" && $exp!=""';
+// 				$this->db->where(" `job_location_` LIKE '%".$location."%' ESCAPE '!' OR  `job_title` LIKE '%".$job_title."%' ESCAPE '!' AND `exp` <= '$exp'");
+// 			}
+// 			else{
+// 				// echo 'Somethind Else';
+// 				$this->db->where(" `job_location_` LIKE '%".$location."%' ESCAPE '!' OR  `job_title` LIKE '%".$job_title."%' ESCAPE '!' OR `exp` <= '$exp'");
+// 			}
 			
-		}
+// 		}
+// 		print_r($this->db->where(" `job_location_` LIKE '%".$location."' ESCAPE '!' AND  `job_title` LIKE '%".$job_title."' ESCAPE '!' OR `exp` <= '$exp'"));
 		$jobDetails=$this->db->join('company_','jobs_added.added_by_company_id=company_.company_id')->get('jobs_added')->result();
+		
 		$jobs=array();
 		foreach ($jobDetails as $key => $value) {
 			// print_r($value->skills);

@@ -19,10 +19,19 @@
   <link href="<?=base_url('assets/comp_assets/')?>css/sb-admin-2.min.css" rel="stylesheet">
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
-
-<body class="bg-gradient-primary">
-
-  <div class="container">
+<style>
+    .grenbtn {
+    background: #34ac4a !important;
+    color: white !important;
+    }
+    .mt-10
+    {
+        margin-top:100px;
+    }
+</style>
+<!--<body class="bg-gradient-primary" style="background-image: linear-gradient(180deg,#22ff14 10%,#6abe22 100%);">-->
+<body class="bg-gradient-primary" style="background: url('http://www.newdemo.live/jobPortal/assets/newUi/images/Slider-Image.png');">
+  <div class="container mt-10">
 
     <div class="card o-hidden border-0 shadow-lg my-5">
       <div class="card-body p-0">

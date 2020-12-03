@@ -47,7 +47,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           
         </div>
-        <div class="sidebar-brand-text mx-3"><img src="<?=base_url('assets/CompanyImages/logo/').$logo_?>" width="100%" onerror='this.src="<?=base_url('assets/CompanyImages/logo/default.png')?>"'></sup></div>
+        <div class="sidebar-brand-text mx-3"><img src="<?=base_url('assets/companyImages/logo/').$logo_?>" width="50%" onerror='this.src="<?=base_url('assets/companyImages/logo/default.png')?>"'></sup></div>
       </a>
 
       <!-- Divider -->

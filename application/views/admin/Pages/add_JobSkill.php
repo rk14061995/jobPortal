@@ -4,31 +4,33 @@
         <div class="content-body">
             <section class="textarea-select"> 
               <div class="row match-height">
-                  <div class="col-lg-8 offset-md-2 col-md-12">
+                  <div class=" col-md-12">
                       <div class="card">
                           <div class="card-header">
                               <h4 class="card-title">Add Skills</h4>
                           </div>
 
-                          <div class="card-block">
-                              <div class="card-body">
-                                <form id="insert">
-                                  <h5 class="mt-2">Skill </h5>
-                                  <fieldset class="form-group">
-                                      <!-- <p class="text-muted">Textarea description text.</p> -->
-                                      <input type="text" class="form-control" required  name="skill"  >
-                                  </fieldset>
-                                   <!-- <h5 class="mt-2">Category Icon</h5>
-                                  <fieldset class="form-group">
-                                       <p class="text-muted">Textarea description text.</p> -->
-                                      <!-- <input type="file" name="file" required >
-                                  </fieldset> -->
-                                  <fieldset class="form-group">
-                                      <button type="submit" class="btn btn-success btn-min-width mr-1 mb-1">Add</button>
-                                  </fieldset> 
+                        
+                          <div class="card-body">
+                            <form id="insert">
+                              <div class="row">
+                                <div class="col-md-12">
+                                  <label>Skill</label>
+                                </div>
                               </div>
-                               </form>
+                              <div class="row">
+                                <div class="col-md-10">
+                                  <input type="text" class="form-control" required  name="skill"  >
+                                </div>
+                                <div class="col-md-2">
+                                  <button type="submit" class="btn btn-success btn-min-width mr-1 mb-1">Add</button>
+                                </div>
+                              </div>
+                              
+                            </form> 
                           </div>
+                               
+                          
                        
 
                           <!-- <div class="card-block">
@@ -74,6 +76,58 @@
                   </div>
                   
               </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-header">
+                      
+                      <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                      <div class="heading-elements">
+                        <ul class="list-inline mb-0">
+                          <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                          <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                          <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                          <li><a data-action="close"><i class="ft-x"></i></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="card-content collapse show">
+                      
+                      <div class="table-responsive">
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th scope="col">SNo</th>
+                              <th scope="col">Skills</th>
+                             
+                              <th scope="col">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                           <?php
+                           $i=1;
+                           foreach($getskills as $skills)
+                            {
+                               // $myImages=explode(',',$category->category_icon);
+                              // print_r($category);
+                              ?>
+                            <tr>
+                              <th scope="row"><?=$i?></th>
+                              <td><?=$skills->skill_name?></td>
+                              <td>
+                               <a href="javascript:void(0)" skill_id="<?=$skills->skill_id?>" class="w-100 rounded-pill border-0 p-2  font-weight-bold butn-style1 delete">Delete</a></td>
+                            </tr>
+                            <?php
+                            $i++;
+                            }?>
+                            
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <!-- Textarea end -->
             </section>
         </div>
@@ -117,3 +171,39 @@ $(document).on('submit','#insert',function(e){
     
 });
 </script>
+<script type="text/javascript">
+        $(document).ready(function(){
+          $('.delete').on('click',function(){ 
+             var skill_id=$(this).attr("skill_id");
+
+             // alert(owner_id);
+           if(confirm("Are you Sure want to delete?") ==true)
+            {       
+            // alert(owner_id);         
+                $.ajax({
+                  url:"<?=base_url('Admin_Category/DeleteJobSkills')?>",
+                  type:"post",
+                  data:{skill_id:skill_id},
+                  success:function(response)
+                  {   
+                  response=JSON.parse(response);             
+                     if (response.status==1)
+                      {
+                        swal('Skills!','Deleted','error');
+                   
+                          location.reload();
+                    
+                       }
+                  }
+                 })                           
+             // userPreference = "Data Delete successfully!";
+
+             }
+             else 
+             {
+              userPreference = "Save Canceled!";
+              }
+              
+          })
+        })  
+      </script>

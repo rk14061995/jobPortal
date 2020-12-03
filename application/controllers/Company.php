@@ -38,7 +38,7 @@
 		public function logOut(){
 			// $this->session->unset('logged_company');
 			$this->session->unset_userdata('logged_company');
-			redirect('CompanyLogic');
+			redirect('CompLogin');
 			// $this->load->view('company/layout/header');
 			// $this->load->view('company/pages/company_details');
 			// $this->load->view('company/layout/footer');
@@ -239,7 +239,7 @@
 			$this->load->view('company/layout/footer');
 		}
 		public function filterResumes(){
-			// print_r($_POST);
+			
 			// Array ( [resume_keyword] => Php [resumCre] => on [exp_year] => 2 [exp_month] => 1 [country] => India [state] => Uttarakhand [city] => Dehra Dun )
 			$resume_keyword=$this->input->post('resume_keyword');
 			$resumCre=$this->input->post('resumCre');
@@ -270,7 +270,8 @@
 				$condition="SELECT * FROM user_ join user_work_summary on user_.user_id=user_work_summary.user_id join resume_upload on resume_upload.resume_id= user_.resume_id WHERE user_work_summary.work_title like '%".$resume_keyword."%' or user_work_summary.exp_year >= '$exp_year' or user_work_summary.exp_month >= '$exp_month' or user_.address_ like '%".$country."%' or user_.address_ like '%".$state."%' or user_.address_ like '%".$city."%' GROUP BY user_.user_id";
 
 			}
-			// echo $condition;
+// 			echo $condition;
+// 			die;
 			$resumes=$this->db->query($condition)->result();
 			// print_r($resumes);
 			$resumeArray=array();
